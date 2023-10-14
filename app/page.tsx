@@ -35,7 +35,7 @@ const Card = styled.div`
   height: 203px;
   border: 1px solid black;
   background: white;
-  transform: translateY(-50%) rotateZ(-1deg);
+  transform: translateY(-50%) rotateZ(-2deg);
   transform-origin: left bottom;
   box-shadow: 10px 10px 20px -10px grey;
   &:hover {
