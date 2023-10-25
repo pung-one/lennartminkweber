@@ -6,9 +6,8 @@ export default function Home() {
   return (
     <PageContainer>
       <Card>
-        <p>Lennart Mink Weber</p>
         <StyledLink href={"mailto:lennartminkweber@gmail.com"}>
-          Email
+          Kontakt
         </StyledLink>
       </Card>
     </PageContainer>
@@ -30,22 +29,12 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
   width: 330px;
   height: 203px;
   border: 1px solid black;
   background: white;
-  transform: translateY(-50%) rotateZ(-2deg);
+  transform: translateY(-50%);
   transform-origin: left bottom;
-  box-shadow: 10px 10px 20px -10px grey;
-  &:hover {
-    transform: translateY(-50%) rotateZ(-0deg);
-    box-shadow: none;
-  }
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  p {
-    font-size: 20px;
-  }
 `;
 
 const StyledLink = styled(Link)`

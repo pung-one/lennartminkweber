@@ -3,7 +3,10 @@ import StyledComponentsRegistry from "../lib/registry";
 import { Metadata } from "next";
 import ReactDOM from "react-dom";
 
-ReactDOM.preload("/fonts/TriniteNo1-RomanCondensed.woff", { as: "font" });
+ReactDOM.preload("/fonts/TriniteNo1-RomanCondensed.woff", {
+  as: "font",
+  crossOrigin: "",
+});
 
 export const metadata: Metadata = {
   title: "Lennart Mink Weber",
