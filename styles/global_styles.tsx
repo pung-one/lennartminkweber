@@ -9,6 +9,13 @@ export const GlobalStyles = createGlobalStyle`
       font-style: normal;
       font-display: swap;
     }
+  @font-face {
+      font-family: 'IBM Courier';
+      src: url('/fonts/IBM-Courier.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
 
 *,
   *::before,
