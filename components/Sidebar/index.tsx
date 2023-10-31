@@ -21,7 +21,13 @@ export default function SideBar(props: {
 
 const Container = styled.div`
   position: relative;
-  height: 100vh;
   width: 350px;
-  padding: 20px;
+  height: 100vh;
+  border-right: 1px solid black;
+  @media only screen and (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: auto;
+  }
 `;
