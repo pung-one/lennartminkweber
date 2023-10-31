@@ -10,17 +10,7 @@ export default function Gallery(props: {
   setImageCounter: React.Dispatch<SetStateAction<number>>;
 }) {
   const { images, imageCounter, setImageCounter } = props;
-  const [imageData, setImageData] = useState<imageData>({
-    url: "",
-    width: 0,
-    height: 0,
-  });
-
-  useEffect(() => {
-    setImageData({ ...images[imageCounter] });
-  }, [imageCounter, images]);
-
-  const { url, width, height } = imageData;
+  const { url, width, height } = props.images[imageCounter];
 
   return (
     <FlexContainer>
@@ -43,7 +33,14 @@ export default function Gallery(props: {
           <PiArrowRightThin />
         </StyledButton>
       </Navigation>
-      <StyledImage alt="" src={url} width={width} height={height} />
+      {props.images && (
+        <StyledImage
+          alt=""
+          src={"https:" + url}
+          width={width}
+          height={height}
+        />
+      )}
     </FlexContainer>
   );
 }

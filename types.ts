@@ -1,5 +1,4 @@
 type artworkData = {
-  position: number;
   title: string;
   year: string;
   description: string;
