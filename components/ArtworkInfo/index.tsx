@@ -1,27 +1,29 @@
-"use client";
 import styled from "styled-components";
 import { PiArrowDownThin, PiArrowUpThin } from "react-icons/pi";
 import { SetStateAction, useEffect, useState } from "react";
 import StyledButton from "@/components/StyledButton";
 
-export default function ArtworkInfo(props: {
-  artworkData: artworkData;
+export default function ArtworkInfo({
+  artworkData,
+  artworkCount,
+  setArtworkCount,
+}: {
+  artworkData: ArtworkData;
   artworkCount: number;
   setArtworkCount: React.Dispatch<SetStateAction<number>>;
 }) {
-  const { artworkData, artworkCount, setArtworkCount } = props;
-  const [artworkMetadata, setArtworkMetadata] = useState<artworkMetadata>({
-    position: undefined,
+  const [artworkMetadata, setArtworkMetadata] = useState<ArtworkMetadata>({
     title: undefined,
     year: undefined,
     description: undefined,
     dimensions: undefined,
   });
-  const { position, title, year, description, dimensions } = artworkMetadata;
 
   useEffect(() => {
-    setArtworkMetadata({ ...artworkData[artworkCount] });
+    setArtworkMetadata(artworkData[artworkCount]);
   }, [artworkCount]);
+
+  const { title, year, description, dimensions } = artworkMetadata;
 
   return (
     <FlexContainer>

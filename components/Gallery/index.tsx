@@ -4,36 +4,47 @@ import Image from "next/image";
 import { SetStateAction, useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
 
-export default function Gallery(props: {
-  images: { width: number; height: number; url: string }[];
-  imageCounter: number;
-  setImageCounter: React.Dispatch<SetStateAction<number>>;
+export default function Gallery({
+  artworkData,
+  artworkCount,
+}: {
+  artworkData: ArtworkData;
+  artworkCount: number;
 }) {
-  const { images, imageCounter, setImageCounter } = props;
-  const { url, width, height } = props.images[imageCounter];
+  const [images, setImages] = useState<ArtworkImageData>(
+    artworkData[artworkCount].images
+  );
+  const [imageCount, setImageCount] = useState<number>(0);
+
+  useEffect(() => {
+    setImageCount(0);
+    setImages(artworkData[artworkCount].images);
+  }, [artworkCount]);
+
+  const { url, width, height } = images[imageCount];
 
   return (
     <FlexContainer>
       <Navigation>
         <StyledButton
           onClick={() =>
-            setImageCounter((prev) => (prev > 0 ? (prev -= 1) : prev))
+            setImageCount((prev) => (prev > 0 ? (prev -= 1) : prev))
           }
         >
           <PiArrowLeftThin />
         </StyledButton>
-        <p>{`${imageCounter + 1}/${props.images.length}`}</p>
+        <p>{`${imageCount + 1}/${images.length}`}</p>
         <StyledButton
           onClick={() =>
-            setImageCounter((prev) =>
-              prev < props.images.length - 1 ? (prev += 1) : prev
+            setImageCount((prev) =>
+              prev < images.length - 1 ? (prev += 1) : prev
             )
           }
         >
           <PiArrowRightThin />
         </StyledButton>
       </Navigation>
-      {props.images && (
+      {images && (
         <StyledImage
           alt=""
           src={"https:" + url}

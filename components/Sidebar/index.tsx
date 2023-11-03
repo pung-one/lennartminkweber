@@ -1,19 +1,22 @@
-"use client";
 import styled from "styled-components";
 import ArtworkInfo from "../ArtworkInfo";
 import { SetStateAction } from "react";
 
-export default function SideBar(props: {
-  artworkData: artworkData;
+export default function SideBar({
+  artworkData,
+  artworkCount,
+  setArtworkCount,
+}: {
+  artworkData: ArtworkData;
   artworkCount: number;
   setArtworkCount: React.Dispatch<SetStateAction<number>>;
 }) {
   return (
     <Container>
       <ArtworkInfo
-        artworkData={props.artworkData}
-        artworkCount={props.artworkCount}
-        setArtworkCount={props.setArtworkCount}
+        artworkData={artworkData}
+        artworkCount={artworkCount}
+        setArtworkCount={setArtworkCount}
       />
     </Container>
   );

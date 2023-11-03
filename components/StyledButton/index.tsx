@@ -8,7 +8,10 @@ import {
 } from "react";
 import styled from "styled-components";
 
-export default function StyledButton(props: {
+export default function StyledButton({
+  children,
+  onClick,
+}: {
   children:
     | string
     | number
@@ -21,7 +24,7 @@ export default function StyledButton(props: {
     | undefined;
   onClick: MouseEventHandler<HTMLButtonElement> | undefined;
 }) {
-  return <Button onClick={props.onClick}>{props.children}</Button>;
+  return <Button onClick={onClick}>{children}</Button>;
 }
 
 const Button = styled.button`

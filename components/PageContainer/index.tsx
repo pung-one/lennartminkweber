@@ -5,32 +5,21 @@ import Gallery from "../Gallery";
 import SideBar from "../Sidebar";
 import styled from "styled-components";
 
-export default function PageContainer(props: {
-  artworkDataProp: artworkData;
-  entries: any;
+export default function PageContainer({
+  artworkData,
+}: {
+  artworkData: ArtworkData;
 }) {
-  const [artworks, setArtworks] = useState();
   const [artworkCount, setArtworkCount] = useState<number>(0);
-  const [imageCounter, setImageCounter] = useState<number>(0);
-
-  console.log(props.entries);
-
-  useEffect(() => {
-    setImageCounter(0);
-  }, [artworkCount]);
 
   return (
     <Container>
       <SideBar
-        artworkData={props.artworkDataProp}
+        artworkData={artworkData}
         artworkCount={artworkCount}
         setArtworkCount={setArtworkCount}
       />
-      <Gallery
-        images={props.artworkDataProp[artworkCount].images}
-        imageCounter={imageCounter}
-        setImageCounter={setImageCounter}
-      />
+      <Gallery artworkData={artworkData} artworkCount={artworkCount} />
     </Container>
   );
 }

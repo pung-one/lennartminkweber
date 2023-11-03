@@ -17,10 +17,9 @@ export default async function Home() {
       return { notFound: true };
     });
 
-  const artworks = entries.items.map(({ fields }) => {
+  const artworks = entries.items.map(({ fields }: { fields: any }) => {
     const { title, year, description, dimensions, images } = fields;
     return {
-      position: 1,
       title: title,
       year: year,
       description: description,
@@ -36,7 +35,5 @@ export default async function Home() {
     };
   });
 
-  console.log(entries);
-
-  return <PageContainer artworkDataProp={artworks} entries={artworks} />;
+  return <PageContainer artworkData={artworks} />;
 }
