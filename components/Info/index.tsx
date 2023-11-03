@@ -52,9 +52,7 @@ const CloseButton = styled.button`
   right: 10px;
   background: white;
   border: none;
-  * {
-    color: black;
-  }
+  color: black;
   &:hover {
     cursor: pointer;
     color: red;

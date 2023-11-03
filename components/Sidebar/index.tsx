@@ -88,5 +88,6 @@ const InfoButtonMobile = styled.button`
   border: 1px solid black;
   border-radius: 50%;
   background: none;
+  color: black;
   font-size: 20px;
 `;
