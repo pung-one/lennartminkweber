@@ -1,5 +1,4 @@
-type artworkData = {
-  position: number;
+type ArtworkData = {
   title: string;
   year: string;
   description: string;
@@ -7,16 +6,15 @@ type artworkData = {
   images: { width: number; height: number; url: string }[];
 }[];
 
-type artworkMetadata = {
-  position: number | undefined;
+type ArtworkMetadata = {
   title: string | undefined;
   year: string | undefined;
   description: string | undefined;
   dimensions: string | undefined;
 };
 
-type imageData = {
+type ArtworkImageData = {
   url: string;
   width: number;
   height: number;
-};
+}[];

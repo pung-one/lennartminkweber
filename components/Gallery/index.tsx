@@ -4,46 +4,54 @@ import Image from "next/image";
 import { SetStateAction, useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
 
-export default function Gallery(props: {
-  images: { width: number; height: number; url: string }[];
-  imageCounter: number;
-  setImageCounter: React.Dispatch<SetStateAction<number>>;
+export default function Gallery({
+  artworkData,
+  artworkCount,
+}: {
+  artworkData: ArtworkData;
+  artworkCount: number;
 }) {
-  const { images, imageCounter, setImageCounter } = props;
-  const [imageData, setImageData] = useState<imageData>({
-    url: "",
-    width: 0,
-    height: 0,
-  });
+  const [images, setImages] = useState<ArtworkImageData>(
+    artworkData[artworkCount].images
+  );
+  const [imageCount, setImageCount] = useState<number>(0);
 
   useEffect(() => {
-    setImageData({ ...images[imageCounter] });
-  }, [imageCounter, images]);
+    setImageCount(0);
+    setImages(artworkData[artworkCount].images);
+  }, [artworkCount]);
 
-  const { url, width, height } = imageData;
+  const { url, width, height } = images[imageCount];
 
   return (
     <FlexContainer>
       <Navigation>
         <StyledButton
           onClick={() =>
-            setImageCounter((prev) => (prev > 0 ? (prev -= 1) : prev))
+            setImageCount((prev) => (prev > 0 ? (prev -= 1) : prev))
           }
         >
           <PiArrowLeftThin />
         </StyledButton>
-        <p>{`${imageCounter + 1}/${props.images.length}`}</p>
+        <p>{`${imageCount + 1}/${images.length}`}</p>
         <StyledButton
           onClick={() =>
-            setImageCounter((prev) =>
-              prev < props.images.length - 1 ? (prev += 1) : prev
+            setImageCount((prev) =>
+              prev < images.length - 1 ? (prev += 1) : prev
             )
           }
         >
           <PiArrowRightThin />
         </StyledButton>
       </Navigation>
-      <StyledImage alt="" src={url} width={width} height={height} />
+      {images && (
+        <StyledImage
+          alt=""
+          src={"https:" + url}
+          width={width}
+          height={height}
+        />
+      )}
     </FlexContainer>
   );
 }
