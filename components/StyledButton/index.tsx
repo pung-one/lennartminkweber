@@ -5,6 +5,7 @@ import {
   ReactPortal,
   PromiseLikeOfReactNode,
   MouseEventHandler,
+  KeyboardEventHandler,
 } from "react";
 import styled from "styled-components";
 
