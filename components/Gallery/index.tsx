@@ -3,6 +3,7 @@ import { PiArrowLeftThin, PiArrowRightThin } from "react-icons/pi";
 import Image from "next/image";
 import { SetStateAction, useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
+import { useKeyDown } from "@/lib/useKeyDown";
 
 export default function Gallery({
   artworkData,
@@ -23,24 +24,25 @@ export default function Gallery({
 
   const { url, width, height } = images[imageCount];
 
+  function prevImage() {
+    setImageCount((prev) => (prev > 0 ? (prev -= 1) : prev));
+  }
+
+  function nextImage() {
+    setImageCount((prev) => (prev < images.length - 1 ? (prev += 1) : prev));
+  }
+
+  useKeyDown(prevImage, ["ArrowLeft"]);
+  useKeyDown(nextImage, ["ArrowRight"]);
+
   return (
     <FlexContainer>
       <Navigation>
-        <StyledButton
-          onClick={() =>
-            setImageCount((prev) => (prev > 0 ? (prev -= 1) : prev))
-          }
-        >
+        <StyledButton onClick={() => prevImage()}>
           <PiArrowLeftThin />
         </StyledButton>
         <p>{`${imageCount + 1}/${images.length}`}</p>
-        <StyledButton
-          onClick={() =>
-            setImageCount((prev) =>
-              prev < images.length - 1 ? (prev += 1) : prev
-            )
-          }
-        >
+        <StyledButton onClick={() => nextImage()}>
           <PiArrowRightThin />
         </StyledButton>
       </Navigation>

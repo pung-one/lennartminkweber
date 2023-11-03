@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { PiArrowDownThin, PiArrowUpThin } from "react-icons/pi";
 import { SetStateAction, useEffect, useState } from "react";
 import StyledButton from "@/components/StyledButton";
+import { useKeyDown } from "@/lib/useKeyDown";
 
 export default function ArtworkInfo({
   artworkData,
@@ -25,24 +26,27 @@ export default function ArtworkInfo({
 
   const { title, year, description, dimensions } = artworkMetadata;
 
+  function prevArtwork() {
+    setArtworkCount((prev: any) => (prev > 0 ? (prev -= 1) : prev));
+  }
+
+  function nextArtwork() {
+    setArtworkCount((prev: any) =>
+      prev < artworkData.length - 1 ? (prev += 1) : prev
+    );
+  }
+
+  useKeyDown(prevArtwork, ["ArrowUp"]);
+  useKeyDown(nextArtwork, ["ArrowDown"]);
+
   return (
     <FlexContainer>
       <Navigation>
-        <StyledButton
-          onClick={() =>
-            setArtworkCount((prev: any) => (prev > 0 ? (prev -= 1) : prev))
-          }
-        >
+        <StyledButton onClick={() => prevArtwork()}>
           <PiArrowUpThin />
         </StyledButton>
         <p>{`${artworkCount + 1}/${artworkData.length}`}</p>
-        <StyledButton
-          onClick={() =>
-            setArtworkCount((prev: any) =>
-              prev < artworkData.length - 1 ? (prev += 1) : prev
-            )
-          }
-        >
+        <StyledButton onClick={() => nextArtwork()}>
           <PiArrowDownThin />
         </StyledButton>
       </Navigation>

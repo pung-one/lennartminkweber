@@ -5,6 +5,7 @@ import {
   ReactPortal,
   PromiseLikeOfReactNode,
   MouseEventHandler,
+  KeyboardEventHandler,
 } from "react";
 import styled from "styled-components";
 
@@ -31,6 +32,8 @@ const Button = styled.button`
   background: none;
   border: none;
   transition: all 0.1s ease;
+  color: black;
+  color: black;
   &:hover {
     cursor: pointer;
     color: red;

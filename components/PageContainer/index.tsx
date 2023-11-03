@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Gallery from "../Gallery";
 import SideBar from "../Sidebar";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import InfoBox from "../Info";
 
 export default function PageContainer({
   artworkData,
@@ -11,23 +12,35 @@ export default function PageContainer({
   artworkData: ArtworkData;
 }) {
   const [artworkCount, setArtworkCount] = useState<number>(0);
+  const [showInfo, setShowInfo] = useState<boolean>(false);
 
   return (
-    <Container>
-      <SideBar
-        artworkData={artworkData}
-        artworkCount={artworkCount}
-        setArtworkCount={setArtworkCount}
-      />
-      <Gallery artworkData={artworkData} artworkCount={artworkCount} />
-    </Container>
+    <>
+      <Container $showInfo={showInfo}>
+        <SideBar
+          artworkData={artworkData}
+          artworkCount={artworkCount}
+          setArtworkCount={setArtworkCount}
+          setShowInfo={setShowInfo}
+        />
+        <Gallery artworkData={artworkData} artworkCount={artworkCount} />
+      </Container>
+      {showInfo && <InfoBox setShowInfo={setShowInfo} />}
+    </>
   );
 }
 
-const Container = styled.main`
+type ContainerProps = {
+  $showInfo: boolean;
+};
+
+const Container = styled.main<ContainerProps>`
   position: relative;
   display: flex;
   width: 100%;
+  pointer-events: ${({ $showInfo }) => ($showInfo ? "none" : "auto")};
+  filter: ${({ $showInfo }) => ($showInfo ? "blur(8px) opacity(25%)" : "none")};
+  transition: filter 0.2s ease;
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
@@ -49,7 +62,7 @@ const StyledLink = styled(Link)`
     background-color: black;
     transform: scaleX(1);
     transform-origin: bottom left;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.1s ease-out;
   }
   &:hover:after {
     transform: scaleX(0);
