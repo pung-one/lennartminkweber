@@ -53,7 +53,7 @@ const StyledLink = styled(Link)`
     background-color: black;
     transform: scaleX(1);
     transform-origin: bottom left;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.19s ease-out;
   }
   &:hover:after {
     transform: scaleX(0);
