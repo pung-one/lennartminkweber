@@ -18,3 +18,8 @@ type ArtworkImageData = {
   width: number;
   height: number;
 }[];
+
+type HandlNavArtworks = {
+  prevArtwork: () => void;
+  nextArtwork: () => void;
+};

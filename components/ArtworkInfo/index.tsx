@@ -2,7 +2,31 @@ import styled from "styled-components";
 import { PiArrowDownThin, PiArrowUpThin } from "react-icons/pi";
 import { SetStateAction, useEffect, useState } from "react";
 import StyledButton from "@/components/StyledButton";
-import { useKeyDown } from "@/lib/useKeyDown";
+import { AnimatePresence, motion } from "framer-motion";
+
+const variants = {
+  enter: (slideDirection: string) => {
+    return {
+      y: slideDirection === "up" ? "-50%" : "50%",
+      opacity: 0,
+    };
+  },
+  center: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.3 },
+  },
+  exit: (slideDirection: string) => {
+    return {
+      y: slideDirection === "up" ? "50%" : "-50%",
+      opacity: 0,
+      transition: {
+        x: { duration: 0.3 },
+        opacity: { delay: 0.1, duration: 0.2 },
+      },
+    };
+  },
+};
 
 export default function ArtworkInfo({
   artworkData,
@@ -10,8 +34,16 @@ export default function ArtworkInfo({
   setArtworkCount,
 }: {
   artworkData: ArtworkData;
-  artworkCount: number;
-  setArtworkCount: React.Dispatch<SetStateAction<number>>;
+  artworkCount: {
+    count: number;
+    slideDirection: string;
+  };
+  setArtworkCount: React.Dispatch<
+    SetStateAction<{
+      count: number;
+      slideDirection: string;
+    }>
+  >;
 }) {
   const [artworkMetadata, setArtworkMetadata] = useState<ArtworkMetadata>({
     title: undefined,
@@ -20,46 +52,75 @@ export default function ArtworkInfo({
     dimensions: undefined,
   });
 
+  const [buttonEnabled, setButtonEnabled] = useState<boolean>(true);
+
+  const handleNavArtworks = {
+    prevArtwork: () => {
+      if (buttonEnabled) {
+        setArtworkCount(({ count }) => {
+          return {
+            count: count > 0 ? (count -= 1) : artworkData.length - 1,
+            slideDirection: "down",
+          };
+        });
+      }
+    },
+    nextArtwork: () => {
+      if (buttonEnabled) {
+        setArtworkCount(({ count }) => {
+          return {
+            count: count < artworkData.length - 1 ? (count += 1) : 0,
+            slideDirection: "up",
+          };
+        });
+      }
+    },
+  };
+
   useEffect(() => {
-    setArtworkMetadata(artworkData[artworkCount]);
+    setArtworkMetadata(artworkData[artworkCount.count]);
   }, [artworkCount]);
 
   const { title, year, description, dimensions } = artworkMetadata;
 
-  function prevArtwork() {
-    setArtworkCount((prev: any) => (prev > 0 ? (prev -= 1) : prev));
-  }
-
-  function nextArtwork() {
-    setArtworkCount((prev: any) =>
-      prev < artworkData.length - 1 ? (prev += 1) : prev
-    );
-  }
-
-  useKeyDown(prevArtwork, ["ArrowUp"]);
-  useKeyDown(nextArtwork, ["ArrowDown"]);
-
   return (
     <FlexContainer>
       <Navigation>
-        <StyledButton onClick={() => prevArtwork()}>
+        <StyledButton onClick={() => handleNavArtworks.prevArtwork()}>
           <PiArrowUpThin />
         </StyledButton>
-        <p>{`${artworkCount + 1}/${artworkData.length}`}</p>
-        <StyledButton onClick={() => nextArtwork()}>
+        <p>{`${artworkCount.count + 1}/${artworkData.length}`}</p>
+        <StyledButton onClick={() => handleNavArtworks.nextArtwork()}>
           <PiArrowDownThin />
         </StyledButton>
       </Navigation>
-      <GridContainer>
-        <Key>Titel:</Key>
-        <Value>{title}</Value>
-        <Key>Jahr:</Key>
-        <Value>{year}</Value>
-        <Key>Material:</Key>
-        <Value>{description}</Value>
-        <Key>Größe:</Key>
-        <Value>{dimensions}</Value>
-      </GridContainer>
+      <AnimatePresence
+        initial={false}
+        mode={"wait"}
+        custom={artworkCount.slideDirection}
+      >
+        <motion.div
+          key={artworkData[artworkCount.count].title}
+          custom={artworkCount.slideDirection}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          onAnimationStart={() => setButtonEnabled(false)}
+          onAnimationComplete={() => setButtonEnabled(true)}
+        >
+          <GridContainer>
+            <Key>Titel:</Key>
+            <Value>{title}</Value>
+            <Key>Jahr:</Key>
+            <Value>{year}</Value>
+            <Key>Material:</Key>
+            <Value>{description}</Value>
+            <Key>Größe:</Key>
+            <Value>{dimensions}</Value>
+          </GridContainer>
+        </motion.div>
+      </AnimatePresence>
     </FlexContainer>
   );
 }
@@ -86,10 +147,12 @@ const Navigation = styled.nav`
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 30px 0;
-  p {
-    height: 20px;
-    padding: 0 35px;
+  align-items: center;
+  height: 80px;
+  gap: 35px;
+  button {
+    display: flex;
+    align-items: center;
   }
 `;
 

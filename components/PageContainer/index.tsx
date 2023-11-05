@@ -5,13 +5,20 @@ import Gallery from "../Gallery";
 import SideBar from "../Sidebar";
 import styled, { css } from "styled-components";
 import InfoBox from "../Info";
+import { AnimatePresence } from "framer-motion";
 
 export default function PageContainer({
   artworkData,
+  infos,
 }: {
   artworkData: ArtworkData;
+  infos: any;
 }) {
-  const [artworkCount, setArtworkCount] = useState<number>(0);
+  const [artworkCount, setArtworkCount] = useState<{
+    count: number;
+    slideDirection: string;
+  }>({ count: 0, slideDirection: "up" });
+
   const [showInfo, setShowInfo] = useState<boolean>(false);
 
   return (
@@ -23,23 +30,22 @@ export default function PageContainer({
           setArtworkCount={setArtworkCount}
           setShowInfo={setShowInfo}
         />
-        <Gallery artworkData={artworkData} artworkCount={artworkCount} />
+
+        <Gallery artworkData={artworkData} artworkCount={artworkCount.count} />
       </Container>
-      {showInfo && <InfoBox setShowInfo={setShowInfo} />}
+      <AnimatePresence>
+        {showInfo && <InfoBox setShowInfo={setShowInfo} infos={infos} />}
+      </AnimatePresence>
     </>
   );
 }
 
-type ContainerProps = {
-  $showInfo: boolean;
-};
-
-const Container = styled.main<ContainerProps>`
+const Container = styled.main<{ $showInfo: boolean }>`
   position: relative;
   display: flex;
   width: 100%;
   pointer-events: ${({ $showInfo }) => ($showInfo ? "none" : "auto")};
-  filter: ${({ $showInfo }) => ($showInfo ? "blur(8px) opacity(25%)" : "none")};
+  filter: ${({ $showInfo }) => ($showInfo ? "blur(4px) opacity(70%)" : "none")};
   transition: filter 0.2s ease;
   @media only screen and (max-width: 1024px) {
     flex-direction: column;

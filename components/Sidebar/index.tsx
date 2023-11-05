@@ -10,8 +10,16 @@ export default function SideBar({
   setShowInfo,
 }: {
   artworkData: ArtworkData;
-  artworkCount: number;
-  setArtworkCount: React.Dispatch<SetStateAction<number>>;
+  artworkCount: {
+    count: number;
+    slideDirection: string;
+  };
+  setArtworkCount: React.Dispatch<
+    SetStateAction<{
+      count: number;
+      slideDirection: string;
+    }>
+  >;
   setShowInfo: React.Dispatch<SetStateAction<boolean>>;
 }) {
   const [viewportWidth, setViewportWidth] = useState<number | undefined>(
@@ -30,8 +38,6 @@ export default function SideBar({
     }
   }, []);
 
-  console.log(viewportWidth);
-
   return (
     <Container>
       <ArtworkInfo
@@ -39,6 +45,7 @@ export default function SideBar({
         artworkCount={artworkCount}
         setArtworkCount={setArtworkCount}
       />
+
       {viewportWidth && viewportWidth > 1024 ? (
         <InfoButton>
           <StyledButton onClick={() => setShowInfo(true)}>Info</StyledButton>
@@ -73,6 +80,7 @@ const InfoButton = styled.div`
   transform: translateX(+50%);
   * {
     font-size: 20px;
+    font-family: "Trinite Wide";
   }
 `;
 

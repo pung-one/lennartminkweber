@@ -33,10 +33,9 @@ const Button = styled.button`
   border: none;
   transition: all 0.1s ease;
   color: black;
-  color: black;
   &:hover {
     cursor: pointer;
     color: red;
-    transform: scale(1.1);
+    transform: scale(1.06);
   }
 `;

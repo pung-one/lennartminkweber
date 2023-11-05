@@ -1,9 +1,44 @@
 import styled from "styled-components";
 import { PiArrowLeftThin, PiArrowRightThin } from "react-icons/pi";
 import Image from "next/image";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
 import { useKeyDown } from "@/lib/useKeyDown";
+import { motion, AnimatePresence } from "framer-motion";
+
+const variants = {
+  enter: (slideDirection: string) => {
+    return {
+      x:
+        slideDirection === "vertical"
+          ? 0
+          : slideDirection === "right"
+          ? "-10%"
+          : "10%",
+      opacity: 0,
+    };
+  },
+  center: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.5 },
+  },
+  exit: (slideDirection: string) => {
+    return {
+      x:
+        slideDirection === "vertical"
+          ? 0
+          : slideDirection === "right"
+          ? "10%"
+          : "-10%",
+      opacity: 0,
+      transition: {
+        x: { duration: 0.4 },
+        opacity: { delay: 0.1, duration: 0.3 },
+      },
+    };
+  },
+};
 
 export default function Gallery({
   artworkData,
@@ -15,21 +50,43 @@ export default function Gallery({
   const [images, setImages] = useState<ArtworkImageData>(
     artworkData[artworkCount].images
   );
-  const [imageCount, setImageCount] = useState<number>(0);
+
+  const [imageCount, setImageCount] = useState<{
+    count: number;
+    slideDirection: string;
+  }>({ count: 0, slideDirection: "right" });
+
+  const [buttonEnabled, setButtonEnabled] = useState<boolean>(true);
 
   useEffect(() => {
-    setImageCount(0);
+    if (buttonEnabled) {
+      setImageCount({ count: 0, slideDirection: "vertical" });
+    }
     setImages(artworkData[artworkCount].images);
   }, [artworkCount]);
 
-  const { url, width, height } = images[imageCount];
+  const { url, width, height } = images[imageCount.count];
 
   function prevImage() {
-    setImageCount((prev) => (prev > 0 ? (prev -= 1) : prev));
+    if (buttonEnabled) {
+      setImageCount(({ count }) => {
+        return {
+          count: count > 0 ? (count -= 1) : images.length - 1,
+          slideDirection: "left",
+        };
+      });
+    }
   }
 
   function nextImage() {
-    setImageCount((prev) => (prev < images.length - 1 ? (prev += 1) : prev));
+    if (buttonEnabled) {
+      setImageCount(({ count }) => {
+        return {
+          count: count < images.length - 1 ? (count += 1) : 0,
+          slideDirection: "right",
+        };
+      });
+    }
   }
 
   useKeyDown(prevImage, ["ArrowLeft"]);
@@ -41,18 +98,35 @@ export default function Gallery({
         <StyledButton onClick={() => prevImage()}>
           <PiArrowLeftThin />
         </StyledButton>
-        <p>{`${imageCount + 1}/${images.length}`}</p>
+        <p>{`${imageCount.count + 1}/${images.length}`}</p>
         <StyledButton onClick={() => nextImage()}>
           <PiArrowRightThin />
         </StyledButton>
       </Navigation>
       {images && (
-        <StyledImage
-          alt=""
-          src={"https:" + url}
-          width={width}
-          height={height}
-        />
+        <AnimatePresence
+          initial={false}
+          mode={"wait"}
+          custom={imageCount.slideDirection}
+        >
+          <motion.div
+            key={url}
+            custom={imageCount.slideDirection}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            onAnimationStart={() => setButtonEnabled(false)}
+            onAnimationComplete={() => setButtonEnabled(true)}
+          >
+            <StyledImage
+              alt=""
+              src={"https:" + url}
+              width={width}
+              height={height}
+            />
+          </motion.div>
+        </AnimatePresence>
       )}
     </FlexContainer>
   );
@@ -64,16 +138,20 @@ const FlexContainer = styled.div`
   flex-direction: column;
   flex: 1;
   padding-bottom: 5vh;
+  width: 100%;
+  overflow-x: hidden;
 `;
 
 const Navigation = styled.nav`
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 30px 0;
-  p {
-    height: 20px;
-    padding: 0 35px;
+  align-items: center;
+  height: 80px;
+  gap: 35px;
+  button {
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -82,6 +160,7 @@ const StyledImage = styled(Image)`
   object-position: top;
   width: 100%;
   height: ${({ width, height }) =>
-    width && height && width > height ? "100%" : "75vh"};
+    width && height && width > height ? "100%" : "80vh"};
+  max-height: calc(80vh - 80px);
   padding: 0 5vw;
 `;
