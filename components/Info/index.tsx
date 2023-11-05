@@ -1,17 +1,27 @@
 import Link from "next/link";
 import { SetStateAction } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export default function InfoBox({
   setShowInfo,
+  infos,
 }: {
   setShowInfo: React.Dispatch<SetStateAction<boolean>>;
+  infos: any;
 }) {
+  const cvUrl = infos.items[0].fields.cv.fields.file.url;
   return (
-    <Container>
+    <Container
+      initial={{ scaleX: 0, x: "-50%" }}
+      animate={{ scaleX: 1, x: "-50%", transition: { duration: 0.2 } }}
+      exit={{ scaleX: 0, x: "-50%" }}
+    >
       <CloseButton onClick={() => setShowInfo(false)}>close</CloseButton>
       <LinkContainer>
-        <StyledLink href={""}>CV</StyledLink>
+        <StyledLink href={"https:" + cvUrl} target="_blank">
+          CV
+        </StyledLink>
         <StyledLink href={""}>Exhibitions</StyledLink>
         <StyledLink href={""}>Contact</StyledLink>
       </LinkContainer>
@@ -19,7 +29,7 @@ export default function InfoBox({
   );
 }
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: absolute;
   display: flex;
   flex-direction: column;

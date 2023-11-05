@@ -17,6 +17,15 @@ export default async function Home() {
       return { notFound: true };
     });
 
+  const infos = await client
+    .getEntries({
+      content_type: "infobox",
+    })
+    .catch((e: any) => {
+      console.log(e);
+      return { notFound: true };
+    });
+
   const artworks = entries.items.map(({ fields }: { fields: any }) => {
     const { title, year, description, dimensions, images } = fields;
     return {
@@ -35,5 +44,5 @@ export default async function Home() {
     };
   });
 
-  return <PageContainer artworkData={artworks} />;
+  return <PageContainer artworkData={artworks} infos={infos} />;
 }
