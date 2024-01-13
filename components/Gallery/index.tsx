@@ -1,4 +1,4 @@
-import styled from "styled-components";
+/* import styled from "styled-components";
 import { PiArrowLeftThin, PiArrowRightThin } from "react-icons/pi";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -164,3 +164,4 @@ const StyledImage = styled(Image)`
   max-height: calc(80vh - 80px);
   padding: 0 5vw;
 `;
+ */
