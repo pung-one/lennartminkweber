@@ -2,8 +2,10 @@ import { GlobalStyles } from "@/styles/global_styles";
 import StyledComponentsRegistry from "../lib/registry";
 import { Metadata } from "next";
 import ReactDOM from "react-dom";
+import { SideNav } from "@/components/SideNav";
+import { LayoutContainer } from "@/components/LayoutContainer";
 
-ReactDOM.preload("/fonts/TriniteNo1-RomanCondensed.woff", {
+ReactDOM.preload("/fonts/GaramondPremrPro-Med.otf", {
   as: "font",
   crossOrigin: "",
 });
@@ -32,7 +34,11 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyles />
-          {children}
+          <LayoutContainer>
+            <SideNav />
+
+            {children}
+          </LayoutContainer>
         </StyledComponentsRegistry>
       </body>
     </html>

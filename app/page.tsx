@@ -1,48 +1,20 @@
-import PageContainer from "@/components/PageContainer";
+"use client";
+import styled from "styled-components";
 
-export default async function Home() {
-  const contentful = require("contentful");
-
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
-
-  const entries = await client
-    .getEntries({
-      content_type: "artwork",
-    })
-    .catch((e: any) => {
-      console.log(e);
-      return { notFound: true };
-    });
-
-  const infos = await client
-    .getEntries({
-      content_type: "infobox",
-    })
-    .catch((e: any) => {
-      console.log(e);
-      return { notFound: true };
-    });
-
-  const artworks = entries.items.map(({ fields }: { fields: any }) => {
-    const { title, year, description, dimensions, images } = fields;
-    return {
-      title: title,
-      year: year,
-      description: description,
-      dimensions: dimensions,
-      images: images.map((image: any) => {
-        const { url, details } = image.fields.file;
-        return {
-          url: url,
-          width: details.image.width,
-          height: details.image.height,
-        };
-      }),
-    };
-  });
-
-  return <PageContainer artworkData={artworks} infos={infos} />;
+export default function Home() {
+  return (
+    <Container>
+      <p>Lennart Mink Weber</p>
+    </Container>
+  );
 }
+
+const Container = styled.div`
+  flex: 1;
+  p {
+    position: relative;
+    width: fit-content;
+    left: 62%;
+    transform: translate(-50%);
+  }
+`;
