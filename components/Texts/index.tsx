@@ -25,18 +25,16 @@ export default function Texts({ texts }: { texts: TextData[] }) {
         </SubNav>
       </LeftSection>
 
-      <RightSection>
-        <TextContainer>
-          <p>
-            {activeText.text}
-            <br />
-            <br />- {activeText.author}
-            <br />
-            <br />
-            <br />
-          </p>
-        </TextContainer>
-      </RightSection>
+      <TextContainer>
+        <p>
+          {activeText.text}
+          <br />
+          <br />- {activeText.author}
+          <br />
+          <br />
+          <br />
+        </p>
+      </TextContainer>
     </Container>
   );
 }
@@ -44,8 +42,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
 const Container = styled.article`
   position: relative;
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex: 1;
 `;
 
 const LeftSection = styled.div`
@@ -53,25 +50,17 @@ const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 12vw;
-`;
-
-const RightSection = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
+  width: 20vw;
 `;
 
 const TextContainer = styled.article`
-  position: relative;
-  width: 100%;
+  flex: 1;
   overflow-y: scroll;
   margin: -8vh 0;
   p {
     position: relative;
-    left: calc(62vw - 400px);
-    width: 350px;
+    //distance without SideNav and LeftSection width
+    padding: 8vh 12vw 0 calc(61.8vw - 32vw);
     height: 100%;
-    padding: 8vh 0;
   }
 `;

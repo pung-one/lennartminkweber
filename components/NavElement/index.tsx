@@ -17,19 +17,29 @@ export default function NavElement({ handleClick, isActive, children }: Props) {
 const Element = styled.li<{ $isActive: boolean }>`
   margin-bottom: 15px;
   width: fit-content;
-  /* p {
-    transform: ${({ $isActive }) =>
-    $isActive ? "rotate(5deg)" : "rotate(0deg)"};
-    transition: transform 0.2s ease;
-    transform-origin: top center;
+  p {
+    opacity: ${({ $isActive }) => ($isActive ? "0.5" : "1")};
+    transition: opacity 0.2s ease;
   }
   &:hover {
     p {
-      transform: rotate(5deg);
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+  /* p {
+    transform: ${({ $isActive }) =>
+    $isActive ? "rotate(-3deg)" : "rotate(0deg)"};
+    transition: transform 0.2s ease;
+    transform-origin: center;
+  }
+  &:hover {
+    p {
+      transform: rotate(-3deg);
       cursor: pointer;
     }
   } */
-  p {
+  /* p {
     transform: ${({ $isActive }) => ($isActive ? "scaleX(0.8)" : "scaleX(1)")};
     transition: transform 0.1s ease;
     transform-origin: left;
@@ -39,7 +49,7 @@ const Element = styled.li<{ $isActive: boolean }>`
       transform: scaleX(0.8);
       cursor: pointer;
     }
-  }
+  } */
   /* p {
     position: relative;
     &:after {

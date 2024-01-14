@@ -1,20 +1,22 @@
 "use client";
 import styled from "styled-components";
 
-export default async function Home() {
+export default function Home() {
   return (
     <Container>
-      <p>Lennart Mink Weber</p>
+      <h1>Lennart Mink Weber</h1>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.article`
   flex: 1;
-  p {
+  h1 {
     position: relative;
     width: fit-content;
-    left: 62%;
-    transform: translate(-50%);
+    //distance without SideNav width
+    left: calc(61.8vw - 12vw);
+    font-size: 16px;
+    font-weight: normal;
   }
 `;

@@ -8,7 +8,7 @@ export default function LayoutContainer({
 }: {
   children: React.ReactNode;
 }) {
-  const [mouseMovement, setMouseMovement] = useState<number>(1);
+  const [mouseMovement, setMouseMovement] = useState<number>(1.5);
 
   useEffect(() => {
     console.log(mouseMovement);
@@ -23,7 +23,7 @@ export default function LayoutContainer({
     }
   }, [mouseMovement]);
   return (
-    <Container $mouseMovement={mouseMovement}>
+    <Container $opacity={mouseMovement > 1 ? 1 : mouseMovement}>
       <SideNav />
 
       {children}
@@ -31,14 +31,12 @@ export default function LayoutContainer({
   );
 }
 
-const Container = styled.main.attrs(
-  ({ $mouseMovement }: { $mouseMovement: number }) => ({
-    style: {
-      opacity: $mouseMovement,
-      pointerEvents: $mouseMovement === 0 ? "none" : "auto",
-    },
-  })
-)<{ $mouseMovement: number }>`
+const Container = styled.main.attrs(({ $opacity }: { $opacity: number }) => ({
+  style: {
+    opacity: $opacity,
+    pointerEvents: $opacity === 0 ? "none" : "auto",
+  },
+}))<{ $opacity: number }>`
   position: relative;
   display: flex;
   width: 100vw;

@@ -7,6 +7,7 @@ import NavElement from "../NavElement";
 import { useKeyDown } from "@/lib/useKeyDown";
 import SubNav from "../SubNav";
 import LayoutContainer from "../LayoutContainer";
+import { motion } from "framer-motion";
 
 export default function Artworks({
   artworkData,
@@ -76,6 +77,10 @@ export default function Artworks({
       <RightSection>
         {activeArtwork.images[activeImage] && (
           <StyledImage
+            key={activeImage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.3 } }}
+            exit={{ opacity: 0 }}
             src={"https:" + activeArtwork.images[activeImage].url}
             width={activeArtwork.images[activeImage].width}
             height={activeArtwork.images[activeImage].height}
@@ -90,8 +95,7 @@ export default function Artworks({
 const Container = styled.article`
   position: relative;
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex: 1;
 `;
 
 const LeftSection = styled.div`
@@ -147,9 +151,9 @@ const Size = styled.p`
   font-family: "GaramondPremierProMedium";
 `;
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(motion(Image))`
   object-fit: contain;
-  object-position: center;
+  object-position: top;
   width: 100%;
   height: 100%;
   padding: 0 8vh;
