@@ -6,6 +6,12 @@ export type ArtworkData = {
   images: { width: number; height: number; url: string }[];
 };
 
+export type TextData = {
+  title: string;
+  author: string;
+  text: string;
+};
+
 export type ArtworkMetadata = {
   title: string | undefined;
   year: string | undefined;

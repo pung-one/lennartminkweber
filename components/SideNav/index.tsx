@@ -1,6 +1,4 @@
-"use client";
 import styled from "styled-components";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import NavElement from "../NavElement";
 import { useRouter } from "next/navigation";
@@ -45,7 +43,7 @@ export function SideNav() {
 }
 
 const Nav = styled.nav`
-  width: 200px;
+  width: 12vw;
 `;
 
 const List = styled.ul`

@@ -17,7 +17,7 @@ export default async function WorkPage() {
       return { notFound: true };
     });
 
-  const artworks = entries.items.map(({ fields }: { fields: any }) => {
+  const artworkData = entries.items.map(({ fields }: { fields: any }) => {
     const { title, year, description, dimensions, images } = fields;
     return {
       title: title,
@@ -35,5 +35,5 @@ export default async function WorkPage() {
     };
   });
 
-  return <Artworks artworkData={artworks} />;
+  return <Artworks artworkData={artworkData} />;
 }

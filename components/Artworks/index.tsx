@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { ArtworkData } from "@/types";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import ArtworksNav from "../ArtworksNav";
 import NavElement from "../NavElement";
 import { useKeyDown } from "@/lib/useKeyDown";
+import SubNav from "../SubNav";
+import LayoutContainer from "../LayoutContainer";
 
 export default function Artworks({
   artworkData,
@@ -35,16 +36,24 @@ export default function Artworks({
   useKeyDown(nextImage, ["ArrowRight"]);
 
   return (
-    <FlexContainer>
+    <Container>
       <LeftSection>
-        <ArtworksNav
-          artworkData={artworkData}
-          activeArtwork={activeArtwork}
-          setActiveArtwork={setActiveArtwork}
-        />
+        <SubNav>
+          {artworkData.map((artwork) => {
+            return (
+              <NavElement
+                handleClick={() => setActiveArtwork(artwork)}
+                isActive={activeArtwork.title === artwork.title}
+                key={artwork.title}
+              >
+                {artwork.title}
+              </NavElement>
+            );
+          })}
+        </SubNav>
 
         <ArtworkDetails>
-          <ImageNav>
+          <ImgNav>
             {activeArtwork.images.map((image, index) => (
               <NavElement
                 handleClick={() => setActiveImage(index)}
@@ -54,17 +63,16 @@ export default function Artworks({
                 {index + 1}
               </NavElement>
             ))}
-          </ImageNav>
+          </ImgNav>
 
           <Description>
-            <Title>{activeArtwork.title}</Title>
+            {/* <Title>{activeArtwork.title}</Title> */}
             <p>{activeArtwork.year}</p>
             <p>{activeArtwork.description}</p>
             <Size>{activeArtwork.dimensions}</Size>
           </Description>
         </ArtworkDetails>
       </LeftSection>
-
       <RightSection>
         {activeArtwork.images[activeImage] && (
           <StyledImage
@@ -75,14 +83,15 @@ export default function Artworks({
           />
         )}
       </RightSection>
-    </FlexContainer>
+    </Container>
   );
 }
 
-const FlexContainer = styled.article`
+const Container = styled.article`
   position: relative;
   display: flex;
-  flex: 1;
+  width: 100%;
+  height: 100%;
 `;
 
 const LeftSection = styled.div`
@@ -90,7 +99,13 @@ const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 200px;
+  width: 12vw;
+`;
+
+const RightSection = styled.div`
+  position: relative;
+  display: flex;
+  flex: 1;
 `;
 
 const ArtworkDetails = styled.div`
@@ -99,12 +114,11 @@ const ArtworkDetails = styled.div`
   flex-direction: column;
 `;
 
-const ImageNav = styled.ul`
-  position: relative;
+const ImgNav = styled.ul`
   display: flex;
   list-style: none;
-  gap: 10px;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
+  gap: 5px;
 `;
 
 const Description = styled.div`
@@ -133,18 +147,10 @@ const Size = styled.p`
   font-family: "GaramondPremierProMedium";
 `;
 
-const RightSection = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
-`;
-
 const StyledImage = styled(Image)`
   object-fit: contain;
   object-position: center;
   width: 100%;
-  height: ${({ width, height }) =>
-    width && height && width > height ? "100%" : "calc(100vh - 160px)"};
-  /* max-height: calc(100vh - 160px); */
-  padding: 0 5vw;
+  height: 100%;
+  padding: 0 8vh;
 `;

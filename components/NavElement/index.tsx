@@ -19,25 +19,24 @@ const Element = styled.li<{ $isActive: boolean }>`
   width: fit-content;
   /* p {
     transform: ${({ $isActive }) =>
-    $isActive ? "rotate(-3deg)" : "rotate(0deg)"};
+    $isActive ? "rotate(5deg)" : "rotate(0deg)"};
     transition: transform 0.2s ease;
-    transform-origin: center bottom;
+    transform-origin: top center;
   }
   &:hover {
     p {
-      transform: rotate(-3deg);
+      transform: rotate(5deg);
       cursor: pointer;
     }
   } */
   p {
-    transform: ${({ $isActive }) =>
-      $isActive ? "skew(-20deg)" : "skew(0deg)"};
-    transition: transform 0.2s ease;
-    transform-origin: center center;
+    transform: ${({ $isActive }) => ($isActive ? "scaleX(0.8)" : "scaleX(1)")};
+    transition: transform 0.1s ease;
+    transform-origin: left;
   }
   &:hover {
     p {
-      transform: skew(-20deg);
+      transform: scaleX(0.8);
       cursor: pointer;
     }
   }

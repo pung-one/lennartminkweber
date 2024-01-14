@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 
-export default function Home() {
+export default async function Home() {
   return (
     <Container>
       <p>Lennart Mink Weber</p>

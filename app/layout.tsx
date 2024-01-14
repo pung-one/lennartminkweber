@@ -2,8 +2,7 @@ import { GlobalStyles } from "@/styles/global_styles";
 import StyledComponentsRegistry from "../lib/registry";
 import { Metadata } from "next";
 import ReactDOM from "react-dom";
-import { SideNav } from "@/components/SideNav";
-import { LayoutContainer } from "@/components/LayoutContainer";
+import LayoutContainer from "@/components/LayoutContainer";
 
 ReactDOM.preload("/fonts/GaramondPremrPro-Med.otf", {
   as: "font",
@@ -34,11 +33,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyles />
-          <LayoutContainer>
-            <SideNav />
-
-            {children}
-          </LayoutContainer>
+          <LayoutContainer>{children}</LayoutContainer>
         </StyledComponentsRegistry>
       </body>
     </html>
