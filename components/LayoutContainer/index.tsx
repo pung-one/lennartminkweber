@@ -14,6 +14,8 @@ export default function LayoutContainer({
     heigth: number;
   }>({ width: 0, heigth: 0 });
 
+  const decayRate = 0.0000007;
+
   function handleResize() {
     setViewportSize({ width: window.innerWidth, heigth: window.innerHeight });
   }
@@ -29,12 +31,12 @@ export default function LayoutContainer({
   useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("mousemove", () =>
-        setMouseMovement((prev) => (prev > 0 ? (prev -= prev * 0.0000007) : 0))
+        setMouseMovement((prev) => (prev > 0 ? (prev -= prev * decayRate) : 0))
       );
       return () =>
         window.removeEventListener("mousemove", () =>
           setMouseMovement((prev) =>
-            prev > 0 ? (prev -= prev * 0.0000007) : 0
+            prev > 0 ? (prev -= prev * decayRate) : 0
           )
         );
     }
