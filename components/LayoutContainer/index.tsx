@@ -8,8 +8,11 @@ export default function LayoutContainer({
 }: {
   children: React.ReactNode;
 }) {
-  const [mouseMovement, setMouseMovement] = useState<number>(1.5);
-  const [viewportSize, setViewportSize] = useState({ width: 0, heigth: 0 });
+  const [mouseMovement, setMouseMovement] = useState<number>(1);
+  const [viewportSize, setViewportSize] = useState<{
+    width: number;
+    heigth: number;
+  }>({ width: 0, heigth: 0 });
 
   function handleResize() {
     setViewportSize({ width: window.innerWidth, heigth: window.innerHeight });
@@ -26,11 +29,13 @@ export default function LayoutContainer({
   useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("mousemove", () =>
-        setMouseMovement((prev) => (prev > 0 ? (prev -= 0.000003) : 0))
+        setMouseMovement((prev) => (prev > 0 ? (prev -= prev * 0.0000007) : 0))
       );
       return () =>
         window.removeEventListener("mousemove", () =>
-          setMouseMovement((prev) => (prev > 0 ? (prev -= 0.000003) : 0))
+          setMouseMovement((prev) =>
+            prev > 0 ? (prev -= prev * 0.0000007) : 0
+          )
         );
     }
   }, [mouseMovement]);
