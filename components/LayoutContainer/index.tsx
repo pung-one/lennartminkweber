@@ -9,10 +9,22 @@ export default function LayoutContainer({
   children: React.ReactNode;
 }) {
   const [mouseMovement, setMouseMovement] = useState<number>(1.5);
+  const [viewportSize, setViewportSize] = useState({ width: 0, heigth: 0 });
+
+  function handleResize() {
+    setViewportSize({ width: window.innerWidth, heigth: window.innerHeight });
+  }
 
   useEffect(() => {
-    console.log(mouseMovement);
-    if (window) {
+    if (typeof window !== undefined) {
+      setViewportSize({ width: window.innerWidth, heigth: window.innerHeight });
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
       window.addEventListener("mousemove", () =>
         setMouseMovement((prev) => (prev > 0 ? (prev -= 0.000003) : 0))
       );
@@ -22,7 +34,12 @@ export default function LayoutContainer({
         );
     }
   }, [mouseMovement]);
-  return (
+
+  return viewportSize.width < viewportSize.heigth ? (
+    <TurnDevice>
+      <p>Please use your device in landscape mode.</p>
+    </TurnDevice>
+  ) : (
     <Container $opacity={mouseMovement > 1 ? 1 : mouseMovement}>
       <SideNav />
 
@@ -42,4 +59,16 @@ const Container = styled.main.attrs(({ $opacity }: { $opacity: number }) => ({
   width: 100vw;
   height: 100vh;
   padding: 8vh 0;
+`;
+
+const TurnDevice = styled.main`
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  p {
+    transform: rotate(-90deg);
+  }
 `;

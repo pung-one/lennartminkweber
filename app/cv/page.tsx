@@ -44,6 +44,8 @@ export default function CvPage() {
 
 const Container = styled.article`
   flex: 1;
+  height: 100%;
+  overflow-y: scroll;
   //distance without SideNav width
   padding: 0 8vh 0 calc(61.8vw - 12vw);
   h2 {
