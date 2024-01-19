@@ -53,7 +53,12 @@ export default function Artworks({
           })}
         </SubNav>
 
-        <ArtworkDetails>
+        <ArtworkDetails
+          key={activeArtwork.title}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.3 } }}
+          exit={{ opacity: 0 }}
+        >
           <ImgNav>
             {activeArtwork.images.map((image, index) => (
               <NavElement
@@ -104,6 +109,7 @@ const LeftSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 12vw;
+  overflow-y: scroll;
 `;
 
 const RightSection = styled.div`
@@ -112,7 +118,7 @@ const RightSection = styled.div`
   flex: 1;
 `;
 
-const ArtworkDetails = styled.div`
+const ArtworkDetails = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -121,7 +127,6 @@ const ArtworkDetails = styled.div`
 const ImgNav = styled.ul`
   display: flex;
   list-style: none;
-  margin-bottom: 8vh;
   gap: 5px;
 `;
 
