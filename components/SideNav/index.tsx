@@ -78,7 +78,7 @@ const List = styled.ul<{ $showNav: boolean }>`
     height: 100vh;
     overflow: hidden;
     margin-left: 12vw;
-    padding-top: 5vh;
+    padding-top: 6vh;
     background: white;
     z-index: 2;
   }

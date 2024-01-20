@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import ArtworkNavDesktop from "../ArtworkNavDesktop";
 import ArtworkNavMobile from "../ArtworkNavMobile";
 import { useViewportSize } from "@/lib/useViewportSize";
-import { PiArrowLeftThin, PiArrowRightThin } from "react-icons/pi";
 
 export default function Artworks({
   artworkData,
@@ -42,8 +41,6 @@ export default function Artworks({
 
   useKeyDown(previousImage, ["ArrowLeft"]);
   useKeyDown(nextImage, ["ArrowRight"]);
-
-  console.log(artworkData);
 
   return (
     <Container
@@ -122,7 +119,7 @@ export default function Artworks({
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
-              transition: { duration: 0.5, ease: "ease" },
+              transition: { duration: 0.5, ease: "easeIn" },
             }}
             exit={{ opacity: 0 }}
             src={"https:" + activeArtwork.images[activeImage].url}

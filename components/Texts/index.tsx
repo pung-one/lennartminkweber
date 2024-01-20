@@ -68,14 +68,14 @@ const LeftSection = styled.div`
 const TextContainer = styled(motion.article)`
   flex: 1;
   overflow-y: scroll;
-  margin: -8vh 0;
+  margin: -6vh 0;
   p {
     position: relative;
     //distance without SideNav and LeftSection width
     padding: 8vh 12vw 0 calc(61.8vw - 32vw);
     height: 100%;
     @media only screen and (max-width: 1024px) {
-      padding: 8vh 12vw 0;
+      padding: 6vh 12vw 0;
     }
   }
 `;

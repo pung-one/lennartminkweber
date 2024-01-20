@@ -54,7 +54,7 @@ const Container = styled.main.attrs(({ $opacity }: { $opacity: number }) => ({
   min-height: -webkit-fill-available;
   padding: 8vh 0;
   @media only screen and (max-width: 1024px) {
-    padding: 5vh 0;
+    padding: 6vh 0;
   }
 `;
 

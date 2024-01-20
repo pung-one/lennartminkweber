@@ -12,7 +12,7 @@ export default function ArtworkNavMobile({
 }) {
   const handleNavArtworks = {
     prevItem: () => {
-      const prevId = activeItemId > 0 ? activeItemId - 1 : itemListLength;
+      const prevId = activeItemId > 0 ? activeItemId - 1 : itemListLength - 1;
       handleChange(prevId);
     },
     nextItem: () => {
