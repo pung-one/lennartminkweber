@@ -46,7 +46,10 @@ export default function Artworks({
   console.log(artworkData);
 
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.4, ease: "easeIn" } }}
+    >
       <LeftSection>
         <SubNav>
           {viewportSize.width > 1024 ? (
@@ -125,7 +128,7 @@ export default function Artworks({
   );
 }
 
-const Container = styled.article`
+const Container = styled(motion.article)`
   position: relative;
   display: flex;
   flex: 1;

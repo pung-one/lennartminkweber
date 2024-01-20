@@ -5,12 +5,16 @@ import LayoutContainer from "../LayoutContainer";
 import SubNav from "../SubNav";
 import NavElement from "../NavElement";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Texts({ texts }: { texts: TextData[] }) {
   const [activeText, setActiveText] = useState<TextData>(texts[0]);
 
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
+    >
       <LeftSection>
         <SubNav>
           {texts.map((text) => (
@@ -39,7 +43,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
   );
 }
 
-const Container = styled.article`
+const Container = styled(motion.article)`
   position: relative;
   display: flex;
   flex: 1;
@@ -63,7 +67,7 @@ const TextContainer = styled.article`
     padding: 8vh 12vw 0 calc(61.8vw - 32vw);
     height: 100%;
     @media only screen and (max-width: 1024px) {
-      padding: 8vh 12vw 0 12vw;
+      padding: 8vh 12vw 0;
     }
   }
 `;

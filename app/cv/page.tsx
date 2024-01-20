@@ -1,9 +1,13 @@
 "use client";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export default function CvPage() {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.4, ease: "easeIn" } }}
+    >
       <header>
         Lennart Mink Weber
         <br />
@@ -42,12 +46,15 @@ export default function CvPage() {
   );
 }
 
-const Container = styled.article`
+const Container = styled(motion.article)`
   flex: 1;
   height: 100%;
   overflow-y: scroll;
   //distance without SideNav width
   padding: 0 8vh 0 calc(61.8vw - 12vw);
+  @media only screen and (max-width: 1024px) {
+    padding: 0 5vw 0 32vw;
+  }
   h2 {
     margin-top: 50px;
   }
