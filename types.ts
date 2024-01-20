@@ -4,7 +4,14 @@ export type ArtworkData = {
   year: string;
   description: string;
   dimensions: string;
-  images: { width: number; height: number; url: string }[];
+  images: ImageData[];
+};
+
+export type ImageData = {
+  id: number;
+  width: number;
+  height: number;
+  url: string;
 };
 
 export type TextData = {

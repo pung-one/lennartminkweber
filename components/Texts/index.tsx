@@ -1,14 +1,18 @@
 "use client";
 import { TextData } from "@/types";
 import styled from "styled-components";
-import LayoutContainer from "../LayoutContainer";
 import SubNav from "../SubNav";
 import NavElement from "../NavElement";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Texts({ texts }: { texts: TextData[] }) {
   const [activeText, setActiveText] = useState<TextData>(texts[0]);
+
+  useEffect(() => {
+    const article = document.getElementsByTagName("article");
+    article[0].scrollTo({ top: 0 });
+  }, [activeText]);
 
   return (
     <Container
@@ -29,7 +33,11 @@ export default function Texts({ texts }: { texts: TextData[] }) {
         </SubNav>
       </LeftSection>
 
-      <TextContainer>
+      <TextContainer
+        key={activeText.title}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
+      >
         <p>
           {activeText.text}
           <br />
@@ -43,7 +51,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
   );
 }
 
-const Container = styled(motion.article)`
+const Container = styled(motion.div)`
   position: relative;
   display: flex;
   flex: 1;
@@ -57,7 +65,7 @@ const LeftSection = styled.div`
   width: 20vw;
 `;
 
-const TextContainer = styled.article`
+const TextContainer = styled(motion.article)`
   flex: 1;
   overflow-y: scroll;
   margin: -8vh 0;
