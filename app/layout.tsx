@@ -3,8 +3,9 @@ import StyledComponentsRegistry from "../lib/registry";
 import { Metadata } from "next";
 import ReactDOM from "react-dom";
 import LayoutContainer from "@/components/LayoutContainer";
+import localFont from "next/font/local";
 
-ReactDOM.preload("/fonts/GaramondPremrPro-Med.otf", {
+ReactDOM.preload("/fonts/GaramondPremrPro.otf", {
   as: "font",
   crossOrigin: "",
 });
@@ -30,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>
+      <body style={{ minHeight: "-webkit-fill-available" }}>
         <StyledComponentsRegistry>
           <GlobalStyles />
           <LayoutContainer>{children}</LayoutContainer>

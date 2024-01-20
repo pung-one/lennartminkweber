@@ -43,7 +43,7 @@ export function SideNav() {
 }
 
 const Nav = styled.nav`
-  width: 12vw;
+  width: 15vw;
 `;
 
 const List = styled.ul`

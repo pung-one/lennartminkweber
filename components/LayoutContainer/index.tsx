@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { SideNav } from "../SideNav";
 import { useEffect, useState } from "react";
+import { useViewportSize } from "@/lib/useViewportSize";
 
 export default function LayoutContainer({
   children,
@@ -9,24 +10,10 @@ export default function LayoutContainer({
   children: React.ReactNode;
 }) {
   const [mouseMovement, setMouseMovement] = useState<number>(1);
-  const [viewportSize, setViewportSize] = useState<{
-    width: number;
-    heigth: number;
-  }>({ width: 0, heigth: 0 });
+
+  const { viewportSize } = useViewportSize();
 
   const decayRate = 0.0000007;
-
-  function handleResize() {
-    setViewportSize({ width: window.innerWidth, heigth: window.innerHeight });
-  }
-
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      setViewportSize({ width: window.innerWidth, heigth: window.innerHeight });
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -42,7 +29,7 @@ export default function LayoutContainer({
     }
   }, [mouseMovement]);
 
-  return viewportSize.width < viewportSize.heigth ? (
+  return viewportSize.width < viewportSize.height ? (
     <TurnDevice>
       <p>Please use your device in landscape mode.</p>
     </TurnDevice>
@@ -65,6 +52,7 @@ const Container = styled.main.attrs(({ $opacity }: { $opacity: number }) => ({
   display: flex;
   width: 100vw;
   height: 100vh;
+  min-height: -webkit-fill-available;
   padding: 8vh 0;
 `;
 
