@@ -23,13 +23,13 @@ export default function ArtworkNavMobile({
 
   return (
     <Navigation>
-      <StyledButton onClick={() => handleNavArtworks.prevItem()}>
+      <button onClick={() => handleNavArtworks.prevItem()}>
         <PiArrowLeftThin />
-      </StyledButton>
+      </button>
       <p>{`${activeItemId + 1}/${itemListLength}`}</p>
-      <StyledButton onClick={() => handleNavArtworks.nextItem()}>
+      <button onClick={() => handleNavArtworks.nextItem()}>
         <PiArrowRightThin />
-      </StyledButton>
+      </button>
     </Navigation>
   );
 }
@@ -39,18 +39,16 @@ const Navigation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
   button {
     display: flex;
     align-items: center;
-  }
-`;
-
-const StyledButton = styled.button`
-  background: none;
-  border: none;
-  color: black;
-  &:hover {
-    cursor: pointer;
+    justify-content: space-around;
+    background: none;
+    border: none;
+    color: black;
+    flex: 1;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
