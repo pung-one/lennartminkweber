@@ -2,7 +2,7 @@ import { ArtworkData } from "@/types";
 import { PiArrowDownThin, PiArrowUpThin } from "react-icons/pi";
 import styled from "styled-components";
 
-export default function ArtworkNavDesktop({
+export default function ArtworkNavMobile({
   artworkData,
   activeArtworkId,
   onChange: handleChange,
@@ -14,7 +14,7 @@ export default function ArtworkNavDesktop({
   const handleNavArtworks = {
     prevArtwork: () => {
       const prevId =
-        activeArtworkId > 0 ? activeArtworkId - 1 : artworkData.length;
+        activeArtworkId > 1 ? activeArtworkId - 1 : artworkData.length;
       handleChange(artworkData.find((artwork) => artwork.id === prevId)!);
     },
     nextArtwork: () => {
@@ -40,12 +40,22 @@ export default function ArtworkNavDesktop({
 const Navigation = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80px;
   gap: 35px;
   button {
     display: flex;
     align-items: center;
+  }
+`;
+
+const StyledButton = styled.button`
+  background: none;
+  border: none;
+  transition: all 0.1s ease;
+  color: black;
+  &:hover {
+    cursor: pointer;
   }
 `;
