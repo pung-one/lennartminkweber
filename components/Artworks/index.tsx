@@ -135,6 +135,10 @@ const LeftSection = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
   justify-content: space-between;
   width: 15vw;
   overflow-y: scroll;
