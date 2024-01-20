@@ -3,6 +3,7 @@ import StyledComponentsRegistry from "../lib/registry";
 import { Metadata } from "next";
 import ReactDOM from "react-dom";
 import LayoutContainer from "@/components/LayoutContainer";
+import localFont from "next/font/local";
 
 ReactDOM.preload("/fonts/GaramondPremrPro.otf", {
   as: "font",

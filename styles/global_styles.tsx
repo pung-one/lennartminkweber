@@ -6,21 +6,21 @@ export const GlobalStyles = createGlobalStyle`
       font-family: 'GaramondPremierPro';
       src: url('/fonts/GaramondPremrPro.otf') format('opentype');
       font-style: normal;
-      font-display: swap;
+      font-display: fallback;
     }
 
     @font-face {
       font-family: 'GaramondPremierProMedium';
       src: url('/fonts/GaramondPremrPro-Med.otf') format('opentype');
       font-style: medium;
-      font-display: swap;
+      font-display: fallback;
     }
 
     @font-face {
       font-family: 'GaramondPremierPro';
       src: url('/fonts/GaramondPremrPro-It.otf') format('opentype');
       font-style: italic;
-      font-display: swap;
+      font-display: fallback;
     }
 
 *,
