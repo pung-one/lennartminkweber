@@ -190,7 +190,7 @@ const StyledImage = styled(motion(Image))`
   width: 100%;
   height: 100%;
   @media only screen and (max-width: 1024px) {
-    padding: 3vh 8vh 0;
+    padding: 3vh 8vh;
   }
   padding: 0 3vw 0;
 `;
