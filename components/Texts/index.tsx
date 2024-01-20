@@ -62,5 +62,8 @@ const TextContainer = styled.article`
     //distance without SideNav and LeftSection width
     padding: 8vh 12vw 0 calc(61.8vw - 32vw);
     height: 100%;
+    @media only screen and (max-width: 1024px) {
+      padding: 8vh 12vw 0 12vw;
+    }
   }
 `;

@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>
+      <body style={{ minHeight: "-webkit-fill-available" }}>
         <StyledComponentsRegistry>
           <GlobalStyles />
           <LayoutContainer>{children}</LayoutContainer>
