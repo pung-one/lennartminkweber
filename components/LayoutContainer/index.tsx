@@ -52,6 +52,7 @@ const Container = styled.main.attrs(({ $opacity }: { $opacity: number }) => ({
   display: flex;
   width: 100vw;
   height: 100vh;
+  min-height: -webkit-fill-available;
   padding: 8vh 0;
 `;
 

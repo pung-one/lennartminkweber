@@ -43,7 +43,7 @@ const Navigation = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 35px;
+  gap: 20px;
   button {
     display: flex;
     align-items: center;
