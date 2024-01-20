@@ -17,23 +17,26 @@ export default async function WorkPage() {
       return { notFound: true };
     });
 
-  const artworkData = entries.items.map(({ fields }: { fields: any }) => {
-    const { title, year, description, dimensions, images } = fields;
-    return {
-      title: title,
-      year: year,
-      description: description,
-      dimensions: dimensions,
-      images: images.map((image: any) => {
-        const { url, details } = image.fields.file;
-        return {
-          url: url,
-          width: details.image.width,
-          height: details.image.height,
-        };
-      }),
-    };
-  });
+  const artworkData = entries.items.map(
+    ({ fields }: { fields: any }, index: number) => {
+      const { title, year, description, dimensions, images } = fields;
+      return {
+        id: index + 1,
+        title: title,
+        year: year,
+        description: description,
+        dimensions: dimensions,
+        images: images.map((image: any) => {
+          const { url, details } = image.fields.file;
+          return {
+            url: url,
+            width: details.image.width,
+            height: details.image.height,
+          };
+        }),
+      };
+    }
+  );
 
   return <Artworks artworkData={artworkData} />;
 }

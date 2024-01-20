@@ -6,8 +6,8 @@ import Image from "next/image";
 import NavElement from "../NavElement";
 import { useKeyDown } from "@/lib/useKeyDown";
 import SubNav from "../SubNav";
-import LayoutContainer from "../LayoutContainer";
 import { motion } from "framer-motion";
+import ArtworkNavDesktop from "../ArtworkNavDesktop";
 
 export default function Artworks({
   artworkData,
@@ -36,21 +36,17 @@ export default function Artworks({
   useKeyDown(previousImage, ["ArrowLeft"]);
   useKeyDown(nextImage, ["ArrowRight"]);
 
+  console.log(artworkData);
+
   return (
     <Container>
       <LeftSection>
         <SubNav>
-          {artworkData.map((artwork) => {
-            return (
-              <NavElement
-                handleClick={() => setActiveArtwork(artwork)}
-                isActive={activeArtwork.title === artwork.title}
-                key={artwork.title}
-              >
-                {artwork.title}
-              </NavElement>
-            );
-          })}
+          <ArtworkNavDesktop
+            artworkData={artworkData}
+            activeArtworkId={activeArtwork.id}
+            onChange={(artwork) => setActiveArtwork(artwork)}
+          />
         </SubNav>
 
         <ArtworkDetails

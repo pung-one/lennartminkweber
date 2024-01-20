@@ -1,4 +1,5 @@
 export type ArtworkData = {
+  id: number;
   title: string;
   year: string;
   description: string;
