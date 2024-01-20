@@ -1,38 +1,35 @@
-import { ArtworkData } from "@/types";
-import { PiArrowDownThin, PiArrowUpThin } from "react-icons/pi";
+import { PiArrowLeftThin, PiArrowRightThin } from "react-icons/pi";
 import styled from "styled-components";
 
 export default function ArtworkNavMobile({
-  artworkData,
-  activeArtworkId,
+  itemListLength,
+  activeItemId,
   onChange: handleChange,
 }: {
-  artworkData: ArtworkData[];
-  activeArtworkId: number;
-  onChange: (artwork: ArtworkData) => void;
+  itemListLength: number;
+  activeItemId: number;
+  onChange: (id: number) => void;
 }) {
   const handleNavArtworks = {
-    prevArtwork: () => {
-      const prevId =
-        activeArtworkId > 1 ? activeArtworkId - 1 : artworkData.length;
-      handleChange(artworkData.find((artwork) => artwork.id === prevId)!);
+    prevItem: () => {
+      const prevId = activeItemId > 0 ? activeItemId - 1 : itemListLength - 1;
+      handleChange(prevId);
     },
-    nextArtwork: () => {
-      const nextId =
-        activeArtworkId < artworkData.length ? activeArtworkId + 1 : 1;
-      handleChange(artworkData.find((artwork) => artwork.id === nextId)!);
+    nextItem: () => {
+      const nextId = activeItemId < itemListLength - 1 ? activeItemId + 1 : 0;
+      handleChange(nextId);
     },
   };
 
   return (
     <Navigation>
-      <StyledButton onClick={() => handleNavArtworks.prevArtwork()}>
-        <PiArrowUpThin />
-      </StyledButton>
-      <p>{`${activeArtworkId}/${artworkData.length}`}</p>
-      <StyledButton onClick={() => handleNavArtworks.nextArtwork()}>
-        <PiArrowDownThin />
-      </StyledButton>
+      <button onClick={() => handleNavArtworks.prevItem()}>
+        <PiArrowLeftThin />
+      </button>
+      <p>{`${activeItemId + 1}/${itemListLength}`}</p>
+      <button onClick={() => handleNavArtworks.nextItem()}>
+        <PiArrowRightThin />
+      </button>
     </Navigation>
   );
 }
@@ -40,22 +37,18 @@ export default function ArtworkNavMobile({
 const Navigation = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
   button {
     display: flex;
     align-items: center;
-  }
-`;
-
-const StyledButton = styled.button`
-  background: none;
-  border: none;
-  transition: all 0.1s ease;
-  color: black;
-  &:hover {
-    cursor: pointer;
+    justify-content: space-around;
+    background: none;
+    border: none;
+    color: black;
+    flex: 1;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

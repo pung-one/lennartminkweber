@@ -21,14 +21,15 @@ export default async function WorkPage() {
     ({ fields }: { fields: any }, index: number) => {
       const { title, year, description, dimensions, images } = fields;
       return {
-        id: index + 1,
+        id: index,
         title: title,
         year: year,
         description: description,
         dimensions: dimensions,
-        images: images.map((image: any) => {
+        images: images.map((image: any, index: number) => {
           const { url, details } = image.fields.file;
           return {
+            id: index,
             url: url,
             width: details.image.width,
             height: details.image.height,

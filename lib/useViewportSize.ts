@@ -7,7 +7,7 @@ type ViewportSize = {
 
 export function useViewportSize(): { viewportSize: ViewportSize } {
   const [viewportSize, setViewportSize] = useState<ViewportSize>({
-    width: 0,
+    width: 1025,
     height: 0,
   });
 

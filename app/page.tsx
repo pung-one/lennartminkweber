@@ -18,5 +18,6 @@ const Container = styled.article`
     left: calc(61.8vw - 12vw);
     font-size: 16px;
     font-weight: normal;
+    z-index: 3;
   }
 `;

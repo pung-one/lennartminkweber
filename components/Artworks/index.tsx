@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import ArtworkNavDesktop from "../ArtworkNavDesktop";
 import ArtworkNavMobile from "../ArtworkNavMobile";
 import { useViewportSize } from "@/lib/useViewportSize";
-import { PiArrowLeftThin, PiArrowRightThin } from "react-icons/pi";
 
 export default function Artworks({
   artworkData,
@@ -43,8 +42,6 @@ export default function Artworks({
   useKeyDown(previousImage, ["ArrowLeft"]);
   useKeyDown(nextImage, ["ArrowRight"]);
 
-  console.log(artworkData);
-
   return (
     <Container
       initial={{ opacity: 0 }}
@@ -60,9 +57,13 @@ export default function Artworks({
             />
           ) : (
             <ArtworkNavMobile
-              artworkData={artworkData}
-              activeArtworkId={activeArtwork.id}
-              onChange={(artwork) => setActiveArtwork(artwork)}
+              itemListLength={artworkData.length}
+              activeItemId={activeArtwork.id}
+              onChange={(id) =>
+                setActiveArtwork(
+                  artworkData.find((artwork) => artwork.id === id)!
+                )
+              }
             />
           )}
         </SubNav>
@@ -70,8 +71,10 @@ export default function Artworks({
         <ArtworkDetails
           key={activeArtwork.title}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.3 } }}
-          exit={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeIn" },
+          }}
         >
           {viewportSize.width > 1024 && (
             <ImgNavDesktop>
@@ -95,27 +98,29 @@ export default function Artworks({
           </Description>
         </ArtworkDetails>
       </LeftSection>
-      <RightSection>
+      <RightSection
+        key={activeArtwork.title}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { duration: 0.4, ease: "easeIn" },
+        }}
+      >
         {viewportSize.width < 1024 && (
-          <ImgNavMobile
-            key={activeArtwork.title}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 1, 1, 0], transition: { duration: 3 } }}
-          >
-            <LeftClickSection onClick={() => previousImage()}>
-              <PiArrowLeftThin />
-            </LeftClickSection>
-
-            <RightClickSection onClick={() => nextImage()}>
-              <PiArrowRightThin />
-            </RightClickSection>
-          </ImgNavMobile>
+          <ArtworkNavMobile
+            itemListLength={activeArtwork.images.length}
+            activeItemId={activeImage}
+            onChange={(id) => setActiveImage(id)}
+          />
         )}
         {activeArtwork.images[activeImage] && (
           <StyledImage
             key={activeImage}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.3 } }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.5, ease: "easeIn" },
+            }}
             exit={{ opacity: 0 }}
             src={"https:" + activeArtwork.images[activeImage].url}
             width={activeArtwork.images[activeImage].width}
@@ -138,18 +143,14 @@ const LeftSection = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  @media only screen and (max-width: 1024px) {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-  }
   justify-content: space-between;
   width: 15vw;
-  overflow-y: scroll;
 `;
 
-const RightSection = styled.div`
+const RightSection = styled(motion.div)`
   position: relative;
   display: flex;
+  flex-direction: column;
   flex: 1;
 `;
 
@@ -164,30 +165,6 @@ const ImgNavDesktop = styled.ul`
   list-style: none;
   gap: 5px;
   margin-bottom: 8vh;
-`;
-
-const ImgNavMobile = styled(motion.div)`
-  position: absolute;
-  z-index: 5;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  background: none;
-`;
-
-const LeftClickSection = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 1;
-  padding-left: 5vh;
-`;
-
-const RightClickSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-  padding-right: 5vh;
 `;
 
 const Description = styled.div`
@@ -212,5 +189,8 @@ const StyledImage = styled(motion(Image))`
   object-position: center;
   width: 100%;
   height: 100%;
-  padding: 0 8vh;
+  @media only screen and (max-width: 1024px) {
+    padding: 3vh 8vh;
+  }
+  padding: 0 3vw 0;
 `;

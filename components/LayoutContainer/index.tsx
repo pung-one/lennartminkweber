@@ -48,12 +48,14 @@ const Container = styled.main.attrs(({ $opacity }: { $opacity: number }) => ({
     pointerEvents: $opacity === 0 ? "none" : "auto",
   },
 }))<{ $opacity: number }>`
-  position: relative;
   display: flex;
   width: 100vw;
   height: 100vh;
   min-height: -webkit-fill-available;
   padding: 8vh 0;
+  @media only screen and (max-width: 1024px) {
+    padding: 6vh 0;
+  }
 `;
 
 const TurnDevice = styled.main`
