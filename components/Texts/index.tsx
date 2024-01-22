@@ -68,7 +68,7 @@ const LeftSection = styled.div`
 const TextContainer = styled(motion.article)`
   flex: 1;
   overflow-y: scroll;
-  margin: -6vh 0;
+  margin: -8vh 0;
   p {
     position: relative;
     //distance without SideNav and LeftSection width
