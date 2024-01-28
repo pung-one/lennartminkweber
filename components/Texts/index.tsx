@@ -69,6 +69,9 @@ const TextContainer = styled(motion.article)`
   flex: 1;
   overflow-y: scroll;
   margin: -8vh 0;
+  @media only screen and (max-width: 1024px) {
+    margin: -6vh 0;
+  }
   p {
     position: relative;
     //distance without SideNav and LeftSection width
