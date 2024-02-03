@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -7,17 +9,29 @@ type Props = {
 };
 
 export default function NavElement({ handleClick, isActive, children }: Props) {
+  const [turningDeg, setTurningDeg] = useState<number>(0);
+
+  useEffect(() => {
+    if (window) {
+      setTurningDeg(Math.floor(Math.random() * 3 + 3));
+    }
+  }, [children]);
+
   return (
-    <Element onClick={() => handleClick()} $isActive={isActive}>
+    <Element
+      onClick={() => handleClick()}
+      $isActive={isActive}
+      $turningDeg={turningDeg}
+    >
       <p>{children}</p>
     </Element>
   );
 }
 
-const Element = styled.li<{ $isActive: boolean }>`
+const Element = styled.li<{ $isActive: boolean; $turningDeg: number }>`
   margin-bottom: 15px;
   width: fit-content;
-  p {
+  /* p {
     opacity: ${({ $isActive }) => ($isActive ? "0.5" : "1")};
     transition: opacity 0.2s ease;
   }
@@ -26,19 +40,19 @@ const Element = styled.li<{ $isActive: boolean }>`
       opacity: 0.5;
       cursor: pointer;
     }
-  }
-  /* p {
-    transform: ${({ $isActive }) =>
-    $isActive ? "rotate(-3deg)" : "rotate(0deg)"};
+  } */
+  p {
+    transform: ${({ $isActive, $turningDeg }) =>
+      $isActive ? `rotate(-${$turningDeg}deg)` : "rotate(0deg)"};
     transition: transform 0.2s ease;
-    transform-origin: center;
+    transform-origin: 32%;
   }
   &:hover {
     p {
-      transform: rotate(-3deg);
+      transform: ${({ $turningDeg }) => `rotate(-${$turningDeg}deg)`};
       cursor: pointer;
     }
-  } */
+  }
   /* p {
     transform: ${({ $isActive }) => ($isActive ? "scaleX(0.8)" : "scaleX(1)")};
     transition: transform 0.1s ease;

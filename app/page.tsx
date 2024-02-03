@@ -16,7 +16,7 @@ const Container = styled.article`
     width: fit-content;
     //distance without SideNav width
     left: calc(61.8vw - 12vw);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
     z-index: 3;
   }

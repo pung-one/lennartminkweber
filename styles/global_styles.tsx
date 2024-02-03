@@ -32,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: 'GaramondPremierPro', serif;
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 20px;
   }
 
 `;

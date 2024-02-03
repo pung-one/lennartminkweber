@@ -15,7 +15,7 @@ export default function LayoutContainer({
 
   const decayRate = 0.0000007;
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("mousemove", () =>
         setMouseMovement((prev) => (prev > 0 ? (prev -= prev * decayRate) : 0))
@@ -27,7 +27,7 @@ export default function LayoutContainer({
           )
         );
     }
-  }, [mouseMovement]);
+  }, [mouseMovement]); */
 
   return viewportSize.width < viewportSize.height ? (
     <TurnDevice>
