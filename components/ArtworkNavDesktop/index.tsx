@@ -1,26 +1,26 @@
-import { ArtworkData } from "@/types";
+import { ArtworkData, ShowsData } from "@/types";
 import NavElement from "../NavElement";
 import styled from "styled-components";
 
 export default function ArtworkNavDesktop({
-  artworkData,
-  activeArtworkId,
+  showsData,
+  activeItemId,
   onChange: handleChange,
 }: {
-  artworkData: ArtworkData[];
-  activeArtworkId: number;
-  onChange: (artwork: ArtworkData) => void;
+  showsData: ShowsData[];
+  activeItemId: string;
+  onChange: (show: ShowsData) => void;
 }) {
   return (
     <ArtworkList>
-      {artworkData.map((artwork) => {
+      {showsData.map((show) => {
         return (
           <NavElement
-            handleClick={() => handleChange(artwork)}
-            isActive={activeArtworkId === artwork.id}
-            key={artwork.title}
+            handleClick={() => handleChange(show)}
+            isActive={activeItemId === show.id}
+            key={show.id}
           >
-            {artwork.title}
+            {show.title}
           </NavElement>
         );
       })}

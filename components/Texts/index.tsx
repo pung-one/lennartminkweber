@@ -27,7 +27,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
               handleClick={() => setActiveText(text)}
               isActive={text === activeText}
             >
-              {text.title}
+              <p>{text.title}</p>
             </NavElement>
           ))}
         </SubNav>

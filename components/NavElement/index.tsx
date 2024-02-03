@@ -12,7 +12,7 @@ export default function NavElement({ handleClick, isActive, children }: Props) {
 
   useEffect(() => {
     if (window) {
-      setTurningDeg(Math.floor(Math.random() * 3 + 3));
+      setTurningDeg(Math.floor(Math.random() * 6 + 3));
     }
   }, [children]);
 
@@ -22,7 +22,7 @@ export default function NavElement({ handleClick, isActive, children }: Props) {
       $isActive={isActive}
       $turningDeg={turningDeg}
     >
-      <p>{children}</p>
+      {children}
     </Element>
   );
 }
@@ -44,12 +44,12 @@ const Element = styled.li<{ $isActive: boolean; $turningDeg: number }>`
     transform: ${({ $isActive, $turningDeg }) =>
       $isActive ? `rotate(-${$turningDeg}deg)` : "rotate(0deg)"};
     transition: transform 0.2s ease;
-    transform-origin: 32%;
+    transform-origin: 22%;
   }
   &:hover {
+    cursor: pointer;
     p {
       transform: ${({ $turningDeg }) => `rotate(-${$turningDeg}deg)`};
-      cursor: pointer;
     }
   }
   /* p {

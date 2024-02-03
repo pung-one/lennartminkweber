@@ -1,3 +1,5 @@
+import { JSXElementConstructor, ReactComponentElement, ReactNode } from "react";
+
 export type ArtworkData = {
   id: number;
   title: string;
@@ -7,11 +9,18 @@ export type ArtworkData = {
   images: ImageData[];
 };
 
+export type ShowsData = {
+  id: string;
+  title: ReactNode;
+  images: ImageData[];
+};
+
 export type ImageData = {
-  id: number;
+  id: string;
+  description: ReactNode;
+  src: string;
   width: number;
   height: number;
-  url: string;
 };
 
 export type TextData = {

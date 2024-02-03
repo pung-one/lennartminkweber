@@ -32,28 +32,28 @@ export function SideNav() {
           handleClick={() => router.push("/work")}
           isActive={pathname === "/work"}
         >
-          Work
+          <p>Work</p>
         </NavElement>
 
         <NavElement
           handleClick={() => router.push("/texts")}
           isActive={pathname === "/texts"}
         >
-          Texts
+          <p>Texts</p>
         </NavElement>
 
         <NavElement
           handleClick={() => router.push("/cv")}
           isActive={pathname === "/cv"}
         >
-          CV
+          <p>CV</p>
         </NavElement>
 
         <NavElement
           handleClick={() => router.push("/contact")}
           isActive={pathname === "/contact"}
         >
-          Contact
+          <p>Contact</p>
         </NavElement>
       </List>
     </Nav>

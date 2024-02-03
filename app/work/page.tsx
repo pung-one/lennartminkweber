@@ -1,7 +1,8 @@
-import Artworks from "@/components/Artworks";
+import Shows from "@/components/Shows";
+import { showsData } from "@/showsData/shows";
 
 export default async function WorkPage() {
-  const contentful = require("contentful");
+  /*   const contentful = require("contentful");
 
   const client = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -37,7 +38,7 @@ export default async function WorkPage() {
         }),
       };
     }
-  );
+  ); */
 
-  return <Artworks artworkData={artworkData} />;
+  return <Shows showsData={showsData} />;
 }
