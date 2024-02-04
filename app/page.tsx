@@ -11,6 +11,7 @@ export default function Home() {
 
 const Container = styled.article`
   flex: 1;
+  display: flex;
   h1 {
     position: relative;
     width: fit-content;
@@ -19,5 +20,9 @@ const Container = styled.article`
     font-size: 20px;
     font-weight: normal;
     z-index: 3;
+    @media only screen and (max-width: 1024px) {
+      left: 0;
+      margin: 25px auto;
+    }
   }
 `;
