@@ -38,10 +38,10 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
       cursor: pointer;
     }
   } */
-  /* @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1024px) {
     p {
       text-decoration: ${({ $isActive }) =>
-    $isActive ? "line-through" : "none"};
+        $isActive ? "line-through" : "none"};
       transition: text-decoration 0.2s ease;
     }
     &:hover {
@@ -50,7 +50,7 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
         cursor: pointer;
       }
     }
-  } */
+  }
   @media only screen and (min-width: 1025px) {
     p {
       transform: ${({ $isActive, $turningAngle }) =>
@@ -77,7 +77,7 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
       cursor: pointer;
     }
   } */
-  @media only screen and (max-width: 1024px) {
+  /* @media only screen and (max-width: 1024px) {
     p {
       position: relative;
       &:after {
@@ -89,7 +89,7 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
         left: 0;
         background-color: black;
         transform: ${({ $isActive }) =>
-          $isActive ? "scaleX(1) rotate(15deg)" : "scaleX(0) rotate(15deg)"};
+    $isActive ? "scaleX(1) rotate(15deg)" : "scaleX(0) rotate(15deg)"};
         transition: transform 0.1s ease;
       }
       &:hover {
@@ -100,5 +100,5 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
         transform-origin: center;
       }
     }
-  }
+  } */
 `;

@@ -34,6 +34,6 @@ const StyledLink = styled.a`
     cursor: pointer;
   }
   @media only screen and (max-width: 1024px) {
-    margin: auto;
+    margin: 0 auto;
   }
 `;
