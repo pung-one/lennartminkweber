@@ -89,7 +89,7 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
         left: 0;
         background-color: black;
         transform: ${({ $isActive }) =>
-          $isActive ? "scaleX(1) rotate(15deg)" : "scaleX(0)"};
+          $isActive ? "scaleX(1) rotate(15deg)" : "scaleX(0) rotate(15deg)"};
         transition: transform 0.1s ease;
       }
       &:hover {
