@@ -52,13 +52,13 @@ const Container = styled(motion.article)`
   overflow-y: scroll;
   //distance without NavMain width
   padding: 0 8vh 0 calc(61.8vw - 12vw);
-  @media only screen and (max-width: 1024px) {
-    padding: 0 5vw 0 32vw;
-  }
   h2 {
     margin-top: 50px;
   }
   p {
     margin-top: 20px;
+  }
+  @media only screen and (max-width: 1024px) {
+    padding: 25px 0 0;
   }
 `;

@@ -5,13 +5,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import NavElement from "../NavElement";
 import { useKeyDown } from "@/lib/useKeyDown";
-import SubNav from "../SubNav";
 import { motion } from "framer-motion";
 import { useViewportSize } from "@/lib/useViewportSize";
-import ShowsNav from "../ArtworkNavDesktop";
+import SubNav from "../SubNav";
 
 export default function Shows({ showsData }: { showsData: ShowsData[] }) {
-  const [activeShow, setActiveShow] = useState<ShowsData>(showsData[1]);
+  const [activeShow, setActiveShow] = useState<ShowsData>(showsData[0]);
   const [activeImage, setActiveImage] = useState<number>(0);
 
   const { viewportSize } = useViewportSize();
@@ -38,13 +37,11 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
   function getDetailSectionDesktopView() {
     return (
       <DetailSection>
-        <SubNav>
-          <ShowsNav
-            showsData={showsData}
-            activeItemId={activeShow.id}
-            onChange={(show) => setActiveShow(show)}
-          />
-        </SubNav>
+        <SubNav
+          navListData={showsData}
+          activeItemId={activeShow.id}
+          onChange={(show) => setActiveShow(show as ShowsData)}
+        />
 
         <ShowInfo
           key={activeShow.id}
@@ -113,10 +110,10 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
       {viewportSize.width > 1025 ? (
         getDetailSectionDesktopView()
       ) : (
-        <ShowsNav
-          showsData={showsData}
+        <SubNav
+          navListData={showsData}
           activeItemId={activeShow.id}
-          onChange={(artwork) => setActiveShow(artwork)}
+          onChange={(show) => setActiveShow(show as ShowsData)}
         />
       )}
       <ImageSection
@@ -187,8 +184,9 @@ const ShowInfo = styled(motion.div)`
 
 const ImgNavDesktop = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
-  gap: 5px;
+  gap: 8px;
 `;
 
 const Description = styled(motion.div)`

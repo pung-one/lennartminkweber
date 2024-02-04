@@ -61,6 +61,6 @@ const Container = styled.main<{ $startFadeOut: boolean }>`
     flex-direction: column;
     height: auto;
     width: auto;
-    padding: 0 2vw;
+    padding: 0 15px;
   }
 `;

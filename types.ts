@@ -24,9 +24,10 @@ export type ImageData = {
 };
 
 export type TextData = {
-  title: string;
+  id: string;
+  title: ReactNode;
   author: string;
-  text: string;
+  text: ReactNode;
 };
 
 export type ArtworkMetadata = {

@@ -17,18 +17,23 @@ export default function ContactPage() {
 
 const Container = styled(motion.article)`
   flex: 1;
+  display: flex;
   //distance without NavMain width
   padding: 0 8vh 0 calc(61.8vw - 12vw);
   @media only screen and (max-width: 1024px) {
-    padding: 0 5vw 0 32vw;
+    padding: 25px 0 0;
   }
 `;
 
 const StyledLink = styled.a`
   color: black;
+  width: fit-content;
   text-decoration: none;
   &:hover {
     opacity: 0.5;
     cursor: pointer;
+  }
+  @media only screen and (max-width: 1024px) {
+    margin: auto;
   }
 `;

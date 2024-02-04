@@ -1,10 +1,9 @@
 "use client";
 import { TextData } from "@/types";
 import styled from "styled-components";
-import SubNav from "../SubNav";
-import NavElement from "../NavElement";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import SubNav from "../SubNav";
 
 export default function Texts({ texts }: { texts: TextData[] }) {
   const [activeText, setActiveText] = useState<TextData>(texts[0]);
@@ -20,33 +19,20 @@ export default function Texts({ texts }: { texts: TextData[] }) {
       animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
     >
       <LeftSection>
-        <SubNav>
-          {texts.map((text) => (
-            <NavElement
-              key={text.title}
-              handleClick={() => setActiveText(text)}
-              isActive={text === activeText}
-              turningAngle={3}
-            >
-              <p>{text.title}</p>
-            </NavElement>
-          ))}
-        </SubNav>
+        <SubNav
+          navListData={texts}
+          activeItemId={activeText.id}
+          onChange={(text) => setActiveText(text as TextData)}
+        />
       </LeftSection>
 
       <TextContainer
-        key={activeText.title}
+        key={activeText.id}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
       >
-        <p>
-          {activeText.text}
-          <br />
-          <br />- {activeText.author}
-          <br />
-          <br />
-          <br />
-        </p>
+        {activeText.text}
+        <p>- {activeText.author}</p>
       </TextContainer>
     </Container>
   );
@@ -56,30 +42,38 @@ const Container = styled(motion.div)`
   position: relative;
   display: flex;
   flex: 1;
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
-const LeftSection = styled.div`
+const LeftSection = styled.nav`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 20vw;
+  list-style: none;
+  width: 15vw;
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const TextContainer = styled(motion.article)`
   flex: 1;
   overflow-y: scroll;
   margin: -8vh 0;
-  @media only screen and (max-width: 1024px) {
-    margin: 0 0;
-  }
+  padding: 8vh 0 2vh;
   p {
     position: relative;
     //distance without NavMain and DetailSection width
-    padding: 8vh 12vw 0 calc(61.8vw - 32vw);
-    height: 100%;
-    @media only screen and (max-width: 1024px) {
-      padding: 6vh 12vw 0;
+    margin: 0 12vw 3vh calc(55vw - 30vw);
+  }
+  @media only screen and (max-width: 1024px) {
+    padding: 0 0;
+    margin: 0 0 50px;
+    p {
+      padding: 20px 0 0;
+      margin: 0 0;
     }
   }
 `;
