@@ -14,7 +14,7 @@ const Container = styled.article`
   h1 {
     position: relative;
     width: fit-content;
-    //distance without SideNav width
+    //distance without NavMain width
     left: calc(61.8vw - 12vw);
     font-size: 20px;
     font-weight: normal;

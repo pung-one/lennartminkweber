@@ -26,6 +26,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
               key={text.title}
               handleClick={() => setActiveText(text)}
               isActive={text === activeText}
+              turningAngle={3}
             >
               <p>{text.title}</p>
             </NavElement>
@@ -70,11 +71,11 @@ const TextContainer = styled(motion.article)`
   overflow-y: scroll;
   margin: -8vh 0;
   @media only screen and (max-width: 1024px) {
-    margin: -6vh 0;
+    margin: 0 0;
   }
   p {
     position: relative;
-    //distance without SideNav and LeftSection width
+    //distance without NavMain and DetailSection width
     padding: 8vh 12vw 0 calc(61.8vw - 32vw);
     height: 100%;
     @media only screen and (max-width: 1024px) {

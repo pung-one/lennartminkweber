@@ -4,30 +4,28 @@ import styled from "styled-components";
 type Props = {
   handleClick: () => void;
   isActive: boolean;
+  turningAngle: number;
   children: React.ReactNode;
 };
 
-export default function NavElement({ handleClick, isActive, children }: Props) {
-  const [turningDeg, setTurningDeg] = useState<number>(0);
-
-  useEffect(() => {
-    if (window) {
-      setTurningDeg(Math.floor(Math.random() * 6 + 3));
-    }
-  }, [children]);
-
+export default function NavElement({
+  handleClick,
+  isActive,
+  turningAngle,
+  children,
+}: Props) {
   return (
     <Element
       onClick={() => handleClick()}
       $isActive={isActive}
-      $turningDeg={turningDeg}
+      $turningAngle={turningAngle}
     >
       {children}
     </Element>
   );
 }
 
-const Element = styled.li<{ $isActive: boolean; $turningDeg: number }>`
+const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
   margin-bottom: 15px;
   width: fit-content;
   /* p {
@@ -40,18 +38,34 @@ const Element = styled.li<{ $isActive: boolean; $turningDeg: number }>`
       cursor: pointer;
     }
   } */
-  p {
-    transform: ${({ $isActive, $turningDeg }) =>
-      $isActive ? `rotate(-${$turningDeg}deg)` : "rotate(0deg)"};
-    transition: transform 0.2s ease;
-    transform-origin: 22%;
-  }
-  &:hover {
-    cursor: pointer;
+  @media only screen and (max-width: 1024px) {
     p {
-      transform: ${({ $turningDeg }) => `rotate(-${$turningDeg}deg)`};
+      text-decoration: ${({ $isActive }) =>
+        $isActive ? "line-through" : "none"};
+      transition: text-decoration 0.2s ease;
+    }
+    &:hover {
+      p {
+        text-decoration: line-through;
+        cursor: pointer;
+      }
     }
   }
+  @media only screen and (min-width: 1025px) {
+    p {
+      transform: ${({ $isActive, $turningAngle }) =>
+        $isActive ? `rotate(-${$turningAngle}deg)` : "rotate(0deg)"};
+      transition: transform 0.2s ease;
+      transform-origin: 50%;
+    }
+    &:hover {
+      cursor: pointer;
+      p {
+        transform: ${({ $turningAngle }) => `rotate(${$turningAngle}deg)`};
+      }
+    }
+  }
+
   /* p {
     transform: ${({ $isActive }) => ($isActive ? "scaleX(0.8)" : "scaleX(1)")};
     transition: transform 0.1s ease;

@@ -17,7 +17,7 @@ export default function ContactPage() {
 
 const Container = styled(motion.article)`
   flex: 1;
-  //distance without SideNav width
+  //distance without NavMain width
   padding: 0 8vh 0 calc(61.8vw - 12vw);
   @media only screen and (max-width: 1024px) {
     padding: 0 5vw 0 32vw;

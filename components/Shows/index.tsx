@@ -7,12 +7,11 @@ import NavElement from "../NavElement";
 import { useKeyDown } from "@/lib/useKeyDown";
 import SubNav from "../SubNav";
 import { motion } from "framer-motion";
-import ArtworkNavDesktop from "../ArtworkNavDesktop";
-import ArtworkNavMobile from "../ArtworkNavMobile";
 import { useViewportSize } from "@/lib/useViewportSize";
+import ShowsNav from "../ArtworkNavDesktop";
 
 export default function Shows({ showsData }: { showsData: ShowsData[] }) {
-  const [activeShow, setActiveShow] = useState<ShowsData>(showsData[0]);
+  const [activeShow, setActiveShow] = useState<ShowsData>(showsData[1]);
   const [activeImage, setActiveImage] = useState<number>(0);
 
   const { viewportSize } = useViewportSize();
@@ -36,17 +35,14 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
   useKeyDown(previousImage, ["ArrowLeft"]);
   useKeyDown(nextImage, ["ArrowRight"]);
 
-  return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.4, ease: "easeIn" } }}
-    >
-      <LeftSection>
+  function getDetailSectionDesktopView() {
+    return (
+      <DetailSection>
         <SubNav>
-          <ArtworkNavDesktop
+          <ShowsNav
             showsData={showsData}
             activeItemId={activeShow.id}
-            onChange={(artwork) => setActiveShow(artwork)}
+            onChange={(show) => setActiveShow(show)}
           />
         </SubNav>
 
@@ -58,19 +54,18 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
             transition: { duration: 0.4, ease: "easeIn" },
           }}
         >
-          {viewportSize.width > 1024 && (
-            <ImgNavDesktop>
-              {activeShow.images.map((image, index) => (
-                <ImgNavElement
-                  onClick={() => setActiveImage(index)}
-                  $isActive={activeImage === index}
-                  key={image.src}
-                >
-                  {index + 1}
-                </ImgNavElement>
-              ))}
-            </ImgNavDesktop>
-          )}
+          <ImgNavDesktop>
+            {activeShow.images.map((image, index) => (
+              <NavElement
+                handleClick={() => setActiveImage(index)}
+                isActive={activeImage === index}
+                turningAngle={20}
+                key={image.src}
+              >
+                <p>{index + 1}</p>
+              </NavElement>
+            ))}
+          </ImgNavDesktop>
 
           <Description
             key={activeImage}
@@ -83,8 +78,48 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
             {activeShow.images[activeImage]?.description}
           </Description>
         </ShowInfo>
-      </LeftSection>
-      <RightSection
+      </DetailSection>
+    );
+  }
+
+  function getImagesMobileView() {
+    return activeShow.images.map((image) => {
+      return (
+        <MobileImageContainer key={image.id}>
+          <StyledImage
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.5, ease: "easeIn" },
+            }}
+            exit={{ opacity: 0 }}
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            $coverContainer={false}
+            alt=""
+          />
+          {image.description}
+        </MobileImageContainer>
+      );
+    });
+  }
+
+  return (
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.4, ease: "easeIn" } }}
+    >
+      {viewportSize.width > 1025 ? (
+        getDetailSectionDesktopView()
+      ) : (
+        <ShowsNav
+          showsData={showsData}
+          activeItemId={activeShow.id}
+          onChange={(artwork) => setActiveShow(artwork)}
+        />
+      )}
+      <ImageSection
         key={activeShow.id}
         initial={{ opacity: 0 }}
         animate={{
@@ -92,14 +127,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
           transition: { duration: 0.4, ease: "easeIn" },
         }}
       >
-        {viewportSize.width < 1024 && (
-          <ArtworkNavMobile
-            itemListLength={activeShow.images.length}
-            activeItemId={activeImage}
-            onChange={(id) => setActiveImage(id)}
-          />
-        )}
-        {activeShow.images[activeImage] && (
+        {viewportSize.width > 1025 && activeShow.images[activeImage] ? (
           <StyledImage
             key={activeImage}
             initial={{ opacity: 0 }}
@@ -111,14 +139,16 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
             src={activeShow.images[activeImage]?.src}
             width={activeShow.images[activeImage]?.width}
             height={activeShow.images[activeImage]?.height}
-            $isLandscapeMode={
+            $coverContainer={
               activeShow.images[activeImage]?.width >
               activeShow.images[activeImage]?.height
             }
             alt=""
           />
+        ) : (
+          getImagesMobileView()
         )}
-      </RightSection>
+      </ImageSection>
     </Container>
   );
 }
@@ -127,9 +157,12 @@ const Container = styled(motion.article)`
   position: relative;
   display: flex;
   flex: 1;
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
-const LeftSection = styled.div`
+const DetailSection = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -137,7 +170,7 @@ const LeftSection = styled.div`
   width: 15vw;
 `;
 
-const RightSection = styled(motion.div)`
+const ImageSection = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -158,14 +191,6 @@ const ImgNavDesktop = styled.ul`
   gap: 5px;
 `;
 
-const ImgNavElement = styled.p<{ $isActive: boolean }>`
-  text-decoration: ${({ $isActive }) => ($isActive ? "underline" : "none")};
-  padding-right: 2px;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 const Description = styled(motion.div)`
   position: relative;
   display: flex;
@@ -174,14 +199,21 @@ const Description = styled(motion.div)`
   }
 `;
 
-const StyledImage = styled(motion(Image))<{ $isLandscapeMode: boolean }>`
-  object-fit: ${({ $isLandscapeMode }) =>
-    $isLandscapeMode ? "cover" : "contain"};
+const StyledImage = styled(motion(Image))<{ $coverContainer: boolean }>`
+  object-fit: ${({ $coverContainer }) =>
+    $coverContainer ? "cover" : "contain"};
   object-position: center;
   width: 100%;
   height: 100%;
-  @media only screen and (max-width: 1024px) {
-    padding: 3vh 8vh;
-  }
   padding: 0 3vw 0;
+  @media only screen and (max-width: 1024px) {
+    padding: 3vh 0 0;
+    height: auto;
+  }
+`;
+
+const MobileImageContainer = styled.section`
+  p {
+    margin: 5px 0 5vh;
+  }
 `;

@@ -3,33 +3,17 @@ import { usePathname } from "next/navigation";
 import NavElement from "../NavElement";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useViewportSize } from "@/lib/useViewportSize";
 
-export function SideNav() {
-  const [showNav, setShowNav] = useState<boolean>(false);
-
+export function NavMain() {
   const pathname = usePathname();
   const router = useRouter();
-  const { viewportSize } = useViewportSize();
-
-  useEffect(() => {
-    if (pathname === "/") {
-      setShowNav(true);
-    } else {
-      setShowNav(false);
-    }
-  }, [pathname]);
 
   return (
     <Nav>
-      {viewportSize.width < 1024 && pathname !== "/" && (
-        <StyledButton onClick={() => setShowNav(!showNav)}>
-          {showNav ? "Close" : "Menu"}
-        </StyledButton>
-      )}
-      <List $showNav={showNav}>
+      <List>
         <NavElement
           handleClick={() => router.push("/work")}
+          turningAngle={10}
           isActive={pathname === "/work"}
         >
           <p>Work</p>
@@ -37,6 +21,7 @@ export function SideNav() {
 
         <NavElement
           handleClick={() => router.push("/texts")}
+          turningAngle={10}
           isActive={pathname === "/texts"}
         >
           <p>Texts</p>
@@ -44,6 +29,7 @@ export function SideNav() {
 
         <NavElement
           handleClick={() => router.push("/cv")}
+          turningAngle={10}
           isActive={pathname === "/cv"}
         >
           <p>CV</p>
@@ -51,6 +37,7 @@ export function SideNav() {
 
         <NavElement
           handleClick={() => router.push("/contact")}
+          turningAngle={10}
           isActive={pathname === "/contact"}
         >
           <p>Contact</p>
@@ -63,33 +50,18 @@ export function SideNav() {
 const Nav = styled.nav`
   width: 15vw;
   @media only screen and (max-width: 1024px) {
-    width: 12vw;
+    width: 100%;
+    padding: 3vh 0 0;
   }
 `;
 
-const List = styled.ul<{ $showNav: boolean }>`
+const List = styled.ul`
   list-style: none;
   width: fit-content;
   margin: 0 auto;
   @media only screen and (max-width: 1024px) {
-    position: absolute;
-    top: 0;
-    width: ${({ $showNav }) => ($showNav ? "88vw" : "0")};
-    height: 100vh;
-    overflow: hidden;
-    margin-left: 12vw;
-    padding-top: 6vh;
-    background: white;
-    z-index: 2;
-  }
-`;
-
-const StyledButton = styled.button`
-  background: none;
-  border: none;
-  color: black;
-  width: 100%;
-  &:hover {
-    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
   }
 `;
