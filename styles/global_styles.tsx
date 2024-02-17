@@ -34,5 +34,4 @@ export const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
     font-size: 20px;
   }
-
 `;

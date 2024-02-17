@@ -1,21 +1,19 @@
 "use client";
 import styled from "styled-components";
 import { ShowsData } from "@/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import NavElement from "../NavElement";
-import { useKeyDown } from "@/lib/useKeyDown";
 import { motion } from "framer-motion";
 import { useViewportSize } from "@/lib/useViewportSize";
 import SubNav from "../SubNav";
 
 export default function Shows({ showsData }: { showsData: ShowsData[] }) {
-  const [activeShow, setActiveShow] = useState<ShowsData>(showsData[0]);
-  const [activeImage, setActiveImage] = useState<number>(0);
+  const [activeShow, setActiveShow] = useState<ShowsData>();
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const { viewportSize } = useViewportSize();
 
-  useEffect(() => {
+  /* useEffect(() => {
     setActiveImage(0);
   }, [activeShow]);
 
@@ -32,186 +30,99 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
   }
 
   useKeyDown(previousImage, ["ArrowLeft"]);
-  useKeyDown(nextImage, ["ArrowRight"]);
+  useKeyDown(nextImage, ["ArrowRight"]); */
 
-  function getDetailSectionDesktopView() {
-    return (
-      <DetailSection>
+  return (
+    <Container>
+      {!modalOpen && (
         <SubNav
           navListData={showsData}
-          activeItemId={activeShow.id}
+          activeItemId={activeShow?.id}
           onChange={(show) => setActiveShow(show as ShowsData)}
+          setModalOpen={setModalOpen}
         />
+      )}
 
-        <ShowInfo
-          key={activeShow.id}
+      {activeShow && modalOpen && (
+        <ImageSection
+          id="contentSection"
+          key={activeShow?.id}
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
             transition: { duration: 0.4, ease: "easeIn" },
           }}
         >
-          <ImgNavDesktop>
-            {activeShow.images.map((image, index) => (
-              <NavElement
-                handleClick={() => setActiveImage(index)}
-                isActive={activeImage === index}
-                turningAngle={20}
-                key={image.src}
-              >
-                <p>{index + 1}</p>
-              </NavElement>
-            ))}
-          </ImgNavDesktop>
-
-          <Description
-            key={activeImage}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.4, ease: "easeIn" },
+          <CloseButton
+            onClick={() => {
+              setActiveShow(undefined);
+              setModalOpen(false);
             }}
           >
-            {activeShow.images[activeImage]?.description}
-          </Description>
-        </ShowInfo>
-      </DetailSection>
-    );
-  }
+            X
+          </CloseButton>
 
-  function getImagesMobileView() {
-    return activeShow.images.map((image) => {
-      return (
-        <MobileImageContainer key={image.id}>
-          <StyledImage
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.5, ease: "easeIn" },
-            }}
-            exit={{ opacity: 0 }}
-            src={image.src}
-            width={image.width}
-            height={image.height}
-            $coverContainer={false}
-            alt=""
-          />
-          {image.description}
-        </MobileImageContainer>
-      );
-    });
-  }
-
-  return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.4, ease: "easeIn" } }}
-    >
-      {viewportSize.width > 1025 ? (
-        getDetailSectionDesktopView()
-      ) : (
-        <SubNav
-          navListData={showsData}
-          activeItemId={activeShow.id}
-          onChange={(show) => setActiveShow(show as ShowsData)}
-        />
+          {activeShow?.images.map((image) => {
+            return (
+              <ImgWithDescription key={image.id}>
+                <StyledImage
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.5, ease: "easeIn" },
+                  }}
+                  exit={{ opacity: 0 }}
+                  src={image.src}
+                  width={image.width}
+                  height={image.height}
+                  alt=""
+                />
+                {image.description}
+              </ImgWithDescription>
+            );
+          })}
+        </ImageSection>
       )}
-      <ImageSection
-        key={activeShow.id}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { duration: 0.4, ease: "easeIn" },
-        }}
-      >
-        {viewportSize.width > 1025 && activeShow.images[activeImage] ? (
-          <StyledImage
-            key={activeImage}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.5, ease: "easeIn" },
-            }}
-            exit={{ opacity: 0 }}
-            src={activeShow.images[activeImage]?.src}
-            width={activeShow.images[activeImage]?.width}
-            height={activeShow.images[activeImage]?.height}
-            $coverContainer={
-              activeShow.images[activeImage]?.width >
-              activeShow.images[activeImage]?.height
-            }
-            alt=""
-          />
-        ) : (
-          getImagesMobileView()
-        )}
-      </ImageSection>
     </Container>
   );
 }
 
-const Container = styled(motion.article)`
+const Container = styled.article`
   position: relative;
-  display: flex;
-  flex: 1;
-  @media only screen and (max-width: 1024px) {
-    flex-direction: column;
-  }
-`;
-
-const DetailSection = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 15vw;
-`;
-
-const ImageSection = styled(motion.div)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`;
-
-const ShowInfo = styled(motion.div)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 30vh;
-`;
-
-const ImgNavDesktop = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  gap: 8px;
-`;
-
-const Description = styled(motion.div)`
-  position: relative;
-  display: flex;
-  p {
-    line-height: 35px;
-  }
-`;
-
-const StyledImage = styled(motion(Image))<{ $coverContainer: boolean }>`
-  object-fit: ${({ $coverContainer }) =>
-    $coverContainer ? "cover" : "contain"};
-  object-position: center;
   width: 100%;
   height: 100%;
-  padding: 0 3vw 0;
-  @media only screen and (max-width: 1024px) {
-    padding: 3vh 0 0;
-    height: auto;
+`;
+
+const ImageSection = styled(motion.section)`
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: white;
+`;
+
+const CloseButton = styled.button`
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: fit-content;
+  background: none;
+  border: none;
+  &:hover {
+    cursor: pointer;
   }
 `;
 
-const MobileImageContainer = styled.section`
+const StyledImage = styled(motion(Image))`
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: fit-content;
+`;
+
+const ImgWithDescription = styled.div`
+  margin-bottom: 60px;
   p {
-    margin: 5px 0 5vh;
+    margin: 20px 0 0 5vw;
   }
 `;

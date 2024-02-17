@@ -28,6 +28,9 @@ export default function NavElement({
 const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
   margin-bottom: 15px;
   width: fit-content;
+  * {
+    font-size: 25px;
+  }
   /* p {
     opacity: ${({ $isActive }) => ($isActive ? "0.5" : "1")};
     transition: opacity 0.2s ease;

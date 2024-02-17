@@ -2,17 +2,31 @@ import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import NavElement from "../NavElement";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-export function NavMain() {
+type Props = {
+  onChange: () => void;
+};
+
+export function NavMain({ onChange: handleChange }: Props) {
   const pathname = usePathname();
   const router = useRouter();
 
+  function handleClick(path: string) {
+    handleChange();
+    router.push(path);
+  }
+
   return (
-    <Nav>
+    <Nav
+      key={"mainNav"}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+      exit={{ opacity: 0 }}
+    >
       <List>
         <NavElement
-          handleClick={() => router.push("/work")}
+          handleClick={() => handleClick("/work")}
           turningAngle={10}
           isActive={pathname === "/work"}
         >
@@ -20,7 +34,7 @@ export function NavMain() {
         </NavElement>
 
         <NavElement
-          handleClick={() => router.push("/texts")}
+          handleClick={() => handleClick("/texts")}
           turningAngle={10}
           isActive={pathname === "/texts"}
         >
@@ -28,7 +42,7 @@ export function NavMain() {
         </NavElement>
 
         <NavElement
-          handleClick={() => router.push("/cv")}
+          handleClick={() => handleClick("/cv")}
           turningAngle={10}
           isActive={pathname === "/cv"}
         >
@@ -36,7 +50,7 @@ export function NavMain() {
         </NavElement>
 
         <NavElement
-          handleClick={() => router.push("/contact")}
+          handleClick={() => handleClick("/contact")}
           turningAngle={10}
           isActive={pathname === "/contact"}
         >
@@ -47,21 +61,20 @@ export function NavMain() {
   );
 }
 
-const Nav = styled.nav`
-  width: 15vw;
-  @media only screen and (max-width: 1024px) {
-    width: 100%;
-    padding: 3vh 0 0;
-  }
+const Nav = styled(motion.nav)`
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
 `;
 
 const List = styled.ul`
+  position: relative;
   list-style: none;
   width: fit-content;
   margin: 0 auto;
-  @media only screen and (max-width: 1024px) {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-  }
+  top: 50%;
+  transform: translateY(-50%);
 `;

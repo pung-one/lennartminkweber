@@ -3,64 +3,45 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useViewportSize } from "@/lib/useViewportSize";
 import { NavMain } from "../NavMain";
+import { AnimatePresence } from "framer-motion";
 
 export default function LayoutContainer({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [startFadeOut, setStartFadeOut] = useState<boolean>(false);
-
-  const { viewportSize } = useViewportSize();
-
-  let timeout: NodeJS.Timeout;
-
-  useEffect(() => {
-    if (viewportSize.width > 1025 && typeof window !== undefined) {
-      window.document.onmousemove = () => {
-        clearTimeout(timeout);
-        setStartFadeOut(false);
-        timeout = setTimeout(() => setStartFadeOut(true), 15000);
-      };
-    }
-  }, [startFadeOut]);
-
+  const [navOpen, setNavOpen] = useState<boolean>(false);
   return (
-    <Container $startFadeOut={startFadeOut}>
-      <NavMain />
+    <Container>
+      <MenuButton $isActive={navOpen} onClick={() => setNavOpen(!navOpen)}>
+        Lennart Mink Weber
+      </MenuButton>
 
-      {children}
+      <AnimatePresence>
+        {navOpen && <NavMain onChange={() => setNavOpen(false)} />}
+
+        {children}
+      </AnimatePresence>
     </Container>
   );
 }
 
-const Container = styled.main<{ $startFadeOut: boolean }>`
-  /* @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  @keyframes fadeIn {
-    100% {
-      opacity: 1;
-    }
-  }
-  animation: ${({ $startFadeOut }) =>
-    $startFadeOut ? "fadeOut 10s forwards" : "fadeIn 0.5s forwards"}; */
-  opacity: ${({ $startFadeOut }) => ($startFadeOut ? "0" : "1")};
-  transition: opacity 6s;
-  display: flex;
+const Container = styled.main`
   width: 100vw;
-  height: 100vh;
-  min-height: -webkit-fill-available;
-  padding: 8vh 0;
-  @media only screen and (max-width: 1024px) {
-    flex-direction: column;
-    height: auto;
-    width: auto;
-    padding: 0 15px;
+`;
+
+const MenuButton = styled.button<{ $isActive: boolean }>`
+  z-index: 3;
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  border: none;
+  background: none;
+  transform: ${({ $isActive }) =>
+    $isActive ? `rotate(-7deg)` : "rotate(0deg)"};
+  transition: transform 0.2s ease;
+  &:hover {
+    cursor: pointer;
+    transform: rotate(7deg);
   }
 `;

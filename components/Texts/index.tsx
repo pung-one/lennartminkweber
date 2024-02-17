@@ -2,78 +2,84 @@
 import { TextData } from "@/types";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import SubNav from "../SubNav";
+import { motion } from "framer-motion";
 
 export default function Texts({ texts }: { texts: TextData[] }) {
-  const [activeText, setActiveText] = useState<TextData>(texts[0]);
-
-  useEffect(() => {
-    const article = document.getElementsByTagName("article");
-    article[0].scrollTo({ top: 0 });
-  }, [activeText]);
+  const [activeText, setActiveText] = useState<TextData>();
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
-    >
-      <LeftSection>
-        <SubNav
-          navListData={texts}
-          activeItemId={activeText.id}
-          onChange={(text) => setActiveText(text as TextData)}
-        />
-      </LeftSection>
+    <Container>
+      <SubNav
+        navListData={texts}
+        activeItemId={activeText?.id}
+        onChange={(text) => setActiveText(text as TextData)}
+        setModalOpen={setModalOpen}
+      />
 
-      <TextContainer
-        key={activeText.id}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
-      >
-        {activeText.text}
-        <p>- {activeText.author}</p>
-      </TextContainer>
+      {activeText && modalOpen && (
+        <TextContainer
+          key={activeText?.id}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.3, ease: "easeIn" },
+          }}
+        >
+          <CloseButton
+            onClick={() => {
+              setActiveText(undefined);
+              setModalOpen(false);
+            }}
+          >
+            X
+          </CloseButton>
+
+          {activeText.text}
+
+          <p>- {activeText.author}</p>
+        </TextContainer>
+      )}
     </Container>
   );
 }
 
-const Container = styled(motion.div)`
+const Container = styled.div`
   position: relative;
-  display: flex;
-  flex: 1;
-  @media only screen and (max-width: 1024px) {
-    flex-direction: column;
-  }
-`;
-
-const LeftSection = styled.nav`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  width: 15vw;
-  @media only screen and (max-width: 1024px) {
-    width: 100%;
-  }
+  width: 100%;
+  height: 100%;
 `;
 
 const TextContainer = styled(motion.article)`
-  flex: 1;
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  width: 100%;
   overflow-y: scroll;
-  margin: -8vh 0;
   padding: 8vh 0 2vh;
+  background: white;
   p {
     position: relative;
     //distance without NavMain and DetailSection width
-    margin: 0 12vw 3vh calc(55vw - 30vw);
-  }
-  @media only screen and (max-width: 1024px) {
-    padding: 0 0;
-    margin: 0 0 50px;
-    p {
-      padding: 20px 0 0;
-      margin: 0 0;
+    max-width: 600px;
+    padding: 0 5px 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media only screen and (min-width: 1025px) {
+      left: 60%;
     }
+  }
+`;
+
+const CloseButton = styled.button`
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: fit-content;
+  background: none;
+  border: none;
+  &:hover {
+    cursor: pointer;
   }
 `;
