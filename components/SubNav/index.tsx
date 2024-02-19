@@ -44,7 +44,6 @@ const Container = styled.section`
   list-style: none;
   height: 100vh;
   width: 100vw;
-  padding-left: 10vw;
 `;
 
 const ShowsList = styled.ul`
@@ -55,5 +54,8 @@ const ShowsList = styled.ul`
   flex-direction: column;
   gap: 20px;
   list-style: none;
-  padding: 20vh 0 0;
+  padding: 20vh 10px;
+  @media only screen and (min-width: 1025px) {
+    padding: 20vh 0 0 10vw;
+  }
 `;
