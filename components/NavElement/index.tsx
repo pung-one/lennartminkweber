@@ -41,31 +41,16 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
       cursor: pointer;
     }
   } */
-  @media only screen and (max-width: 1024px) {
-    p {
-      text-decoration: ${({ $isActive }) =>
-        $isActive ? "line-through" : "none"};
-      transition: text-decoration 0.2s ease;
-    }
-    &:hover {
-      p {
-        text-decoration: line-through;
-        cursor: pointer;
-      }
-    }
+  p {
+    transform: ${({ $isActive, $turningAngle }) =>
+      $isActive ? `rotate(${$turningAngle}deg)` : "rotate(0deg)"};
+    transition: transform 0.2s ease;
+    transform-origin: 50%;
   }
-  @media only screen and (min-width: 1025px) {
+  &:hover {
+    cursor: pointer;
     p {
-      transform: ${({ $isActive, $turningAngle }) =>
-        $isActive ? `rotate(${$turningAngle}deg)` : "rotate(0deg)"};
-      transition: transform 0.2s ease;
-      transform-origin: 50%;
-    }
-    &:hover {
-      cursor: pointer;
-      p {
-        transform: ${({ $turningAngle }) => `rotate(-${$turningAngle}deg)`};
-      }
+      transform: ${({ $turningAngle }) => `rotate(-${$turningAngle}deg)`};
     }
   }
 

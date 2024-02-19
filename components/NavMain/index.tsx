@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
+  showNav: boolean;
   onChange: () => void;
 };
 
-export function NavMain({ onChange: handleChange }: Props) {
+export function NavMain({ showNav, onChange: handleChange }: Props) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -18,46 +19,50 @@ export function NavMain({ onChange: handleChange }: Props) {
   }
 
   return (
-    <Nav
-      key={"mainNav"}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3 } }}
-      exit={{ opacity: 0 }}
-    >
-      <List>
-        <NavElement
-          handleClick={() => handleClick("/work")}
-          turningAngle={10}
-          isActive={pathname === "/work"}
+    <AnimatePresence>
+      {showNav && (
+        <Nav
+          key={pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.3 } }}
+          exit={{ opacity: 0 }}
         >
-          <p>Work</p>
-        </NavElement>
+          <List>
+            <NavElement
+              handleClick={() => handleClick("/")}
+              turningAngle={10}
+              isActive={pathname === "/"}
+            >
+              <p>Work</p>
+            </NavElement>
 
-        <NavElement
-          handleClick={() => handleClick("/texts")}
-          turningAngle={10}
-          isActive={pathname === "/texts"}
-        >
-          <p>Texts</p>
-        </NavElement>
+            <NavElement
+              handleClick={() => handleClick("/texts")}
+              turningAngle={10}
+              isActive={pathname === "/texts"}
+            >
+              <p>Texts</p>
+            </NavElement>
 
-        <NavElement
-          handleClick={() => handleClick("/cv")}
-          turningAngle={10}
-          isActive={pathname === "/cv"}
-        >
-          <p>CV</p>
-        </NavElement>
+            <NavElement
+              handleClick={() => handleClick("/cv")}
+              turningAngle={10}
+              isActive={pathname === "/cv"}
+            >
+              <p>CV</p>
+            </NavElement>
 
-        <NavElement
-          handleClick={() => handleClick("/contact")}
-          turningAngle={10}
-          isActive={pathname === "/contact"}
-        >
-          <p>Contact</p>
-        </NavElement>
-      </List>
-    </Nav>
+            <NavElement
+              handleClick={() => handleClick("/contact")}
+              turningAngle={10}
+              isActive={pathname === "/contact"}
+            >
+              <p>Contact</p>
+            </NavElement>
+          </List>
+        </Nav>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -72,6 +77,9 @@ const Nav = styled(motion.nav)`
 
 const List = styled.ul`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   list-style: none;
   width: fit-content;
   margin: 0 auto;

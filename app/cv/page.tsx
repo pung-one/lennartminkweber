@@ -1,9 +1,13 @@
 "use client";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export default function CvPage() {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+    >
       <Content>
         <p>*1994 in Bremen</p>
 
@@ -41,7 +45,7 @@ export default function CvPage() {
   );
 }
 
-const Container = styled.article`
+const Container = styled(motion.article)`
   position: relative;
   height: 100%;
   width: 100%;

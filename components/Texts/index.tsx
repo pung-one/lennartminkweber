@@ -1,51 +1,56 @@
 "use client";
 import { TextData } from "@/types";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SubNav from "../SubNav";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Texts({ texts }: { texts: TextData[] }) {
   const [activeText, setActiveText] = useState<TextData>();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <Container>
-      <SubNav
-        navListData={texts}
-        activeItemId={activeText?.id}
-        onChange={(text) => setActiveText(text as TextData)}
-        setModalOpen={setModalOpen}
-      />
+    <AnimatePresence>
+      <Container
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.3 } }}
+      >
+        <SubNav
+          navListData={texts}
+          activeItemId={activeText?.id}
+          onChange={(text) => setActiveText(text as TextData)}
+          setModalOpen={setModalOpen}
+        />
 
-      {activeText && modalOpen && (
-        <TextContainer
-          key={activeText?.id}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { duration: 0.3, ease: "easeIn" },
-          }}
-        >
-          <CloseButton
-            onClick={() => {
-              setActiveText(undefined);
-              setModalOpen(false);
+        {activeText && modalOpen && (
+          <TextContainer
+            key={activeText?.id}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.3, ease: "easeIn" },
             }}
           >
-            X
-          </CloseButton>
+            <CloseButton
+              onClick={() => {
+                setActiveText(undefined);
+                setModalOpen(false);
+              }}
+            >
+              X
+            </CloseButton>
 
-          {activeText.text}
+            {activeText.text}
 
-          <p>- {activeText.author}</p>
-        </TextContainer>
-      )}
-    </Container>
+            <p>- {activeText.author}</p>
+          </TextContainer>
+        )}
+      </Container>
+    </AnimatePresence>
   );
 }
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 100%;

@@ -202,4 +202,277 @@ export const showsData: ShowsData[] = [
       },
     ],
   },
+  {
+    id: "Graduatation Show (solo), HFBK, Hamburg, 2023",
+    title: (
+      <p>
+        <i>Graduatation Show</i> (solo), HFBK, Hamburg, 2023
+      </p>
+    ),
+    images: [
+      {
+        id: "/images/2023_graduationshow_hamburg/01.jpg",
+        src: "/images/2023_graduationshow_hamburg/01.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>Interlock</i> (left)
+            <br />
+            <i>Cinammon Cinders</i> (right)
+            <br />
+            <br />
+            Installation View
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/01a.jpg",
+        src: "/images/2023_graduationshow_hamburg/01a.jpg",
+        width: 3648,
+        height: 5472,
+        description: (
+          <p>
+            <i>Interlock</i>
+            <br />
+            2023
+            <br />
+            Fabric, brushed aluminium, resincast, pins, wood
+            <br />
+            46 x 46 x 23 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/02.jpg",
+        src: "/images/2023_graduationshow_hamburg/02.jpg",
+        width: 2416,
+        height: 3232,
+        description: (
+          <p>
+            <i>Interlock</i> (detail)
+            <br />
+            2023
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/03.jpg",
+        src: "/images/2023_graduationshow_hamburg/03.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>Cinnamon Cinders I</i> (left)
+            <br />
+            <i>Obliques</i> (right)
+            <br />
+            <br />
+            Installation View
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/03a.jpg",
+        src: "/images/2023_graduationshow_hamburg/03a.jpg",
+        width: 3648,
+        height: 5472,
+        description: (
+          <p>
+            <i>Cinnamon Cinders I</i>
+            <br />
+            2023
+            <br />
+            Wood
+            <br />
+            362 x 25 x 2 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/03b.jpg",
+        src: "/images/2023_graduationshow_hamburg/03b.jpg",
+        width: 3648,
+        height: 5472,
+        description: (
+          <p>
+            <i>Cinnamon Cinders I</i> (detail)
+            <br />
+            2023
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/04.jpg",
+        src: "/images/2023_graduationshow_hamburg/04.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>Obliques</i>
+            <br />
+            2023
+            <br />
+            Fabric, brushed aluminium, wood
+            <br />
+            Dimension variable
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/05.jpg",
+        src: "/images/2023_graduationshow_hamburg/05.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>Obliques</i> (detail)
+            <br />
+            2023
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/06.jpg",
+        src: "/images/2023_graduationshow_hamburg/06.jpg",
+        width: 3648,
+        height: 5472,
+        description: (
+          <p>
+            <i>Obliques</i> (detail)
+            <br />
+            2023
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/07.jpg",
+        src: "/images/2023_graduationshow_hamburg/07.jpg",
+        width: 3648,
+        height: 5472,
+        description: (
+          <p>
+            <i>Cinnamon Cinders III</i> (front)
+            <br />
+            2023
+            <br />
+            Wood
+            <br />
+            362 x 18 x 2 cm
+            <br />
+            <br />
+            <i>Untitled</i> (back)
+            <br />
+            2023
+            <br />
+            Fabric, brushed aluminium, wood
+            <br />
+            46 x 46 x 23 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/08.jpg",
+        src: "/images/2023_graduationshow_hamburg/08.jpg",
+        width: 3648,
+        height: 5472,
+        description: (
+          <p>
+            <i>XXX</i>
+            <br />
+            2023
+            <br />
+            Printed fabric, brushed aluminium, wood
+            <br />
+            46 x 46 x 23 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_graduationshow_hamburg/09.jpg",
+        src: "/images/2023_graduationshow_hamburg/09.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>XXX</i>
+            <br />
+            2023
+            <br />
+            Printed fabric, brushed aluminium, wood
+            <br />
+            46 x 46 x 23 cm
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    id: "relate to... (group), ICAT, Hamburg, 2023",
+    title: (
+      <p>
+        <i>relate to...</i> (group), ICAT, Hamburg, 2023
+      </p>
+    ),
+    images: [
+      {
+        id: "/images/2023_relate to_ICAT_Hamburg/01.jpg",
+        src: "/images/2023_relate to_ICAT_Hamburg/01.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>Wo Eis ist, ist Kühle für zwei I</i> (Installation view)
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_relate to_ICAT_Hamburg/02.jpg",
+        src: "/images/2023_relate to_ICAT_Hamburg/02.jpg",
+        width: 2756,
+        height: 4135,
+        description: (
+          <p>
+            <i>Wo Eis ist, ist Kühle für zwei I</i>
+            <br />
+            2023
+            <br />
+            silver on glass, milled aluminium
+            <br />
+            203 x 75 x 37 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_relate to_ICAT_Hamburg/03.jpg",
+        src: "/images/2023_relate to_ICAT_Hamburg/03.jpg",
+        width: 1792,
+        height: 2491,
+        description: (
+          <p>
+            <i>Wo Eis ist, ist Kühle für zwei II</i>
+            <br />
+            2023
+            <br />
+            silver on glass, milled aluminium
+            <br />
+            203 x 75 x 37 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2023_relate to_ICAT_Hamburg/04.jpg",
+        src: "/images/2023_relate to_ICAT_Hamburg/04.jpg",
+        width: 5472,
+        height: 3648,
+        description: (
+          <p>
+            <i>Wo Eis ist, ist Kühle für zwei II</i> (detail)
+            <br />
+            2023
+          </p>
+        ),
+      },
+    ],
+  },
 ];

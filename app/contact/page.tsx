@@ -1,9 +1,13 @@
 "use client";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export default function ContactPage() {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+    >
       <StyledLink href={"mailto:lennartminkweber@gmail.com"}>
         lennartminkweber@gmail.com
       </StyledLink>
@@ -11,7 +15,7 @@ export default function ContactPage() {
   );
 }
 
-const Container = styled.article`
+const Container = styled(motion.article)`
   position: relative;
   height: 100%;
   width: 100%;
