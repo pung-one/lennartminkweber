@@ -34,6 +34,7 @@ const MenuButton = styled.button`
   right: 40px;
   border: none;
   background: none;
+  color: black;
   transition: transform 0.2s ease;
   &:hover {
     cursor: pointer;
