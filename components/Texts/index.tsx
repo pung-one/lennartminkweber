@@ -78,6 +78,7 @@ const TextContainer = styled(motion.article)`
 `;
 
 const CloseButton = styled.button`
+  z-index: 5;
   position: fixed;
   top: 40px;
   right: 40px;
