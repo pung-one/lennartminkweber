@@ -71,7 +71,8 @@ const Nav = styled(motion.nav)`
   position: absolute;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: -webkit-fill-available;
   background: white;
 `;
 
