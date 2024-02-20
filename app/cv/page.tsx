@@ -47,9 +47,7 @@ export default function CvPage() {
 
 const Container = styled(motion.article)`
   position: relative;
-  height: 100%;
   width: 100%;
-  overflow-y: scroll;
 `;
 
 const Content = styled.section`

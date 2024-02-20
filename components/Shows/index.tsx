@@ -74,7 +74,6 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
 const Container = styled(motion.article)`
   position: relative;
   width: 100%;
-  height: 100%;
 `;
 
 const ImageSection = styled(motion.section)`
@@ -86,7 +85,6 @@ const ImageSection = styled(motion.section)`
 `;
 
 const CloseButton = styled.button`
-  z-index: 5;
   position: fixed;
   top: 40px;
   right: 40px;

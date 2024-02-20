@@ -17,7 +17,6 @@ export default function ContactPage() {
 
 const Container = styled(motion.article)`
   position: relative;
-  height: 100%;
   width: 100%;
   padding: 120px 5px 2vh;
 `;
