@@ -75,6 +75,7 @@ const Container = styled(motion.article)`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 `;
 
 const ImageSection = styled(motion.section)`

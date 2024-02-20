@@ -26,7 +26,6 @@ export default function LayoutContainer({
 const Container = styled.main`
   width: 100vw;
   height: 100dvh;
-  overflow-y: scroll;
 `;
 
 const MenuButton = styled.button`

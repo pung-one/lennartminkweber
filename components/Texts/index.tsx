@@ -53,6 +53,8 @@ export default function Texts({ texts }: { texts: TextData[] }) {
 const Container = styled(motion.div)`
   position: relative;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
 `;
 
 const TextContainer = styled(motion.article)`
