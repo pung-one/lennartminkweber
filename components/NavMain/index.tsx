@@ -72,7 +72,9 @@ const Nav = styled(motion.nav)`
   top: 0;
   width: 100vw;
   height: 100%;
-  min-height: -webkit-fill-available;
+  max-height: -webkit-fill-available;
+  max-height: -moz-fill-available;
+  max-height: fill-available;
   background: white;
 `;
 
