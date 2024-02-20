@@ -18,6 +18,8 @@ export default function ContactPage() {
 const Container = styled(motion.article)`
   position: relative;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
   padding: 120px 5px 2vh;
 `;
 

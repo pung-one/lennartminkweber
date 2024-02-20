@@ -12,11 +12,11 @@ export default function LayoutContainer({
   const [navOpen, setNavOpen] = useState<boolean>(false);
   return (
     <Container>
+      <NavMain showNav={navOpen} onChange={() => setNavOpen(false)} />
+
       <MenuButton onClick={() => setNavOpen(!navOpen)}>
         {navOpen ? "X" : "Lennart Mink Weber"}
       </MenuButton>
-
-      <NavMain showNav={navOpen} onChange={() => setNavOpen(false)} />
 
       {children}
     </Container>
@@ -24,13 +24,14 @@ export default function LayoutContainer({
 }
 
 const Container = styled.main`
+  position: relative;
   width: 100vw;
   height: 100dvh;
 `;
 
 const MenuButton = styled.button`
-  z-index: 3;
   position: fixed;
+  z-index: 3;
   top: 40px;
   right: 40px;
   border: none;

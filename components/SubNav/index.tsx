@@ -42,14 +42,14 @@ const Container = styled.section`
   position: relative;
   display: flex;
   list-style: none;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
 `;
 
 const ShowsList = styled.ul`
   position: relative;
   display: flex;
-  height: 100vh;
   overflow-y: scroll;
   flex-direction: column;
   gap: 20px;
