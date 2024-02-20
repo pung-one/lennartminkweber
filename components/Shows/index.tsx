@@ -74,6 +74,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
 const Container = styled(motion.article)`
   position: relative;
   width: 100%;
+  height: 100%;
 `;
 
 const ImageSection = styled(motion.section)`
