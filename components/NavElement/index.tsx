@@ -29,7 +29,7 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
   margin-bottom: 15px;
   width: fit-content;
   * {
-    font-size: 25px;
+    font-size: 20px;
   }
   p {
     transform: ${({ $isActive, $turningAngle }) =>
