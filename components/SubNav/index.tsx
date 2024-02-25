@@ -44,7 +44,6 @@ const Container = styled.section`
   list-style: none;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
 `;
 
 const ShowsList = styled.ul`

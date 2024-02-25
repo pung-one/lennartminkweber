@@ -89,8 +89,9 @@ const ImageSection = styled(motion.section)`
 const CloseButton = styled.button`
   position: fixed;
   top: 40px;
-  right: 40px;
-  width: fit-content;
+  right: 35px;
+  width: 50px;
+  height: 50px;
   background: none;
   border: none;
   color: black;

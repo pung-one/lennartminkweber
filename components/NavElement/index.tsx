@@ -35,7 +35,7 @@ const Element = styled.li<{ $isActive: boolean; $turningAngle: number }>`
     transform: ${({ $isActive, $turningAngle }) =>
       $isActive ? `rotate(${$turningAngle}deg)` : "rotate(0deg)"};
     transition: transform 0.2s ease;
-    transform-origin: 50%;
+    transform-origin: 20%;
   }
   @media only screen and (min-width: 1025px) {
     &:hover {
