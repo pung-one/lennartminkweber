@@ -16,13 +16,8 @@ export const showsData: ShowsData[] = [
         height: 7931,
         description: (
           <p>
-            <i>Hamburger Küche</i>
-            <br />
-            2022
-            <br />
-            Edelstahlküche, Buchenfunier
-            <br />
-            180 x 70 x 160 cm
+            <i>Hamburger Küche</i>, 2022 , Edelstahlküche, Buchenfunier , 180 x
+            70 x 160 cm
           </p>
         ),
       },
@@ -33,9 +28,7 @@ export const showsData: ShowsData[] = [
         height: 10339,
         description: (
           <p>
-            <i>Hamburger Küche</i> (Detail)
-            <br />
-            2022
+            <i>Hamburger Küche</i> (Detail) , 2022
           </p>
         ),
       },
@@ -45,7 +38,7 @@ export const showsData: ShowsData[] = [
     id: "I Can’t Tell A Hawk From A Handsaw (solo), etta, Düsseldorf, 2022",
     title: (
       <p>
-        <i> Can't Tell A Hawk From A Handsaw</i> (solo), etta, Düsseldorf, 2022
+        <i>I Can't Tell A Hawk From A Handsaw</i> (solo), etta, Düsseldorf, 2022
       </p>
     ),
     images: [
@@ -63,13 +56,8 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>Schiffer</i>
-            <br />
-            2021
-            <br />
-            Resin casts, brushed and painted aluminium, rivets
-            <br />
-            380 x 11 x 11 cm
+            <i>Schiffer</i>, 2021 , Resin casts, brushed and painted aluminium,
+            rivets, 380 x 11 x 11 cm
           </p>
         ),
       },
@@ -80,9 +68,7 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>Schiffer</i>(Detail)
-            <br />
-            2021
+            <i>Schiffer</i> (Detail) , 2021
           </p>
         ),
       },
@@ -93,9 +79,7 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>Schiffer</i>(Detail)
-            <br />
-            2021
+            <i>Schiffer</i> (Detail) , 2021
           </p>
         ),
       },
@@ -113,13 +97,7 @@ export const showsData: ShowsData[] = [
         height: 2363,
         description: (
           <p>
-            <i>Porter</i>
-            <br />
-            2021
-            <br />
-            Resin casts
-            <br />
-            48 x 29 x 18 cm
+            <i>Porter</i>, 2021, resin casts , 48 x 29 x 18 cm
           </p>
         ),
       },
@@ -130,13 +108,8 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>RIV</i>
-            <br />
-            2022
-            <br />
-            Brushed aluminium, fabric, rivets
-            <br />
-            40 x 62 x 40 cm
+            <i>RIV</i>, 2022, brushed aluminium, fabric, rivets , 40 x 62 x 40
+            cm
           </p>
         ),
       },
@@ -147,12 +120,7 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>Shipwreck With Spectator</i>
-            <br />
-            2022
-            <br />
-            Painted aluminium, rivets
-            <br />
+            <i>Shipwreck With Spectator</i>, 2022, painted aluminium, rivets,
             103 x 49 x 3,5 cm
           </p>
         ),
@@ -164,9 +132,7 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>Shipwreck With Spectator</i> (Detail)
-            <br />
-            2022
+            <i>Shipwreck With Spectator</i> (Detail), 2022
           </p>
         ),
       },
@@ -177,13 +143,8 @@ export const showsData: ShowsData[] = [
         height: 2000,
         description: (
           <p>
-            <i>Lonely Planet Boy</i>
-            <br />
-            2022
-            <br />
-            Brushed aluminium, pinstripe fabric, rivets, resin casts
-            <br />
-            198 x 110 cm
+            <i>Lonely Planet Boy</i>, 2022, brushed aluminium, pinstripe fabric,
+            rivets, resin casts , 198 x 110 cm
           </p>
         ),
       },

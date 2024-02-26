@@ -29,7 +29,10 @@ const StyledLink = styled.a`
   color: black;
   width: fit-content;
   text-decoration: none;
-  margin: 0 auto;
+  padding: 10px;
+  @media only screen and (min-width: 1025px) {
+    padding: 20vw 10vw;
+  }
   &:hover {
     opacity: 0.5;
     cursor: pointer;

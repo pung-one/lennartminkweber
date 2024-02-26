@@ -9,36 +9,13 @@ export default function CvPage() {
       animate={{ opacity: 1, transition: { duration: 0.3 } }}
     >
       <Content>
-        <p>*1994 in Bremen</p>
-
-        <h2>Ausbildung</h2>
-
         <p>
-          2023
-          <br />
-          MFA, Fine Arts, Hochschule für Bildende Künste, Prof. Andreas
-          Slominski, Hamburg
-        </p>
-
-        <p>
-          2017-2021
-          <br />
-          BFA, Fine Arts, Hochschule für Bildende Künste, Prof. Andreas
-          Slominski, Hamburg
-        </p>
-
-        <h2>Grants/Scholarships</h2>
-
-        <p>
-          2023
-          <br />
-          Funding, Freundeskreis HFBK, Hamburg
-        </p>
-
-        <p>
-          2022 - 2023
-          <br />
-          Deutschlandstipendium Scholarship
+          Lennart Mink Weber (*1994, Bremen) lives and works in Hamburg. He
+          studied from 2017-2023 at the Hochschule für Bildende Künste in
+          Hamburg with <span>Prof. Andreas Slominski</span> and Dr. Hanne
+          Loreck. In 2022 he received the Deutschlandstipendium and the
+          publication sponsorship of Materialverlag, Hamburg. In 2023 he was
+          supported by the Friends of the HFBK.
         </p>
       </Content>
     </Container>
@@ -59,9 +36,12 @@ const Content = styled.section`
   gap: 25px;
   padding: 80px 5px 2vh;
   max-width: 600px;
-  left: 50%;
-  transform: translateX(-50%);
+  word-wrap: break-word;
+  span {
+    line-break: strict;
+  }
+  padding: 20vh 10px;
   @media only screen and (min-width: 1025px) {
-    left: 60%;
+    padding: 20vh 0 0 130px;
   }
 `;

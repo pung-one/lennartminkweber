@@ -83,6 +83,6 @@ const List = styled.ul`
   list-style: none;
   width: fit-content;
   margin: 0 auto;
-  top: 50%;
+  top: 44%;
   transform: translateY(-50%);
 `;

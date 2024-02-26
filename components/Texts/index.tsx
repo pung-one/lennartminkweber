@@ -17,7 +17,6 @@ export default function Texts({ texts }: { texts: TextData[] }) {
       >
         <SubNav
           navListData={texts}
-          activeItemId={activeText?.id}
           onChange={(text) => setActiveText(text as TextData)}
           setModalOpen={setModalOpen}
         />
@@ -37,7 +36,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
                 setModalOpen(false);
               }}
             >
-              X
+              close
             </CloseButton>
 
             {activeText.text}
@@ -63,18 +62,11 @@ const TextContainer = styled(motion.article)`
   top: 0;
   width: 100%;
   overflow-y: scroll;
-  padding: 8vh 0 2vh;
   background: white;
   p {
     position: relative;
-    //distance without NavMain and DetailSection width
-    max-width: 600px;
-    padding: 0 5px 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    @media only screen and (min-width: 1025px) {
-      left: 60%;
-    }
+    padding: 20vh 0 0 10vw;
+    max-width: 700px;
   }
 `;
 

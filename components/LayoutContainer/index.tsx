@@ -14,8 +14,8 @@ export default function LayoutContainer({
     <Container>
       <NavMain showNav={navOpen} onChange={() => setNavOpen(false)} />
 
-      <MenuButton onClick={() => setNavOpen(!navOpen)}>
-        {navOpen ? "X" : "Lennart Mink Weber"}
+      <MenuButton $navOpen={navOpen} onClick={() => setNavOpen(!navOpen)}>
+        {navOpen ? "close" : "Lennart Mink Weber"}
       </MenuButton>
 
       {children}
@@ -29,17 +29,21 @@ const Container = styled.main`
   height: 100dvh;
 `;
 
-const MenuButton = styled.button`
+const MenuButton = styled.button<{ $navOpen: boolean }>`
   position: fixed;
   z-index: 3;
+  top: 1.5vw;
+  right: 1.5vw;
   top: 40px;
-  right: 40px;
+  right: 50px;
   border: none;
   background: none;
   color: black;
   transition: transform 0.2s ease;
+  transform-origin: ${({ $navOpen }) => ($navOpen ? "50%" : "80%")};
   &:hover {
     cursor: pointer;
-    transform: rotate(-7deg);
+    transform: ${({ $navOpen }) =>
+      $navOpen ? "rotate(-7deg)" : "rotate(-4deg)"};
   }
 `;

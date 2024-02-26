@@ -4,14 +4,12 @@ import styled from "styled-components";
 
 type Props = {
   navListData: ShowsData[] | TextData[];
-  activeItemId?: string;
   onChange: (show: ShowsData | TextData) => void;
   setModalOpen: (prev: boolean) => void;
 };
 
 export default function SubNav({
   navListData,
-  activeItemId,
   onChange: setActiveElement,
   setModalOpen,
 }: Props) {
@@ -25,7 +23,6 @@ export default function SubNav({
                 setActiveElement(element);
                 setModalOpen(true);
               }}
-              isActive={activeItemId === element.id}
               turningAngle={3}
               key={element.id}
             >
@@ -51,7 +48,7 @@ const ShowsList = styled.ul`
   display: flex;
   overflow-y: scroll;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   list-style: none;
   padding: 20vh 10px;
   @media only screen and (min-width: 1025px) {

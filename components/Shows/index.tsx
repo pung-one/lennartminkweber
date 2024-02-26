@@ -20,7 +20,6 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
         {!modalOpen && (
           <SubNav
             navListData={showsData}
-            activeItemId={activeShow?.id}
             onChange={(show) => setActiveShow(show as ShowsData)}
             setModalOpen={setModalOpen}
           />
@@ -42,7 +41,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
                 setModalOpen(false);
               }}
             >
-              X
+              close
             </CloseButton>
 
             {activeShow?.images.map((image) => {
@@ -84,13 +83,14 @@ const ImageSection = styled(motion.section)`
   top: 0;
   width: 100%;
   background: white;
+  padding-bottom: 12vh;
 `;
 
 const CloseButton = styled.button`
   position: fixed;
-  top: 40px;
-  right: 35px;
-  width: 50px;
+  top: 1.5vw;
+  right: 1.5vw;
+  width: 60px;
   height: 50px;
   background: none;
   border: none;
@@ -108,8 +108,11 @@ const StyledImage = styled(motion(Image))`
 `;
 
 const ImgWithDescription = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   p {
-    margin: 20px 0 0 5vw;
+    margin: 20px 20px 0;
+    @media only screen and (max-width: 1024px) {
+      margin: 10px 12px 0;
+    }
   }
 `;
