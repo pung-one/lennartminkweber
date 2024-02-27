@@ -41,7 +41,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
 
             {activeText.text}
 
-            <p>- {activeText.author}</p>
+            <span>- {activeText.author}</span>
           </TextContainer>
         )}
       </Container>
@@ -59,27 +59,41 @@ const Container = styled(motion.div)`
 const TextContainer = styled(motion.article)`
   z-index: 4;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
   top: 0;
   width: 100%;
-  overflow-y: scroll;
+  overflow: hidden;
   background: white;
+  padding: 20vh 0 20vh 130px;
+  @media only screen and (max-width: 1024px) {
+    padding: 20vh 15px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 2px;
+  }
   p {
-    position: relative;
-    padding: 20vh 0 0 10vw;
-    max-width: 700px;
+    max-width: 500px;
   }
 `;
 
 const CloseButton = styled.button`
   z-index: 5;
   position: fixed;
-  top: 40px;
-  right: 40px;
-  width: fit-content;
+  right: 50px;
+  top: 20px;
+  height: 50px;
   background: none;
   border: none;
-  color: black;
-  &:hover {
-    cursor: pointer;
+  @media only screen and (min-width: 1025px) {
+    height: auto;
+    top: 40px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

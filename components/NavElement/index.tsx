@@ -7,45 +7,69 @@ type Props = {
   children: React.ReactNode;
 };
 
+type TurningParams = {
+  origin: number;
+  direction: "left" | "right";
+  angle: number;
+};
+
 export default function NavElement({
   handleClick,
   turningAngle,
   children,
 }: Props) {
-  const [transOrig, setTransOrig] = useState<number>(20);
+  const [turningParams, setTurningParams] = useState<TurningParams>({
+    origin: 0,
+    direction: "right",
+    angle: turningAngle,
+  });
 
-  function getRandomNumber() {
-    return Math.floor(Math.random() * (80 - 20) + 20);
+  function getTurningParams(e: {
+    currentTarget: { getBoundingClientRect: () => any };
+    clientX: number;
+  }) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    setTurningParams({
+      origin: x,
+      direction: x > rect.width / 2 ? "left" : "right",
+      angle: turningAngle,
+    });
   }
 
   return (
     <Element
-      $transOrig={transOrig}
-      $turningAngle={turningAngle}
-      onClick={() => handleClick()}
-      onMouseEnter={() => setTransOrig(getRandomNumber())}
+      $turningParams={turningParams}
+      onClick={handleClick}
+      onMouseEnter={getTurningParams}
     >
       {children}
     </Element>
   );
 }
 
-const Element = styled.li<{ $turningAngle: number; $transOrig: number }>`
+const Element = styled.li<{
+  $turningParams: TurningParams;
+}>`
   margin-bottom: 15px;
   width: fit-content;
   * {
     font-size: 20px;
   }
   p {
-    transition: transform 0.2s ease;
-    transform-origin: ${({ $transOrig }) => `${$transOrig}%`};
+    transition: transform 0.15s ease;
+    transform-origin: ${({ $turningParams }) =>
+      `${$turningParams.origin}px top`};
     letter-spacing: 0.7px;
   }
   @media only screen and (min-width: 1025px) {
     &:hover {
       cursor: pointer;
       p {
-        transform: ${({ $turningAngle }) => `rotate(-${$turningAngle}deg)`};
+        transform: ${({ $turningParams }) =>
+          $turningParams.direction === "left"
+            ? `rotate(-${$turningParams.angle}deg)`
+            : `rotate(${$turningParams.angle}deg)`};
       }
     }
   }

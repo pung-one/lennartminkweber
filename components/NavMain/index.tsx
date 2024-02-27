@@ -28,18 +28,13 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
           exit={{ opacity: 0 }}
         >
           <List>
-            <NavElement
-              handleClick={() => handleClick("/")}
-              turningAngle={10}
-              isActive={pathname === "/"}
-            >
+            <NavElement handleClick={() => handleClick("/")} turningAngle={10}>
               <p>Work</p>
             </NavElement>
 
             <NavElement
               handleClick={() => handleClick("/texts")}
               turningAngle={10}
-              isActive={pathname === "/texts"}
             >
               <p>Texts</p>
             </NavElement>
@@ -47,7 +42,6 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
             <NavElement
               handleClick={() => handleClick("/cv")}
               turningAngle={10}
-              isActive={pathname === "/cv"}
             >
               <p>CV</p>
             </NavElement>
@@ -55,7 +49,6 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
             <NavElement
               handleClick={() => handleClick("/contact")}
               turningAngle={10}
-              isActive={pathname === "/contact"}
             >
               <p>Contact</p>
             </NavElement>

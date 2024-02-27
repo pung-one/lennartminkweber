@@ -88,15 +88,17 @@ const ImageSection = styled(motion.section)`
 
 const CloseButton = styled.button`
   position: fixed;
-  top: 1.5vw;
-  right: 1.5vw;
-  width: 60px;
+  right: 50px;
+  top: 20px;
   height: 50px;
   background: none;
   border: none;
-  color: black;
-  &:hover {
-    cursor: pointer;
+  @media only screen and (min-width: 1025px) {
+    height: auto;
+    top: 40px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
