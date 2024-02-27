@@ -20,7 +20,6 @@ const Container = styled(motion.article)`
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  padding: 120px 5px 2vh;
 `;
 
 const StyledLink = styled.a`
@@ -29,12 +28,13 @@ const StyledLink = styled.a`
   color: black;
   width: fit-content;
   text-decoration: none;
-  padding: 10px;
+  margin: 150px auto;
+  padding: 0 15px;
   @media only screen and (min-width: 1025px) {
-    padding: 20vw 10vw;
-  }
-  &:hover {
-    opacity: 0.5;
-    cursor: pointer;
+    margin: 20vh 0 0 15vw;
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
   }
 `;

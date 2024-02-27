@@ -22,7 +22,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
         />
 
         {activeText && modalOpen && (
-          <TextContainer
+          <TextModal
             key={activeText?.id}
             initial={{ opacity: 0 }}
             animate={{
@@ -36,13 +36,15 @@ export default function Texts({ texts }: { texts: TextData[] }) {
                 setModalOpen(false);
               }}
             >
-              close
+              <p>close</p>
             </CloseButton>
 
-            {activeText.text}
+            <TextContainer>
+              {activeText.text}
 
-            <span>- {activeText.author}</span>
-          </TextContainer>
+              <p>- {activeText.author}</p>
+            </TextContainer>
+          </TextModal>
         )}
       </Container>
     </AnimatePresence>
@@ -56,20 +58,24 @@ const Container = styled(motion.div)`
   overflow-y: scroll;
 `;
 
-const TextContainer = styled(motion.article)`
+const TextModal = styled(motion.section)`
   z-index: 4;
   position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: white;
+`;
+
+const TextContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: 35px;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
-  background: white;
-  padding: 20vh 0 20vh 130px;
+  max-width: 500px;
+  margin: 20vh 0 20vh 15vw;
   @media only screen and (max-width: 1024px) {
-    padding: 20vh 15px;
-    margin: 0 auto;
+    margin: 150px auto;
+    padding: 0 15px;
   }
   h1 {
     font-size: 20px;
@@ -77,18 +83,22 @@ const TextContainer = styled(motion.article)`
     letter-spacing: 2px;
   }
   p {
-    max-width: 500px;
+    font-size: 18px;
+    line-height: 1.5;
   }
 `;
 
 const CloseButton = styled.button`
-  z-index: 5;
   position: fixed;
-  right: 50px;
+  right: 35px;
   top: 20px;
-  height: 50px;
+  height: 45px;
   background: none;
   border: none;
+  p {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 20px 15px white;
+  }
   @media only screen and (min-width: 1025px) {
     height: auto;
     top: 40px;

@@ -33,5 +33,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'GaramondPremierPro', serif;
     scroll-behavior: smooth;
     font-size: 20px;
+    overscroll-behavior-block: none;
   }
 `;

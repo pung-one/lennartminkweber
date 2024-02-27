@@ -46,12 +46,12 @@ const Container = styled.section`
 const ShowsList = styled.ul`
   position: relative;
   display: flex;
-  overflow-y: scroll;
   flex-direction: column;
   gap: 15px;
   list-style: none;
-  padding: 20vh 10px;
-  @media only screen and (min-width: 1025px) {
-    padding: 20vh 0 0 10vw;
+  margin: 20vh 0 0 15vw;
+  @media only screen and (max-width: 1024px) {
+    margin: 150px auto;
+    padding: 0 15px;
   }
 `;

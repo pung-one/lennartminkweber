@@ -88,11 +88,13 @@ const ImageSection = styled(motion.section)`
 
 const CloseButton = styled.button`
   position: fixed;
-  right: 50px;
+  right: 35px;
   top: 20px;
-  height: 50px;
+  height: 45px;
   background: none;
   border: none;
+  color: white;
+  mix-blend-mode: difference;
   @media only screen and (min-width: 1025px) {
     height: auto;
     top: 40px;
@@ -113,7 +115,10 @@ const ImgWithDescription = styled.div`
   margin-bottom: 100px;
   p {
     margin: 20px 20px 0;
-    @media only screen and (max-width: 1024px) {
+  }
+  @media only screen and (max-width: 1024px) {
+    margin-bottom: 80px;
+    p {
       margin: 10px 12px 0;
     }
   }

@@ -31,9 +31,9 @@ const Container = styled(motion.article)`
 
 const Content = styled.section`
   max-width: 500px;
-  margin: 20vh 0 0 130px;
+  margin: 20vh 0 0 15vw;
   @media only screen and (max-width: 1024px) {
-    margin: 20vh auto;
+    margin: 150px auto;
     padding: 0 15px;
   }
 `;

@@ -72,7 +72,7 @@ const MenuButtonOpen = styled.button<{
   background: none;
   color: black;
   transition: transform 0.2s ease;
-  transform-origin: ${({ $turningParams }) => `${$turningParams.origin}px`};
+  transform-origin: ${({ $turningParams }) => `${$turningParams.origin}px top`};
   @media only screen and (min-width: 1025px) {
     height: auto;
     top: 40px;
