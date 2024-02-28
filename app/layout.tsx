@@ -33,6 +33,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyles />
+
           <LayoutContainer>{children}</LayoutContainer>
         </StyledComponentsRegistry>
       </body>

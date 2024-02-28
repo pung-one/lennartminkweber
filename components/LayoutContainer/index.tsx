@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { NavMain } from "../NavMain";
+import { AnimatePresence } from "framer-motion";
 
 type TurningParams = {
   origin: number;

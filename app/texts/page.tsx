@@ -1,6 +1,7 @@
+"use client";
 import Texts from "@/components/Texts";
 import { texts } from "@/public/textsData/texts";
 
-export default async function TextsPage() {
+export default function TextsPage() {
   return <Texts texts={texts} />;
 }

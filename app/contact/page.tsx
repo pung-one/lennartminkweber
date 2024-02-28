@@ -6,6 +6,7 @@ export default function ContactPage() {
   return (
     <Container
       initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.3 } }}
     >
       <StyledLink href={"mailto:lennartminkweber@gmail.com"}>

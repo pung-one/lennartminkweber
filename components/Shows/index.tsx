@@ -11,62 +11,60 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <AnimatePresence>
-      <Container
-        key={"shows"}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.3 } }}
-      >
-        {!modalOpen && (
-          <SubNav
-            navListData={showsData}
-            onChange={(show) => setActiveShow(show as ShowsData)}
-            setModalOpen={setModalOpen}
-          />
-        )}
+    <Container
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+    >
+      {!modalOpen && (
+        <SubNav
+          navListData={showsData}
+          onChange={(show) => setActiveShow(show as ShowsData)}
+          setModalOpen={setModalOpen}
+        />
+      )}
 
-        {activeShow && modalOpen && (
-          <ImageSection
-            id="contentSection"
-            key={activeShow?.id}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.4, ease: "easeIn" },
+      {activeShow && modalOpen && (
+        <ImageSection
+          id="contentSection"
+          key={activeShow?.id}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeIn" },
+          }}
+        >
+          <CloseButton
+            onClick={() => {
+              setActiveShow(undefined);
+              setModalOpen(false);
             }}
           >
-            <CloseButton
-              onClick={() => {
-                setActiveShow(undefined);
-                setModalOpen(false);
-              }}
-            >
-              close
-            </CloseButton>
+            close
+          </CloseButton>
 
-            {activeShow?.images.map((image) => {
-              return (
-                <ImgWithDescription key={image.id}>
-                  <StyledImage
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { duration: 0.5, ease: "easeIn" },
-                    }}
-                    exit={{ opacity: 0 }}
-                    src={image.src}
-                    width={image.width}
-                    height={image.height}
-                    alt=""
-                  />
-                  {image.description}
-                </ImgWithDescription>
-              );
-            })}
-          </ImageSection>
-        )}
-      </Container>
-    </AnimatePresence>
+          {activeShow?.images.map((image) => {
+            return (
+              <ImgWithDescription key={image.id}>
+                <StyledImage
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.5, ease: "easeIn" },
+                  }}
+                  exit={{ opacity: 0 }}
+                  src={image.src}
+                  width={image.width}
+                  height={image.height}
+                  alt=""
+                />
+                {image.description}
+              </ImgWithDescription>
+            );
+          })}
+        </ImageSection>
+      )}
+    </Container>
   );
 }
 

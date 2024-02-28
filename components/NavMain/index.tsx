@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import NavElement from "../NavElement";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 
 type Props = {
   showNav: boolean;
@@ -14,17 +15,20 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
   const router = useRouter();
 
   function handleClick(path: string) {
-    handleChange();
     router.push(path);
   }
+
+  useEffect(() => {
+    handleChange();
+  }, [pathname]);
 
   return (
     <AnimatePresence>
       {showNav && (
         <Nav
           key={pathname}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.3 } }}
+          initial={{ opacity: 0, y: -20, x: 20 }}
+          animate={{ opacity: 1, y: 0, x: 0, transition: { duration: 0.3 } }}
           exit={{ opacity: 0 }}
         >
           <List>

@@ -10,23 +10,26 @@ export default function Texts({ texts }: { texts: TextData[] }) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <AnimatePresence>
-      <Container
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.3 } }}
-      >
-        <SubNav
-          navListData={texts}
-          onChange={(text) => setActiveText(text as TextData)}
-          setModalOpen={setModalOpen}
-        />
+    <Container
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+    >
+      <SubNav
+        navListData={texts}
+        onChange={(text) => setActiveText(text as TextData)}
+        setModalOpen={setModalOpen}
+      />
 
+      <AnimatePresence>
         {activeText && modalOpen && (
           <TextModal
             key={activeText?.id}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            exit={{ opacity: 0, x: 20 }}
             animate={{
               opacity: 1,
+              x: 0,
               transition: { duration: 0.3, ease: "easeIn" },
             }}
           >
@@ -46,8 +49,8 @@ export default function Texts({ texts }: { texts: TextData[] }) {
             </TextContainer>
           </TextModal>
         )}
-      </Container>
-    </AnimatePresence>
+      </AnimatePresence>
+    </Container>
   );
 }
 
@@ -56,6 +59,7 @@ const Container = styled(motion.div)`
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const TextModal = styled(motion.section)`
@@ -96,6 +100,7 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   p {
+    color: black;
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 20px 15px white;
   }
