@@ -11,11 +11,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3 } }}
-    >
+    <Container>
       {!modalOpen && (
         <SubNav
           navListData={showsData}
@@ -24,51 +20,49 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
         />
       )}
 
-      {activeShow && modalOpen && (
-        <ImageSection
-          id="contentSection"
-          key={activeShow?.id}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeIn" },
-          }}
-        >
-          <CloseButton
-            onClick={() => {
-              setActiveShow(undefined);
-              setModalOpen(false);
+      <AnimatePresence>
+        {activeShow && modalOpen && (
+          <ImageSection
+            key={activeShow?.id}
+            initial={{ opacity: 0, scaleX: 0.9 }}
+            exit={{ opacity: 0, scaleX: 0.9 }}
+            animate={{
+              opacity: 1,
+              scaleX: 1,
+              transition: { duration: 0.2, ease: "easeInOut" },
             }}
           >
-            close
-          </CloseButton>
+            <CloseButton
+              onClick={() => {
+                setActiveShow(undefined);
+                setModalOpen(false);
+              }}
+            >
+              close
+            </CloseButton>
 
-          {activeShow?.images.map((image) => {
-            return (
-              <ImgWithDescription key={image.id}>
-                <StyledImage
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                    transition: { duration: 0.5, ease: "easeIn" },
-                  }}
-                  exit={{ opacity: 0 }}
-                  src={image.src}
-                  width={image.width}
-                  height={image.height}
-                  alt=""
-                />
-                {image.description}
-              </ImgWithDescription>
-            );
-          })}
-        </ImageSection>
-      )}
+            {activeShow?.images.map((image) => {
+              return (
+                <ImgWithDescription key={image.id}>
+                  <StyledImage
+                    src={image.src}
+                    width={image.width}
+                    height={image.height}
+                    alt=""
+                    loading="eager"
+                  />
+                  {image.description}
+                </ImgWithDescription>
+              );
+            })}
+          </ImageSection>
+        )}
+      </AnimatePresence>
     </Container>
   );
 }
 
-const Container = styled(motion.article)`
+const Container = styled.article`
   position: relative;
   width: 100%;
   height: 100%;
@@ -102,7 +96,7 @@ const CloseButton = styled.button`
   }
 `;
 
-const StyledImage = styled(motion(Image))`
+const StyledImage = styled(Image)`
   object-fit: contain;
   object-position: center;
   width: 100%;

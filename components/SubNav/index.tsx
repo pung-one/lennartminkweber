@@ -16,15 +16,16 @@ export default function SubNav({
   return (
     <Container>
       <ShowsList>
-        {navListData.map((element) => {
+        {navListData.map((element, index) => {
           return (
             <NavElement
               handleClick={() => {
                 setActiveElement(element);
                 setModalOpen(true);
               }}
-              turningAngle={3}
+              tiltAngle={3}
               key={element.id}
+              initialAnimationDelay={(index + 1) * 0.06}
             >
               {element.title}
             </NavElement>

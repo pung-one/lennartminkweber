@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { Key, useState } from "react";
 import styled from "styled-components";
 
 type Props = {
   handleClick: () => void;
-  turningAngle: number;
+  tiltAngle: number;
   children: React.ReactNode;
+  initialAnimationDelay?: number;
 };
 
-type TurningParams = {
+type TiltParams = {
   origin: number;
   direction: "left" | "right";
   angle: number;
@@ -15,33 +16,35 @@ type TurningParams = {
 
 export default function NavElement({
   handleClick,
-  turningAngle,
+  tiltAngle,
   children,
+  initialAnimationDelay,
 }: Props) {
-  const [turningParams, setTurningParams] = useState<TurningParams>({
+  const [tiltParams, setTiltParams] = useState<TiltParams>({
     origin: 0,
     direction: "right",
-    angle: turningAngle,
+    angle: tiltAngle,
   });
 
-  function getTurningParams(e: {
+  function getTiltParams(e: {
     currentTarget: { getBoundingClientRect: () => any };
     clientX: number;
   }) {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
-    setTurningParams({
+    setTiltParams({
       origin: x,
       direction: x > rect.width / 2 ? "left" : "right",
-      angle: turningAngle,
+      angle: tiltAngle,
     });
   }
 
   return (
     <Element
-      $turningParams={turningParams}
+      $tiltParams={tiltParams}
+      $initialAnimationDelay={initialAnimationDelay || 0}
       onClick={handleClick}
-      onMouseEnter={getTurningParams}
+      onMouseEnter={getTiltParams}
     >
       {children}
     </Element>
@@ -49,8 +52,31 @@ export default function NavElement({
 }
 
 const Element = styled.li<{
-  $turningParams: TurningParams;
+  $tiltParams: TiltParams;
+  $initialAnimationDelay: number;
 }>`
+  transform: rotate(-2deg);
+  opacity: 0;
+  transform-origin: 20% top;
+  @keyframes initialSlide {
+    0% {
+      transform: rotate(-2deg);
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+  }
+  animation-name: initialSlide;
+  animation-fill-mode: forwards;
+  animation-duration: ${({ $initialAnimationDelay }) =>
+    $initialAnimationDelay > 0 ? "0.3s" : "0s"};
+  animation-delay: ${({ $initialAnimationDelay }) =>
+    `${$initialAnimationDelay}s`};
   margin-bottom: 15px;
   width: fit-content;
   * {
@@ -58,18 +84,17 @@ const Element = styled.li<{
   }
   p {
     transition: transform 0.15s ease;
-    transform-origin: ${({ $turningParams }) =>
-      `${$turningParams.origin}px top`};
+    transform-origin: ${({ $tiltParams }) => `${$tiltParams.origin}px top`};
     letter-spacing: 0.7px;
   }
   @media only screen and (min-width: 1025px) {
     &:hover {
       cursor: pointer;
       p {
-        transform: ${({ $turningParams }) =>
-          $turningParams.direction === "left"
-            ? `rotate(-${$turningParams.angle}deg)`
-            : `rotate(${$turningParams.angle}deg)`};
+        transform: ${({ $tiltParams }) =>
+          $tiltParams.direction === "left"
+            ? `rotate(-${$tiltParams.angle}deg)`
+            : `rotate(${$tiltParams.angle}deg)`};
       }
     }
   }

@@ -10,11 +10,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3 } }}
-    >
+    <Container>
       <SubNav
         navListData={texts}
         onChange={(text) => setActiveText(text as TextData)}
@@ -25,12 +21,12 @@ export default function Texts({ texts }: { texts: TextData[] }) {
         {activeText && modalOpen && (
           <TextModal
             key={activeText?.id}
-            initial={{ opacity: 0, x: -20 }}
-            exit={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, scaleX: 0.85 }}
+            exit={{ opacity: 0, scaleX: 0.85 }}
             animate={{
               opacity: 1,
-              x: 0,
-              transition: { duration: 0.3, ease: "easeIn" },
+              scaleX: 1,
+              transition: { duration: 0.2, ease: "easeInOut" },
             }}
           >
             <CloseButton
@@ -54,7 +50,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
   );
 }
 
-const Container = styled(motion.div)`
+const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;

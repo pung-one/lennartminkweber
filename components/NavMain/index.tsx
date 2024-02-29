@@ -27,32 +27,32 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
       {showNav && (
         <Nav
           key={pathname}
-          initial={{ opacity: 0, y: -20, x: 20 }}
-          animate={{ opacity: 1, y: 0, x: 0, transition: { duration: 0.3 } }}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.2 },
+          }}
           exit={{ opacity: 0 }}
         >
           <List>
-            <NavElement handleClick={() => handleClick("/")} turningAngle={10}>
+            <NavElement handleClick={() => handleClick("/")} tiltAngle={10}>
               <p>Work</p>
             </NavElement>
 
             <NavElement
               handleClick={() => handleClick("/texts")}
-              turningAngle={10}
+              tiltAngle={10}
             >
               <p>Texts</p>
             </NavElement>
 
-            <NavElement
-              handleClick={() => handleClick("/cv")}
-              turningAngle={10}
-            >
+            <NavElement handleClick={() => handleClick("/cv")} tiltAngle={10}>
               <p>CV</p>
             </NavElement>
 
             <NavElement
               handleClick={() => handleClick("/contact")}
-              turningAngle={10}
+              tiltAngle={10}
             >
               <p>Contact</p>
             </NavElement>

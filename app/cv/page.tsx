@@ -7,7 +7,7 @@ export default function CvPage() {
     <Container
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3 } }}
+      animate={{ opacity: 1, transition: { duration: 0.2 } }}
     >
       <Content>
         <p>
