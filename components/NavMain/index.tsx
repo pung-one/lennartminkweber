@@ -77,6 +77,7 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
   list-style: none;
   width: fit-content;
   margin: 0 auto;

@@ -1,4 +1,4 @@
-import { Key, useState } from "react";
+import { Key, useRef, useState } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -20,11 +20,7 @@ export default function NavElement({
   children,
   initialAnimationDelay,
 }: Props) {
-  const [tiltParams, setTiltParams] = useState<TiltParams>({
-    origin: 0,
-    direction: "right",
-    angle: tiltAngle,
-  });
+  const elementRef = useRef<HTMLLIElement>(null);
 
   function getTiltParams(e: {
     currentTarget: { getBoundingClientRect: () => any };
@@ -32,17 +28,21 @@ export default function NavElement({
   }) {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
-    setTiltParams({
-      origin: x,
-      direction: x > rect.width / 2 ? "left" : "right",
-      angle: tiltAngle,
-    });
+    const direction = x > rect.width / 2 ? "left" : "right";
+    const origin = x;
+    const angle = direction === "left" ? `-${tiltAngle}` : `${tiltAngle}`;
+
+    console.log(`${origin}px top`);
+    const element = elementRef.current;
+    if (element) {
+      element.style.setProperty("--tilt-origin", `${origin}px top`);
+      element.style.setProperty("--tilt-angle", `rotate(${angle}deg)`);
+    }
   }
 
   return (
     <Element
-      $tiltParams={tiltParams}
-      $initialAnimationDelay={initialAnimationDelay || 0}
+      ref={elementRef}
       onClick={handleClick}
       onMouseEnter={getTiltParams}
     >
@@ -51,51 +51,15 @@ export default function NavElement({
   );
 }
 
-const Element = styled.li<{
-  $tiltParams: TiltParams;
-  $initialAnimationDelay: number;
-}>`
-  transform: rotate(-2deg);
-  opacity: 0;
-  transform-origin: 20% top;
-  @keyframes initialSlide {
-    0% {
-      transform: rotate(-2deg);
-      opacity: 0;
-    }
-    75% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(0deg);
-      opacity: 1;
-    }
+const Element = styled.li`
+  transition: transform 0.15s ease;
+  transform-origin: var(--tilt-origin);
+  &:hover {
+    cursor: pointer;
+    transform: var(--tilt-angle);
   }
-  animation-name: initialSlide;
-  animation-fill-mode: forwards;
-  animation-duration: ${({ $initialAnimationDelay }) =>
-    $initialAnimationDelay > 0 ? "0.3s" : "0s"};
-  animation-delay: ${({ $initialAnimationDelay }) =>
-    `${$initialAnimationDelay}s`};
-  margin-bottom: 15px;
   width: fit-content;
   * {
     font-size: 20px;
-  }
-  p {
-    transition: transform 0.15s ease;
-    transform-origin: ${({ $tiltParams }) => `${$tiltParams.origin}px top`};
-    letter-spacing: 0.7px;
-  }
-  @media only screen and (min-width: 1025px) {
-    &:hover {
-      cursor: pointer;
-      p {
-        transform: ${({ $tiltParams }) =>
-          $tiltParams.direction === "left"
-            ? `rotate(-${$tiltParams.angle}deg)`
-            : `rotate(${$tiltParams.angle}deg)`};
-      }
-    }
   }
 `;

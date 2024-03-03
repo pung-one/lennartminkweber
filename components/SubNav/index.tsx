@@ -48,7 +48,7 @@ const ShowsList = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 30px;
   list-style: none;
   margin: 20vh 0 0 15vw;
   @media only screen and (max-width: 1024px) {
