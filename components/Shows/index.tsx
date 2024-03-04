@@ -106,6 +106,7 @@ const StyledImage = styled(Image)`
 const ImgWithDescription = styled.div`
   margin-bottom: 100px;
   p {
+    font-size: 18px;
     margin: 20px 20px 0;
   }
   @media only screen and (max-width: 1024px) {

@@ -80,9 +80,10 @@ const TextContainer = styled.article`
   h1 {
     font-size: 20px;
     font-weight: normal;
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
   }
-  p {
+  p,
+  i {
     font-size: 18px;
     line-height: 1.5;
   }

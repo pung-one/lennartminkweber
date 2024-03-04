@@ -16,7 +16,7 @@ export const showsData: ShowsData[] = [
         height: 3648,
         description: (
           <p>
-            <i>Interlock</i>, 2023, Fabric, brushed aluminium, resincast, pins,
+            <i>Interlock</i>, 2023, fabric, brushed aluminium, resincast, pins,
             wood, 46 x 46 x 23 cm
           </p>
         ),
@@ -63,7 +63,7 @@ export const showsData: ShowsData[] = [
         height: 5472,
         description: (
           <p>
-            <i>Cinnamon Cinders I</i>, 2023, Wood, 362 x 25 x 2 cm
+            <i>Cinnamon Cinders I</i>, 2023, wood, 362 x 25 x 2 cm
           </p>
         ),
       },
@@ -85,7 +85,7 @@ export const showsData: ShowsData[] = [
         height: 3648,
         description: (
           <p>
-            <i>Obliques</i>, 2023, Fabric, brushed aluminium, wood, Dimension
+            <i>Obliques</i>, 2023, fabric, brushed aluminium, wood, Dimension
             variable
           </p>
         ),
@@ -122,7 +122,7 @@ export const showsData: ShowsData[] = [
             <i>Cinnamon Cinders III</i> (front), 2023, Wood, 362 x 18 x 2 cm
             <br />
             <br />
-            <i>Untitled</i> (back), 2023, Fabric, brushed aluminium, wood, 46 x
+            <i>Untitled</i> (back), 2023, fabric, brushed aluminium, wood, 46 x
             46 x 23 cm
           </p>
         ),
@@ -134,7 +134,7 @@ export const showsData: ShowsData[] = [
         height: 5472,
         description: (
           <p>
-            <i>Tessera</i>, 2023, Printed fabric, brushed aluminium, wood, 46 x
+            <i>Tessera</i>, 2023, printed fabric, brushed aluminium, wood, 46 x
             46 x 23 cm
           </p>
         ),
@@ -146,7 +146,7 @@ export const showsData: ShowsData[] = [
         height: 3648,
         description: (
           <p>
-            <i>Arraign</i>, 2023, Printed fabric, brushed aluminium, wood, 46 x
+            <i>Arraign</i>, 2023, printed fabric, brushed aluminium, wood, 46 x
             46 x 23 cm
           </p>
         ),
@@ -231,7 +231,7 @@ export const showsData: ShowsData[] = [
         height: 3000,
         description: (
           <p>
-            <i>Schiffer</i>, 2021, Resin casts, brushed and painted aluminium,
+            <i>Schiffer</i>, 2021, resin casts, brushed and painted aluminium,
             rivets, 380 x 11 x 11 cm
           </p>
         ),

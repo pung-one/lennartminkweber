@@ -25,7 +25,7 @@ export default function SubNav({
               }}
               tiltAngle={3}
               key={element.id}
-              initialAnimationDelay={(index + 1) * 0.09}
+              initialAnimationDelay={(index + 1) * 0.05}
             >
               {element.title}
             </NavElement>

@@ -46,15 +46,37 @@ export default function NavElement({
 }
 
 const Element = styled.li<{ $initialAnimationDelay: number }>`
-  transition: transform 0.14s ease;
-  transform-origin: var(--tilt-origin, 20% top);
-  &:hover {
-    transition: transform 0.15s ease;
-    cursor: pointer;
-    transform: var(--tilt-angle);
+  //initial animation
+  opacity: 0;
+  @keyframes initialFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
+  animation-name: initialFadeIn;
+  animation-delay: ${({ $initialAnimationDelay }) =>
+    `${$initialAnimationDelay}s`};
+  animation-duration: 0.12s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+
+  //hover
+  transition: transform 0.14s ease;
+  transform-origin: var(--tilt-origin);
+  @media only screen and (min-width: 1025px) {
+    &:hover {
+      cursor: pointer;
+      transform: var(--tilt-angle);
+    }
+  }
+
+  //other styles
   width: fit-content;
   * {
     font-size: 20px;
+    letter-spacing: 0.5px;
   }
 `;

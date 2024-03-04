@@ -41,7 +41,7 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
         >
           <List>
             <NavElement handleClick={() => handleClick("/")} tiltAngle={10}>
-              <p>Work</p>
+              <p>Exhibitions</p>
             </NavElement>
 
             <NavElement
@@ -51,15 +51,15 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
               <p>Texts</p>
             </NavElement>
 
-            <NavElement handleClick={() => handleClick("/cv")} tiltAngle={10}>
-              <p>CV</p>
-            </NavElement>
-
             <NavElement
               handleClick={() => handleClick("/contact")}
               tiltAngle={10}
             >
               <p>Contact</p>
+            </NavElement>
+
+            <NavElement handleClick={() => handleClick("/info")} tiltAngle={10}>
+              <p>Info</p>
             </NavElement>
           </List>
         </Nav>

@@ -33,6 +33,7 @@ const StyledLink = styled.a`
   padding: 0 15px;
   @media only screen and (min-width: 1025px) {
     margin: 20vh 0 0 15vw;
+    transition: opacity 0.2s;
     &:hover {
       opacity: 0.5;
       cursor: pointer;
