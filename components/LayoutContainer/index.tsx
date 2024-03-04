@@ -23,9 +23,9 @@ export default function LayoutContainer({
 
     const element = buttonRef.current;
     if (element) {
+      element.style.setProperty("animation", "none");
       element.style.setProperty("--tilt-origin", `${origin}px top`);
       element.style.setProperty("--tilt-angle", `rotate(${angle}deg)`);
-      element.style.setProperty("animation", "none");
     }
   }
 
@@ -67,7 +67,7 @@ const MenuButtonOpen = styled.button`
   border: none;
   background: none;
   color: black;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
   transform-origin: var(--tilt-origin, 50% top);
   @media only screen and (min-width: 1025px) {
     height: auto;
@@ -79,7 +79,7 @@ const MenuButtonOpen = styled.button`
   }
 
   @keyframes pulse {
-    0% {
+    /* 0% {
       transform: rotate(0deg);
     }
     25% {
@@ -90,6 +90,30 @@ const MenuButtonOpen = styled.button`
     }
     75% {
       transform: rotate(-4deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    } */
+    /* 0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    } */
+    0% {
+      transform: rotate(0deg);
+    }
+    85% {
+      transform: rotate(0deg);
+    }
+    90% {
+      transform: rotate(3deg);
+    }
+    95% {
+      transform: rotate(-3deg);
     }
     100% {
       transform: rotate(0deg);
