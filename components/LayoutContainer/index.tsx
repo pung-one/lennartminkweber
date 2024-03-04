@@ -2,12 +2,6 @@
 import styled from "styled-components";
 import { useRef, useState } from "react";
 import { NavMain } from "../NavMain";
-import { AnimatePresence } from "framer-motion";
-
-type TurningParams = {
-  origin: number;
-  direction: "left" | "right";
-};
 
 export default function LayoutContainer({
   children,
@@ -23,12 +17,10 @@ export default function LayoutContainer({
     clientX: number;
   }) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const direction = x > rect.width / 2 ? "left" : "right";
-    const origin = x;
-    const angle = direction === "left" ? `-3` : `3`;
+    const origin = e.clientX - rect.left;
+    const direction = origin > rect.width / 2 ? "left" : "right";
+    const angle = direction === "left" ? `-7` : `7`;
 
-    console.log(`${origin}px top`);
     const element = buttonRef.current;
     if (element) {
       element.style.setProperty("--tilt-origin", `${origin}px top`);

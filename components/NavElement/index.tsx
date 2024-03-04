@@ -1,4 +1,5 @@
-import { Key, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -6,12 +7,6 @@ type Props = {
   tiltAngle: number;
   children: React.ReactNode;
   initialAnimationDelay?: number;
-};
-
-type TiltParams = {
-  origin: number;
-  direction: "left" | "right";
-  angle: number;
 };
 
 export default function NavElement({
@@ -27,12 +22,10 @@ export default function NavElement({
     clientX: number;
   }) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const direction = x > rect.width / 2 ? "left" : "right";
-    const origin = x;
+    const origin = e.clientX - rect.left;
+    const direction = origin > rect.width / 2 ? "left" : "right";
     const angle = direction === "left" ? `-${tiltAngle}` : `${tiltAngle}`;
 
-    console.log(`${origin}px top`);
     const element = elementRef.current;
     if (element) {
       element.style.setProperty("--tilt-origin", `${origin}px top`);
@@ -45,16 +38,18 @@ export default function NavElement({
       ref={elementRef}
       onClick={handleClick}
       onMouseEnter={getTiltParams}
+      $initialAnimationDelay={initialAnimationDelay || 0}
     >
       {children}
     </Element>
   );
 }
 
-const Element = styled.li`
-  transition: transform 0.15s ease;
-  transform-origin: var(--tilt-origin);
+const Element = styled.li<{ $initialAnimationDelay: number }>`
+  transition: transform 0.14s ease;
+  transform-origin: var(--tilt-origin, 20% top);
   &:hover {
+    transition: transform 0.15s ease;
     cursor: pointer;
     transform: var(--tilt-angle);
   }

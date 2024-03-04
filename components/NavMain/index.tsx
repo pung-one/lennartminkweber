@@ -15,7 +15,12 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
   const router = useRouter();
 
   function handleClick(path: string) {
-    router.push(path);
+    console.log(pathname);
+    if (path === pathname) {
+      handleChange();
+    } else {
+      router.push(path);
+    }
   }
 
   useEffect(() => {
