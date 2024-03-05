@@ -25,7 +25,7 @@ export default function CvPage() {
           <h2>Photo Credits</h2>
           <p>
             Volker Renner (<i>Graduationshow</i>, <i>relate to…</i>), Oskar Lee
-            (<i>I Can't Tell a Hawk From a Handsaw</i>) and Helge Mundt (
+            (<i>I Can&#39;t Tell a Hawk From a Handsaw</i>) and Helge Mundt (
             <i>Annual Exhibition</i>).
           </p>
         </ImpressumContainer>
