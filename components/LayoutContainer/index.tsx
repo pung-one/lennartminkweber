@@ -19,12 +19,12 @@ export default function LayoutContainer({
     const rect = e.currentTarget.getBoundingClientRect();
     const origin = e.clientX - rect.left;
     const direction = origin > rect.width / 2 ? "left" : "right";
-    const angle = direction === "left" ? `-7` : `7`;
+    const angle = direction === "left" ? `-5` : `5`;
 
     const element = buttonRef.current;
     if (element) {
       element.style.setProperty("animation", "none");
-      element.style.setProperty("--tilt-origin", `${origin}px top`);
+      element.style.setProperty("--tilt-origin", `${origin}px center`);
       element.style.setProperty("--tilt-angle", `rotate(${angle}deg)`);
     }
   }
@@ -34,16 +34,22 @@ export default function LayoutContainer({
       <NavMain showNav={navOpen} onChange={() => setNavOpen(false)} />
 
       {navOpen ? (
-        <MenuButtonClose onClick={() => setNavOpen(false)}>
+        <MenuButtonClose
+          type="button"
+          aria-label="close navigation"
+          onClick={() => setNavOpen(false)}
+        >
           close
         </MenuButtonClose>
       ) : (
         <MenuButtonOpen
+          type="button"
+          aria-label="open navigation"
           ref={buttonRef}
           onMouseOver={getTiltParams}
           onClick={() => setNavOpen(true)}
         >
-          Lennart Mink Weber
+          <p>Lennart Mink Weber</p>
         </MenuButtonOpen>
       )}
 
@@ -66,7 +72,11 @@ const MenuButtonOpen = styled.button`
   height: 50px;
   border: none;
   background: none;
-  color: black;
+  p {
+    color: black;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 20px 12px white;
+  }
   transition: all 0.2s ease;
   transform-origin: var(--tilt-origin, 50% top);
   @media only screen and (min-width: 1025px) {
@@ -78,31 +88,7 @@ const MenuButtonOpen = styled.button`
     }
   }
 
-  @keyframes pulse {
-    /* 0% {
-      transform: rotate(0deg);
-    }
-    25% {
-      transform: rotate(4deg);
-    }
-    50% {
-      transform: rotate(0deg);
-    }
-    75% {
-      transform: rotate(-4deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    } */
-    /* 0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    } */
+  @keyframes wiggle {
     0% {
       transform: rotate(0deg);
     }
@@ -119,7 +105,7 @@ const MenuButtonOpen = styled.button`
       transform: rotate(0deg);
     }
   }
-  animation: 5s pulse 3s infinite;
+  animation: 5s wiggle 3s infinite;
 `;
 
 const MenuButtonClose = styled.button`

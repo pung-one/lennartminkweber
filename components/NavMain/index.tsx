@@ -15,7 +15,6 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
   const router = useRouter();
 
   function handleClick(path: string) {
-    console.log(pathname);
     if (path === pathname) {
       handleChange();
     } else {

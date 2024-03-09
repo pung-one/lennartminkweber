@@ -15,7 +15,7 @@ export default function NavElement({
   children,
   initialAnimationDelay,
 }: Props) {
-  const elementRef = useRef<HTMLLIElement>(null);
+  const elementRef = useRef<HTMLButtonElement>(null);
 
   function getTiltParams(e: {
     currentTarget: { getBoundingClientRect: () => any };
@@ -34,18 +34,21 @@ export default function NavElement({
   }
 
   return (
-    <Element
-      ref={elementRef}
-      onClick={handleClick}
-      onMouseEnter={getTiltParams}
-      $initialAnimationDelay={initialAnimationDelay || 0}
-    >
-      {children}
-    </Element>
+    <li>
+      <Element
+        type="button"
+        ref={elementRef}
+        onClick={handleClick}
+        onMouseEnter={getTiltParams}
+        $initialAnimationDelay={initialAnimationDelay || 0}
+      >
+        {children}
+      </Element>
+    </li>
   );
 }
 
-const Element = styled.li<{ $initialAnimationDelay: number }>`
+const Element = styled.button<{ $initialAnimationDelay: number }>`
   //initial animation
   opacity: 0;
   @keyframes initialFadeIn {
@@ -74,6 +77,8 @@ const Element = styled.li<{ $initialAnimationDelay: number }>`
   }
 
   //other styles
+  background: none;
+  border: none;
   width: fit-content;
   * {
     font-size: 20px;

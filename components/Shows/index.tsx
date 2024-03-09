@@ -23,6 +23,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
       <AnimatePresence>
         {activeShow && modalOpen && (
           <ImageSection
+            aria-modal="true"
             key={activeShow?.id}
             initial={{ opacity: 0, scaleX: 0.9 }}
             exit={{ opacity: 0, scaleX: 0.9 }}
@@ -33,6 +34,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
             }}
           >
             <CloseButton
+              type="button"
               onClick={() => {
                 setActiveShow(undefined);
                 setModalOpen(false);
@@ -48,7 +50,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
                     src={image.src}
                     width={image.width}
                     height={image.height}
-                    alt=""
+                    alt={image.alt}
                     loading="eager"
                   />
                   {image.description}

@@ -19,6 +19,7 @@ export type ImageData = {
   id: string;
   description: ReactNode;
   src: string;
+  alt: string;
   width: number;
   height: number;
 };

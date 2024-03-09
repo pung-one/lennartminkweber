@@ -20,6 +20,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
       <AnimatePresence>
         {activeText && modalOpen && (
           <TextModal
+            aria-modal="true"
             key={activeText?.id}
             initial={{ opacity: 0, scaleX: 0.85 }}
             exit={{ opacity: 0, scaleX: 0.85 }}
@@ -30,6 +31,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
             }}
           >
             <CloseButton
+              type="button"
               onClick={() => {
                 setActiveText(undefined);
                 setModalOpen(false);
