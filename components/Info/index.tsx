@@ -17,7 +17,8 @@ export default function Info() {
             Hamburg with Prof. Andreas Slominski and Prof. Dr. Hanne Loreck. In
             2022, he received the &quot;Deutschland&shy;stipendium&quot; and
             publication sponsorship from &quot;Materialverlag Hamburg&quot;. In
-            2023, he was kindly supported by the &quot;Freunde der HFBK&quot;.
+            2023, he was kindly supported by the &quot;Freundeskreis der
+            Hochschule für bildende Künste Hamburg e.V.&quot;.
           </p>
         </ImpressumContainer>
 
@@ -62,7 +63,7 @@ const Content = styled.article`
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  gap: 150px;
   margin: 20vh 0 0 15vw;
   @media only screen and (max-width: 1024px) {
     margin: 150px auto;
