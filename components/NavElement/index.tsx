@@ -81,6 +81,8 @@ const Element = styled.button<{ $initialAnimationDelay: number }>`
   border: none;
   width: fit-content;
   * {
+    text-align: left;
+    color: black;
     font-size: 20px;
     letter-spacing: 0.5px;
   }
