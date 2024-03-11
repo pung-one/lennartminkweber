@@ -5,7 +5,7 @@ export const showsData: ShowsData[] = [
     id: "Graduation Show (solo), HFBK, Hamburg, 2023",
     title: (
       <p>
-        <i>Graduation Show</i> (solo), HFBK, Hamburg, 2023
+        <i>Limited Seating Inc.</i> (solo), HFBK, Hamburg, 2023
       </p>
     ),
     images: [
