@@ -77,7 +77,6 @@ const ImpressumContainer = styled.section`
     font-size: 18px;
     margin-bottom: 8px;
     font-weight: normal;
-    letter-spacing: 0.5px;
   }
   p,
   i {
