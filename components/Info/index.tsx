@@ -24,7 +24,7 @@ export default function Info() {
 
         <Credits>
           <ImpressumContainer>
-            <h2>Photo Credits</h2>
+            <h2>Photo Credits:</h2>
             <p>
               Volker Renner (<i>Limited Seating Inc.</i>, <i>relate to…</i>),
               Oskar Lee (<i>I Can&#39;t Tell a Hawk From a Handsaw</i>) and
@@ -33,7 +33,7 @@ export default function Info() {
           </ImpressumContainer>
 
           <ImpressumContainer>
-            <h2>Webdesign and Development</h2>
+            <h2>Webdesign and Development:</h2>
             <StyledLink href="https://github.com/pung-one" target="_blank">
               Paul Ungerer{" "}
               <svg
@@ -78,7 +78,6 @@ const ImpressumContainer = styled.section`
     margin-bottom: 8px;
     font-weight: normal;
     letter-spacing: 0.5px;
-    text-decoration: underline;
   }
   p,
   i {
