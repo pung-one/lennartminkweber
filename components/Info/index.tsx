@@ -26,9 +26,9 @@ export default function Info() {
           <ImpressumContainer>
             <h2>Photo Credits</h2>
             <p>
-              Volker Renner (<i>Graduationshow</i>, <i>relate to…</i>), Oskar
-              Lee (<i>I Can&#39;t Tell a Hawk From a Handsaw</i>) and Helge
-              Mundt (<i>Annual Exhibition</i>).
+              Volker Renner (<i>Limited Seating Inc.</i>, <i>relate to…</i>),
+              Oskar Lee (<i>I Can&#39;t Tell a Hawk From a Handsaw</i>) and
+              Helge Mundt (<i>Annual Exhibition</i>).
             </p>
           </ImpressumContainer>
 
@@ -63,7 +63,7 @@ const Content = styled.article`
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  gap: 28vh;
   margin: 20vh 0 0 15vw;
   @media only screen and (max-width: 1024px) {
     margin: 150px auto;
@@ -74,9 +74,11 @@ const Content = styled.article`
 const ImpressumContainer = styled.section`
   position: relative;
   h2 {
+    font-size: 18px;
     margin-bottom: 8px;
     font-weight: normal;
     letter-spacing: 0.5px;
+    text-decoration: underline;
   }
   p,
   i {
