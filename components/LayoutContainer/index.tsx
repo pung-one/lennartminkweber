@@ -105,7 +105,7 @@ const MenuButtonOpen = styled.button`
       transform: rotate(0deg);
     }
   }
-  animation: 5s wiggle 3s infinite;
+  animation: 5s wiggle infinite;
 `;
 
 const MenuButtonClose = styled.button`

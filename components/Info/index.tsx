@@ -13,12 +13,12 @@ export default function Info() {
         <ImpressumContainer>
           <p>
             Lennart Mink Weber (*1994, Bremen) lives and works in Hamburg. From
-            2017 to 2023, he studied at the Hochschule für Bildende Künste in
+            2017 to 2023, he studied at the Hochschule für bildende Künste in
             Hamburg with Prof. Andreas Slominski and Prof. Dr. Hanne Loreck. In
             2022, he received the &quot;Deutschland&shy;stipendium&quot; and
             publication sponsorship from &quot;Materialverlag Hamburg&quot;. In
             2023, he was kindly supported by the &quot;Freundeskreis der
-            Hochschule für bildende Künste Hamburg e.V.&quot;.
+            Hochschule für bildende Künste Hamburg e.V.&quot;<span>.</span>
           </p>
         </ImpressumContainer>
 
@@ -27,7 +27,7 @@ export default function Info() {
             <h2>Photo Credits:</h2>
             <p>
               Volker Renner (<i>Limited Seating Inc.</i>, <i>relate to…</i>),
-              Oskar Lee (<i>I Can&#39;t Tell a Hawk From a Handsaw</i>) and
+              Oskar Lee (<i>I Can&#39;t Tell a Hawk from a Handsaw</i>) and
               Helge Mundt (<i>Annual Exhibition</i>).
             </p>
           </ImpressumContainer>
@@ -60,7 +60,7 @@ const Container = styled(motion.div)`
 `;
 
 const Content = styled.article`
-  max-width: 500px;
+  max-width: 490px;
   display: flex;
   flex-direction: column;
   gap: 28vh;
@@ -82,6 +82,9 @@ const ImpressumContainer = styled.section`
   p,
   i {
     font-size: 18px;
+    span {
+      padding-left: 2px;
+    }
   }
 `;
 

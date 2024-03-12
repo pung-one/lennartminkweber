@@ -14,10 +14,10 @@ export const showsData: ShowsData[] = [
         src: "/images/2023_graduationshow_hamburg/01.jpg",
         width: 5472,
         height: 3648,
-        alt: "Interlock, 2023, fabric, brushed aluminium, resincast, pins, wood, 46 x 46 x 23 cm",
+        alt: "Interlock, 2023, fabric, brushed aluminium, resin cast, pins, wood, 46 x 46 x 23 cm",
         description: (
           <p>
-            <i>Interlock</i>, 2023, fabric, brushed aluminium, resincast, pins,
+            <i>Interlock</i>, 2023, fabric, brushed aluminium, resin cast, pins,
             wood, 46 x 46 x 23 cm
           </p>
         ),
@@ -27,10 +27,10 @@ export const showsData: ShowsData[] = [
         src: "/images/2023_graduationshow_hamburg/01a.jpg",
         width: 3648,
         height: 5472,
-        alt: "Interlock (left), Cinammon Cinders (right), installation view",
+        alt: "Interlock (left), Cinnamon Cinders (right), installation view",
         description: (
           <p>
-            <i>Interlock</i> (left), <i>Cinammon Cinders</i> (right),
+            <i>Interlock</i> (left), <i>Cinnamon Cinders</i> (right),
             installation view
           </p>
         ),
@@ -132,7 +132,7 @@ export const showsData: ShowsData[] = [
             <i>Cinnamon Cinders III</i> (front), 2023, wood, 362 x 18 x 2 cm
             <br />
             <br />
-            <i>Untitled</i> (back), 2023, fabric, brushed aluminium, wood, 46 x
+            <i>Untitled</i> (back), 2023, fabric, brushed aluminium, wood, 96 x
             46 x 23 cm
           </p>
         ),
@@ -158,7 +158,7 @@ export const showsData: ShowsData[] = [
         alt: "Arraign, 2023, printed fabric, brushed aluminium, wood, 46 x 46 x 23 cm",
         description: (
           <p>
-            <i>Arraign</i>, 2023, printed fabric, brushed aluminium, wood, 46 x
+            <i>Arraign</i>, 2023, printed fabric, brushed aluminium, wood, 102 x
             46 x 23 cm
           </p>
         ),
@@ -226,10 +226,10 @@ export const showsData: ShowsData[] = [
     ],
   },
   {
-    id: "I Can't Tell A Hawk From A Handsaw (solo), etta, Düsseldorf, 2022",
+    id: "I Can't Tell a Hawk from a Handsaw (solo), etta, Düsseldorf, 2022",
     title: (
       <p>
-        <i>I Can't Tell A Hawk From A Handsaw</i> (solo), etta, Düsseldorf, 2022
+        <i>I Can't Tell a Hawk from a Handsaw</i> (solo), etta, Düsseldorf, 2022
       </p>
     ),
     images: [
@@ -267,18 +267,6 @@ export const showsData: ShowsData[] = [
         ),
       },
       {
-        id: "/images/2022_etta_düsseldorf/04.jpg",
-        src: "/images/2022_etta_düsseldorf/04.jpg",
-        width: 2000,
-        height: 3000,
-        alt: "Schiffer (Detail), 2021",
-        description: (
-          <p>
-            <i>Schiffer</i> (detail), 2021
-          </p>
-        ),
-      },
-      {
         id: "/images/2022_etta_düsseldorf/05.jpg",
         src: "/images/2022_etta_düsseldorf/05.jpg",
         width: 2000,
@@ -291,10 +279,10 @@ export const showsData: ShowsData[] = [
         src: "/images/2022_etta_düsseldorf/07.jpg",
         width: 3367,
         height: 2363,
-        alt: "Porter, 2021, resin casts, 48 x 29 x 18 cm",
+        alt: "Porter, 2021, resin cast, 48 x 29 x 18 cm",
         description: (
           <p>
-            <i>Porter</i>, 2021, resin casts, 48 x 29 x 18 cm
+            <i>Porter</i>, 2021, resin cast, 48 x 29 x 18 cm
           </p>
         ),
       },
@@ -315,10 +303,10 @@ export const showsData: ShowsData[] = [
         src: "/images/2022_etta_düsseldorf/09.jpg",
         width: 2000,
         height: 3000,
-        alt: "Shipwreck With Spectator, 2022, painted aluminium, rivets, 103 x 49 x 3,5 cm",
+        alt: "Shipwreck with Spectator, 2022, painted aluminium, rivets, 103 x 49 x 3,5 cm",
         description: (
           <p>
-            <i>Shipwreck With Spectator</i>, 2022, painted aluminium, rivets,
+            <i>Shipwreck with Spectator</i>, 2022, painted aluminium, rivets,
             103 x 49 x 3,5 cm
           </p>
         ),
@@ -328,10 +316,10 @@ export const showsData: ShowsData[] = [
         src: "/images/2022_etta_düsseldorf/10.jpg",
         width: 2000,
         height: 3000,
-        alt: "Shipwreck With Spectator (Detail), 2022",
+        alt: "Shipwreck with Spectator (Detail), 2022",
         description: (
           <p>
-            <i>Shipwreck With Spectator</i> (detail), 2022
+            <i>Shipwreck with Spectator</i> (detail), 2022
           </p>
         ),
       },
@@ -390,8 +378,8 @@ export const showsData: ShowsData[] = [
         alt: "Hamburger Küche, 2022, Edelstahlküche, Buchenfunier, 180 x 70 x 160 cm",
         description: (
           <p>
-            <i>Hamburger Küche</i>, 2022, Edelstahlküche, Buchenfunier, 180 x 70
-            x 160 cm
+            <i>Hamburger Küche</i>, 2022, stainless steel kitchenette, beech
+            veneer, 180 x 70 x 160 cm
           </p>
         ),
       },

@@ -2,10 +2,10 @@ import { TextData } from "@/types";
 
 export const texts: TextData[] = [
   {
-    id: "Noemi Smolik on Soloshow at etta Düsseldorf, 2022",
+    id: "Noemi Smolik on 'I Can't Tell a Hawk from a Handsaw', etta, Düsseldorf, 2022",
     title: (
       <p>
-        Noemi Smolik on <i>I Can't Tell a Hawk From a Handsaw</i> at etta,
+        Noemi Smolik on <i>I Can't Tell a Hawk from a Handsaw</i>, etta,
         Düsseldorf, 2022
       </p>
     ),
@@ -63,7 +63,7 @@ export const texts: TextData[] = [
           contradiction is placed in front of you that cannot be resolved or
           doesn't want to be resolved. Contradictions that point to the
           absurdity of the work, which is also reflected in the title of the
-          exhibition <i>I Can't Tell A Hawk From A Handsaw</i>, a line borrowed
+          exhibition <i>I Can't Tell a Hawk from a Handsaw</i>, a line borrowed
           from William Shakespeare's <i>Hamlet</i>. The artist already eludes
           resolution here, as he turns the quotation into its opposite. Whoever
           wants to, can try to wrest an unambiguous statement from this pun.
@@ -84,10 +84,10 @@ export const texts: TextData[] = [
     ),
   },
   {
-    id: "Harry Thring on Soloshow at etta Düsseldorf, 2022",
+    id: "Harry Thring on 'I Can't Tell a Hawk from a Handsaw', etta, Düsseldorf, 2022",
     title: (
       <p>
-        Harry Thring on <i>I Can't Tell a Hawk From a Handsaw</i> at etta,
+        Harry Thring on <i>I Can't Tell a Hawk from a Handsaw</i>, etta,
         Düsseldorf, 2022
       </p>
     ),
