@@ -2,12 +2,25 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  @font-face {
-      font-family: 'Trinite';
-      src: url('/fonts/TriniteNo1-RomanCondensed.woff') format('woff');
-      font-weight: normal;
+    @font-face {
+      font-family: 'GaramondPremierPro';
+      src: url('/fonts/GaramondPremrPro.otf') format('opentype');
       font-style: normal;
-      font-display: swap;
+      font-display: fallback;
+    }
+
+    @font-face {
+      font-family: 'GaramondPremierProMedium';
+      src: url('/fonts/GaramondPremrPro-Med.otf') format('opentype');
+      font-style: medium;
+      font-display: fallback;
+    }
+
+    @font-face {
+      font-family: 'GaramondPremierPro';
+      src: url('/fonts/GaramondPremrPro-It.otf') format('opentype');
+      font-style: italic;
+      font-display: fallback;
     }
 
 *,
@@ -17,12 +30,9 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     margin: 0;
     padding: 0;
-    font-family: 'Trinite', Helvetica, sans-serif;
+    font-family: 'GaramondPremierPro', serif;
     scroll-behavior: smooth;
-    font-size: 18px;
-  }
-
-  a {
-    color: black;
+    font-size: 20px;
+    overscroll-behavior-block: none;
   }
 `;

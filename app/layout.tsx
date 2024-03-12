@@ -1,25 +1,12 @@
 import { GlobalStyles } from "@/styles/global_styles";
 import StyledComponentsRegistry from "../lib/registry";
-import { Metadata } from "next";
+import LayoutContainer from "@/components/LayoutContainer";
 import ReactDOM from "react-dom";
 
-ReactDOM.preload("/fonts/TriniteNo1-RomanCondensed.woff", {
+ReactDOM.preload("/fonts/GaramondPremrPro.otf", {
   as: "font",
   crossOrigin: "",
 });
-
-export const metadata: Metadata = {
-  title: "Lennart Mink Weber",
-  description: "Lennart Mink Weber - Portfolio",
-  keywords: ["Lennart", "Mink", "Weber", "Portfolio", "Kuenstler", "Artist"],
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-    },
-  },
-};
 
 export default function RootLayout({
   children,
@@ -31,7 +18,8 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyles />
-          {children}
+
+          <LayoutContainer>{children}</LayoutContainer>
         </StyledComponentsRegistry>
       </body>
     </html>
