@@ -2,7 +2,6 @@ import { GlobalStyles } from "@/styles/global_styles";
 import StyledComponentsRegistry from "../lib/registry";
 import LayoutContainer from "@/components/LayoutContainer";
 import ReactDOM from "react-dom";
-import { Analytics } from "@vercel/analytics/react";
 
 ReactDOM.preload("/fonts/GaramondPremrPro.otf", {
   as: "font",
@@ -22,7 +21,6 @@ export default function RootLayout({
 
           <LayoutContainer>{children}</LayoutContainer>
         </StyledComponentsRegistry>
-        <Analytics />
       </body>
     </html>
   );
