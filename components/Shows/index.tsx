@@ -51,7 +51,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
                     width={image.width}
                     height={image.height}
                     alt={image.alt}
-                    priority={index == 0}
+                    loading="eager"
                   />
                   {image.description}
                 </ImgWithDescription>
