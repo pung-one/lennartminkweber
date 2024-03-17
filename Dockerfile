@@ -8,8 +8,7 @@ FROM base AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install -g sharp
-RUN npm ci
+RUN npm i
 
 FROM base AS builder
 WORKDIR /app
