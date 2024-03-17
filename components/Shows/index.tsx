@@ -43,7 +43,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
               close
             </CloseButton>
 
-            {activeShow?.images.map((image) => {
+            {activeShow?.images.map((image, index) => {
               return (
                 <ImgWithDescription key={image.id}>
                   <StyledImage
@@ -51,7 +51,7 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
                     width={image.width}
                     height={image.height}
                     alt={image.alt}
-                    loading="eager"
+                    priority={index == 0}
                   />
                   {image.description}
                 </ImgWithDescription>
