@@ -1,0 +1,11 @@
+# config/deploy.yml
+service: server
+image: charlie022/lennartmw_website
+servers:
+  - 49.13.6.131
+registry:
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+port: 3000
