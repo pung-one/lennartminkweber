@@ -1,4 +1,3 @@
-# config/deploy.yml
 service: server
 image: charlie022/lennartmw_website
 servers:
