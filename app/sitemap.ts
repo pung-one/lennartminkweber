@@ -3,25 +3,25 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "http://lennartminkweber.com",
+      url: "https://www.lennartminkweber.com/",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "http://lennartminkweber.com/texts",
+      url: "https://www.lennartminkweber.com/texts/",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "http://lennartminkweber.com/contact",
+      url: "https://www.lennartminkweber.com/contact/",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "http://lennartminkweber.com/info",
+      url: "https://www.lennartminkweber.com/info/",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,

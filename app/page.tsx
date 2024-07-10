@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Exhibitions | Lennart Mink Weber",
-  metadataBase: new URL("https://lennartminkweber.com"),
+  metadataBase: new URL("https://www.lennartminkweber.com"),
   alternates: {
     canonical: "/",
   },
