@@ -2,9 +2,9 @@ service: server
 image: charlie022/lennartmw_website
 registry:
   username:
-    - KAMAL_REGISTRY_USERNAME
+    - DOCKERHUB_USERNAME
   password:
-    - KAMAL_REGISTRY_PASSWORD
+    - DOCKERHUB_PASSWORD
 port: 3000
 
 servers:

@@ -36,6 +36,9 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  openGraph: {
+    siteName: "Exhibitions | Lennart Mink Weber",
+  },
 };
 
 export default function Home() {

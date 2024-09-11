@@ -33,6 +33,9 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  openGraph: {
+    siteName: "Info | Lennart Mink Weber",
+  },
 };
 
 export default function InfoPage() {
