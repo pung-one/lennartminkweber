@@ -31,6 +31,9 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  openGraph: {
+    siteName: "Contact | Lennart Mink Weber",
+  },
 };
 
 export default function ContactPage() {

@@ -4,6 +4,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Exhibitions | Lennart Mink Weber",
+  metadataBase: new URL("https://www.lennartminkweber.com"),
+  alternates: {
+    canonical: "/",
+  },
   description: "Exhibitions | Lennart Mink Weber",
   category: "art",
   authors: [
@@ -31,6 +35,9 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
     },
+  },
+  openGraph: {
+    siteName: "Exhibitions | Lennart Mink Weber",
   },
 };
 
