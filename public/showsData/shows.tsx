@@ -2,6 +2,147 @@ import { ShowsData } from "@/types";
 
 export const showsData: ShowsData[] = [
   {
+    id: "Die Drei Jahreszeiten (solo), Mondrian, Hamburg, 2025",
+    title: (
+      <p>
+        <i>Die Drei Jahreszeiten</i> (solo), Mondrian, Hamburg, 2025
+      </p>
+    ),
+    images: [
+      {
+        id: "/images/2025_mondrian/01.jpg",
+        src: "/images/2025_mondrian/01.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Installation view, Mondrian, Hamburg",
+        description: <p>Installation view, Mondrian, Hamburg</p>,
+      },
+      {
+        id: "/images/2025_mondrian/1.jpg",
+        src: "/images/2025_mondrian/1.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Die drei Jahreszeiten, 2025, fabric, frames, digital prints, 200 x 103 x 16 cm",
+        description: (
+          <p>
+            <i>Die drei Jahreszeiten</i>, 2025, fabric, frames, digital prints,
+            200 x 103 x 16 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_mondrian/2.jpg",
+        src: "/images/2025_mondrian/2.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Die drei Jahreszeiten (detail), 2025",
+        description: (
+          <p>
+            <i>Die drei Jahreszeiten</i> (detail), 2025
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_mondrian/3.jpg",
+        src: "/images/2025_mondrian/3.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Die drei Jahreszeiten (detail), 2025",
+        description: (
+          <p>
+            <i>Die drei Jahreszeiten</i> (detail), 2025
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_mondrian/4.jpg",
+        src: "/images/2025_mondrian/4.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Die drei Jahreszeiten (detail), 2025",
+        description: (
+          <p>
+            <i>Die drei Jahreszeiten</i> (detail), 2025
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_mondrian/5.jpg",
+        src: "/images/2025_mondrian/5.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Die drei Jahreszeiten (detail), 2025",
+        description: (
+          <p>
+            <i>Die drei Jahreszeiten</i> (detail), 2025
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_mondrian/6.jpg",
+        src: "/images/2025_mondrian/6.jpg",
+        width: 3934,
+        height: 5901,
+        alt: "Die drei Jahreszeiten (detail), 2025",
+        description: (
+          <p>
+            <i>Die drei Jahreszeiten</i> (detail), 2025
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    id: "The Library (group), AKA Studios, Hamburg, 2024",
+    title: (
+      <p>
+        <i>The Library</i> (group), AKA Studios, Hamburg, 2024
+      </p>
+    ),
+    images: [
+      {
+        id: "/images/2024_the_library_(group),_aka_studios,_hamburg/1.jpg",
+        src: "/images/2024_the_library_(group),_aka_studios,_hamburg/1.jpg",
+        width: 11648,
+        height: 8736,
+        alt: "Installation view, AKA Studios, Hamburg, 2024",
+        description: <p>Installation view, AKA Studios, Hamburg, 2024</p>,
+      },
+      {
+        id: "/images/2024_the_library_(group),_aka_studios,_hamburg/2.jpg",
+        src: "/images/2024_the_library_(group),_aka_studios,_hamburg/2.jpg",
+        width: 11648,
+        height: 8736,
+        alt: "Installation view, AKA Studios, Hamburg, 2024",
+        description: <p>Installation view, AKA Studios, Hamburg, 2024</p>,
+      },
+      {
+        id: "/images/2024_the_library_(group),_aka_studios,_hamburg/3.jpg",
+        src: "/images/2024_the_library_(group),_aka_studios,_hamburg/3.jpg",
+        width: 11648,
+        height: 8736,
+        alt: "Installation view, AKA Studios, Hamburg, 2024",
+        description: <p>Installation view, AKA Studios, Hamburg, 2024</p>,
+      },
+      {
+        id: "/images/2024_the_library_(group),_aka_studios,_hamburg/text.png",
+        src: "/images/2024_the_library_(group),_aka_studios,_hamburg/text.png",
+        width: 1536,
+        height: 2160,
+        alt: "SINGLE EVENT HORIZON. IN THE UNLIKELY EVENT OF THE REPETITION OF AN UNLIKELY EVENT, text work, 2024",
+        description: (
+          <p>
+            <i>
+              SINGLE EVENT HORIZON. IN THE UNLIKELY EVENT OF THE REPETITION OF
+              AN UNLIKELY EVENT
+            </i>
+            , text work, 2024
+          </p>
+        ),
+      },
+    ],
+  },
+  {
     id: "Graduation Show (solo), HFBK, Hamburg, 2023",
     title: (
       <p>
