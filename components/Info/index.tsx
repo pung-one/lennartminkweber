@@ -12,7 +12,7 @@ export default function Info() {
       <Content>
         <ImpressumContainer>
           <p>
-            Lennart Mink Weber (*1994, Bremen) lives and works in Hamburg. From
+            Lennart Mink Weber (b. Bremen 1994) lives and works in Hamburg. From
             2017 to 2023, he studied at the Hochschule für bildende Künste in
             Hamburg with Prof. Andreas Slominski and Prof. Dr. Hanne Loreck. In
             2022, he received the &quot;Deutschland&shy;stipendium&quot; and

@@ -52,7 +52,7 @@ const ShowsList = styled.ul`
   list-style: none;
   margin: 20vh 0 0 15vw;
   @media only screen and (max-width: 1024px) {
-    margin: 150px auto;
+    margin: 150px auto 0;
     padding: 0 15px;
   }
 `;
