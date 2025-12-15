@@ -106,15 +106,15 @@ const StyledImage = styled(Image)`
 `;
 
 const ImgWithDescription = styled.div`
-  margin-bottom: 100px;
+  margin: 0 0 100px 32%;
   * {
     font-size: 18px;
   }
   p {
-    margin: 20px 20px 0;
+    margin: 20px 0 0;
   }
   @media only screen and (max-width: 1024px) {
-    margin-bottom: 80px;
+    margin: 0 0 80px 0;
     p {
       margin: 10px 12px 0;
     }
