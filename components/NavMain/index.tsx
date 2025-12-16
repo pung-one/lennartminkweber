@@ -24,7 +24,7 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
 
   useEffect(() => {
     handleChange();
-  }, [pathname]);
+  }, [pathname, handleChange]);
 
   return (
     <AnimatePresence>
