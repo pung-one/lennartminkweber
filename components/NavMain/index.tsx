@@ -15,16 +15,9 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
   const router = useRouter();
 
   function handleClick(path: string) {
-    if (path === pathname) {
-      handleChange();
-    } else {
-      router.push(path);
-    }
-  }
-
-  useEffect(() => {
+    if (path !== pathname) router.push(path);
     handleChange();
-  }, [pathname, handleChange]);
+  }
 
   return (
     <AnimatePresence>

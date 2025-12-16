@@ -1,6 +1,6 @@
 "use client";
 import styled from "styled-components";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { NavMain } from "../NavMain";
 
 export default function LayoutContainer({
@@ -12,22 +12,25 @@ export default function LayoutContainer({
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  function getTiltParams(e: {
-    currentTarget: { getBoundingClientRect: () => any };
-    clientX: number;
-  }) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const origin = e.clientX - rect.left;
-    const direction = origin > rect.width / 2 ? "left" : "right";
-    const angle = direction === "left" ? `-5` : `5`;
+  const getTiltParams = useCallback(
+    (e: {
+      currentTarget: { getBoundingClientRect: () => any };
+      clientX: number;
+    }) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const origin = e.clientX - rect.left;
+      const direction = origin > rect.width / 2 ? "left" : "right";
+      const angle = direction === "left" ? `-5` : `5`;
 
-    const element = buttonRef.current;
-    if (element) {
-      element.style.setProperty("animation", "none");
-      element.style.setProperty("--tilt-origin", `${origin}px center`);
-      element.style.setProperty("--tilt-angle", `rotate(${angle}deg)`);
-    }
-  }
+      const element = buttonRef.current;
+      if (element) {
+        element.style.setProperty("animation", "none");
+        element.style.setProperty("--tilt-origin", `${origin}px center`);
+        element.style.setProperty("--tilt-angle", `rotate(${angle}deg)`);
+      }
+    },
+    []
+  );
 
   return (
     <Container>
