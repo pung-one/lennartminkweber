@@ -1,7 +1,7 @@
 "use client";
 import { TextData } from "@/types";
 import styled from "styled-components";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import SubNav from "../SubNav";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -41,7 +41,7 @@ export default function Texts({ texts }: { texts: TextData[] }) {
             </CloseButton>
 
             <TextContainer>
-              {activeText.text}
+              <Fragment key="text">{activeText.text}</Fragment>
 
               <p>- {activeText.author}</p>
             </TextContainer>
