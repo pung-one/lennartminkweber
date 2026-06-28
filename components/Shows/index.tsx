@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { ShowsData } from "@/types";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import SubNav from "../SubNav";
@@ -47,13 +47,15 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
               return (
                 <ImgWithDescription key={image.id}>
                   <StyledImage
+                    key={image.id}
                     src={image.src}
                     width={image.width}
                     height={image.height}
                     alt={image.alt}
                     loading="eager"
                   />
-                  {image.description}
+
+                  <Fragment key={"desc"}>{image.description}</Fragment>
                 </ImgWithDescription>
               );
             })}
