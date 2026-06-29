@@ -52,7 +52,6 @@ export default function Shows({ showsData }: { showsData: ShowsData[] }) {
                     width={image.width}
                     height={image.height}
                     alt={image.alt}
-                    loading="eager"
                   />
 
                   <Fragment key={"desc"}>{image.description}</Fragment>
