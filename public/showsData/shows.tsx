@@ -20,8 +20,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2025_mondrian/1.webp",
         src: "/images/2025_mondrian/1.webp",
-        width: 3934,
-        height: 5901,
+        width: 6000,
+        height: 3375,
         alt: "Die drei Jahreszeiten, 2025, fabric, frames, digital prints, 200 x 103 x 16 cm",
         description: (
           <p>
@@ -33,8 +33,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2025_mondrian/2.webp",
         src: "/images/2025_mondrian/2.webp",
-        width: 3934,
-        height: 5901,
+        width: 5391,
+        height: 3594,
         alt: "Die drei Jahreszeiten (detail), 2025",
         description: (
           <p>
@@ -45,8 +45,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2025_mondrian/3.webp",
         src: "/images/2025_mondrian/3.webp",
-        width: 3934,
-        height: 5901,
+        width: 1803,
+        height: 2432,
         alt: "Die drei Jahreszeiten (detail), 2025",
         description: (
           <p>
@@ -57,8 +57,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2025_mondrian/4.webp",
         src: "/images/2025_mondrian/4.webp",
-        width: 3934,
-        height: 5901,
+        width: 2864,
+        height: 4211,
         alt: "Die drei Jahreszeiten (detail), 2025",
         description: (
           <p>
@@ -69,8 +69,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2025_mondrian/5.webp",
         src: "/images/2025_mondrian/5.webp",
-        width: 3934,
-        height: 5901,
+        width: 5587,
+        height: 3725,
         alt: "Die drei Jahreszeiten (detail), 2025",
         description: (
           <p>
@@ -81,8 +81,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2025_mondrian/6.webp",
         src: "/images/2025_mondrian/6.webp",
-        width: 3934,
-        height: 5901,
+        width: 3485,
+        height: 5227,
         alt: "Die drei Jahreszeiten (detail), 2025",
         description: (
           <p>
@@ -103,24 +103,24 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2024_the_library_(group),_aka_studios,_hamburg/1.webp",
         src: "/images/2024_the_library_(group),_aka_studios,_hamburg/1.webp",
-        width: 11648,
-        height: 8736,
+        width: 2000,
+        height: 1500,
         alt: "Installation view, AKA Studios, Hamburg, 2024",
         description: <p>Installation view, AKA Studios, Hamburg, 2024</p>,
       },
       {
         id: "/images/2024_the_library_(group),_aka_studios,_hamburg/2.webp",
         src: "/images/2024_the_library_(group),_aka_studios,_hamburg/2.webp",
-        width: 11648,
-        height: 8736,
+        width: 2000,
+        height: 1500,
         alt: "Installation view, AKA Studios, Hamburg, 2024",
         description: <p>Installation view, AKA Studios, Hamburg, 2024</p>,
       },
       {
         id: "/images/2024_the_library_(group),_aka_studios,_hamburg/3.webp",
         src: "/images/2024_the_library_(group),_aka_studios,_hamburg/3.webp",
-        width: 11648,
-        height: 8736,
+        width: 2000,
+        height: 1500,
         alt: "Installation view, AKA Studios, Hamburg, 2024",
         description: <p>Installation view, AKA Studios, Hamburg, 2024</p>,
       },
@@ -153,8 +153,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2023_graduationshow_hamburg/01.webp",
         src: "/images/2023_graduationshow_hamburg/01.webp",
-        width: 5472,
-        height: 3648,
+        width: 3648,
+        height: 5472,
         alt: "Interlock, 2023, fabric, brushed aluminium, resin cast, pins, wood, 46 x 46 x 23 cm",
         description: (
           <p>
@@ -166,8 +166,8 @@ export const showsData: ShowsData[] = [
       {
         id: "/images/2023_graduationshow_hamburg/01a.webp",
         src: "/images/2023_graduationshow_hamburg/01a.webp",
-        width: 3648,
-        height: 5472,
+        width: 5472,
+        height: 3648,
         alt: "Interlock (left), Cinnamon Cinders (right), installation view",
         description: (
           <p>
