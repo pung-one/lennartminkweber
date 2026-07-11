@@ -2,6 +2,100 @@ import { ShowsData } from "@/types";
 
 export const showsData: ShowsData[] = [
   {
+    id: "Amulette, La Chambre Debonne, Paris (solo)",
+    title: (
+      <p>
+        <i>Amulette</i> (solo), La Chambre Debonne, Paris, 2025
+      </p>
+    ),
+    images: [
+      {
+        id: "/images/2025_amulette/1.webp",
+        src: "/images/2025_amulette/1.webp",
+        width: 2000,
+        height: 1500,
+        alt: "Amulette, 2025, aluminium cast, 6,5 x 6 cm",
+        description: (
+          <p>
+            <i>Amulette</i>, 2025, aluminium cast, 6,5 x 6 cm
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_amulette/2.webp",
+        src: "/images/2025_amulette/2.webp",
+        width: 2000,
+        height: 1500,
+        alt: "Amulette, 2025, aluminium cast, 6,5 x 6 cm",
+        description: (
+          <p>
+            <i>Amulette</i>, 2025, aluminium cast, 6,5 x 6 cm
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    id: "Tanner, St. Kindelein, Hamburg (group)",
+    title: (
+      <p>
+        <i>Tanner</i> (group), St. Kindelein, Hamburg, 2025
+      </p>
+    ),
+    images: [
+      {
+        id: "/images/2025_tanner_st_kindelein/1.webp",
+        src: "/images/2025_tanner_st_kindelein/1.webp",
+        width: 2000,
+        height: 1333,
+        alt: "Left: Untitled (Purple), 2025. Styrodur, fabric, Right: Untitled (Silver-Blue Holbein), 2025, Styrodur, fabric",
+        description: (
+          <p>
+            Left: <i>Untitled (Purple)</i>, 2025, Styrodur, fabric
+            <br />
+            Right: <i>Untitled (Silver-Blue Holbein)</i>, 2025. Styrodur, fabric
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_tanner_st_kindelein/2.webp",
+        src: "/images/2025_tanner_st_kindelein/2.webp",
+        width: 2000,
+        height: 1333,
+        alt: "Untitled (Purple), 2025 (detail)",
+        description: (
+          <p>
+            <i>Untitled (Purple)</i>, 2025 (detail)
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_tanner_st_kindelein/3.webp",
+        src: "/images/2025_tanner_st_kindelein/3.webp",
+        width: 2000,
+        height: 1333,
+        alt: "Untitled (Silver-Blue Holbein), 2025 (detail)",
+        description: (
+          <p>
+            <i>Untitled (Silver-Blue Holbein)</i>, 2025 (detail)
+          </p>
+        ),
+      },
+      {
+        id: "/images/2025_tanner_st_kindelein/4.webp",
+        src: "/images/2025_tanner_st_kindelein/4.webp",
+        width: 2000,
+        height: 1333,
+        alt: "Untitled (Silver-Blue Holbein), 2025 (detail)",
+        description: (
+          <p>
+            <i>Untitled (Silver-Blue Holbein)</i>, 2025 (detail)
+          </p>
+        ),
+      },
+    ],
+  },
+  {
     id: "Die Drei Jahreszeiten (solo), Mondrian, Hamburg, 2025",
     title: (
       <p>
@@ -521,100 +615,6 @@ export const showsData: ShowsData[] = [
           <p>
             <i>Hamburger Küche</i>, 2022, stainless steel kitchenette, beech
             veneer, 180 x 70 x 160 cm
-          </p>
-        ),
-      },
-    ],
-  },
-  {
-    id: "Amulette, La Chambre Debonne, Paris (solo)",
-    title: (
-      <p>
-        <i>Amulette</i> (solo), La Chambre Debonne, Paris, 2025
-      </p>
-    ),
-    images: [
-      {
-        id: "/images/2025_amulette/1.webp",
-        src: "/images/2025_amulette/1.webp",
-        width: 2000,
-        height: 1500,
-        alt: "Amulette, 2025, aluminium cast, 6,5 x 6 cm",
-        description: (
-          <p>
-            <i>Amulette</i>, 2025, aluminium cast, 6,5 x 6 cm
-          </p>
-        ),
-      },
-      {
-        id: "/images/2025_amulette/2.webp",
-        src: "/images/2025_amulette/2.webp",
-        width: 2000,
-        height: 1500,
-        alt: "Amulette, 2025, aluminium cast, 6,5 x 6 cm",
-        description: (
-          <p>
-            <i>Amulette</i>, 2025, aluminium cast, 6,5 x 6 cm
-          </p>
-        ),
-      },
-    ],
-  },
-  {
-    id: "Tanner, St. Kindelein, Hamburg (group)",
-    title: (
-      <p>
-        <i>Tanner</i> (group), St. Kindelein, Hamburg, 2025
-      </p>
-    ),
-    images: [
-      {
-        id: "/images/2025_tanner_st_kindelein/1.webp",
-        src: "/images/2025_tanner_st_kindelein/1.webp",
-        width: 2000,
-        height: 1333,
-        alt: "Left: Untitled (Purple), 2025. Styrodur, fabric, Right: Untitled (Silver-Blue Holbein), 2025, Styrodur, fabric",
-        description: (
-          <p>
-            Left: <i>Untitled (Purple)</i>, 2025, Styrodur, fabric
-            <br />
-            Right: <i>Untitled (Silver-Blue Holbein)</i>, 2025. Styrodur, fabric
-          </p>
-        ),
-      },
-      {
-        id: "/images/2025_tanner_st_kindelein/2.webp",
-        src: "/images/2025_tanner_st_kindelein/2.webp",
-        width: 2000,
-        height: 1333,
-        alt: "Untitled (Purple), 2025 (detail)",
-        description: (
-          <p>
-            <i>Untitled (Purple)</i>, 2025 (detail)
-          </p>
-        ),
-      },
-      {
-        id: "/images/2025_tanner_st_kindelein/3.webp",
-        src: "/images/2025_tanner_st_kindelein/3.webp",
-        width: 2000,
-        height: 1333,
-        alt: "Untitled (Silver-Blue Holbein), 2025 (detail)",
-        description: (
-          <p>
-            <i>Untitled (Silver-Blue Holbein)</i>, 2025 (detail)
-          </p>
-        ),
-      },
-      {
-        id: "/images/2025_tanner_st_kindelein/4.webp",
-        src: "/images/2025_tanner_st_kindelein/4.webp",
-        width: 2000,
-        height: 1333,
-        alt: "Untitled (Silver-Blue Holbein), 2025 (detail)",
-        description: (
-          <p>
-            <i>Untitled (Silver-Blue Holbein)</i>, 2025 (detail)
           </p>
         ),
       },
