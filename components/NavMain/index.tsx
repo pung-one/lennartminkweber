@@ -37,13 +37,6 @@ export function NavMain({ showNav, onChange: handleChange }: Props) {
             </NavElement>
 
             <NavElement
-              handleClick={() => handleClick("/texts")}
-              tiltAngle={10}
-            >
-              <p>Texts</p>
-            </NavElement>
-
-            <NavElement
               handleClick={() => handleClick("/contact")}
               tiltAngle={10}
             >
